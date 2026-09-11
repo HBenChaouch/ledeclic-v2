@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Collège — voir une règle se construire | Le Déclic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f2ea;--paper:#fffdf8;--surface:#fff;--ink:#14213d;--soft:#34405e;--muted:#6f7385;--line:#e7decc;--gold:#c9a24b;--gold2:#9a7424;--goldp:#f6ebcf;--green:#1f6b54;--greenp:#e2efe7;--rose:#b65343;--serif:"Fraunces",Georgia,serif;--sans:"Plus Jakarta Sans",system-ui,sans-serif;--mono:"JetBrains Mono",monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}.wrap{width:min(940px,100%);margin:auto;padding:38px 20px 74px}.hero{margin-bottom:22px}.badge{display:inline-block;padding:6px 11px;border:1px solid #ddc584;border-radius:99px;background:var(--goldp);color:var(--gold2);font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase}h1,h2,h3,p{margin-top:0}h1{max-width:760px;margin:10px 0 8px;font:500 clamp(30px,5vw,46px)/1.06 var(--serif);letter-spacing:-.025em}h1 em{color:var(--gold2);font-style:normal}.intro{max-width:720px;margin:0;color:var(--soft);font-size:16px}.card{margin-top:20px;padding:24px;border:1px solid var(--line);border-radius:22px;background:var(--surface);box-shadow:0 9px 28px rgba(20,33,61,.055)}.eyebrow{margin-bottom:5px;color:var(--gold2);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.card h2{margin-bottom:7px;font:500 clamp(23px,4vw,30px)/1.15 var(--serif)}.lead{max-width:730px;margin-bottom:17px;color:var(--soft);font-size:14.5px}.workbench{padding:16px;border:1px solid var(--line);border-radius:17px;background:var(--paper)}.pyth-grid{display:grid;grid-template-columns:minmax(270px,390px) 1fr;gap:18px;align-items:center}.diagram{display:block;width:100%;height:auto;max-height:390px}.facts{display:grid;gap:9px}.fact{padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--soft);font-size:13px}.fact b{display:block;color:var(--ink);font-family:var(--mono);font-size:13px}.question{margin:16px 0 10px;font:500 18px/1.35 var(--serif)}.question strong{color:var(--gold2)}.actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.btn{appearance:none;border:1px solid #d8bc73;border-radius:999px;background:linear-gradient(#fff8e7,#f6ebcf);color:var(--ink);padding:10px 18px;font:600 14px var(--sans);cursor:pointer;box-shadow:0 6px 14px rgba(20,33,61,.07);transition:transform .18s,box-shadow .18s}.btn:hover{transform:translateY(-1px);box-shadow:0 9px 18px rgba(20,33,61,.11)}.btn:focus-visible,summary:focus-visible{outline:3px solid rgba(201,162,75,.55);outline-offset:3px}.btn.ghost{border-color:var(--line);background:#fff;color:var(--soft);box-shadow:none}.status{min-height:24px;margin:11px 0 0;color:var(--soft);font-size:13.5px}.reveal{margin-top:14px;padding:14px 16px;border:1px solid rgba(31,107,84,.25);border-radius:14px;background:var(--greenp);color:var(--soft);font-size:14px}.reveal strong{color:var(--green)}.equation{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;margin-top:10px;color:var(--ink);font:600 clamp(16px,3vw,20px) var(--mono)}.equation .therefore{color:var(--green)}.vfrac{display:inline-grid;grid-template-rows:1fr 1fr;vertical-align:middle;line-height:1;text-align:center;transform:translateY(.08em)}.vfrac i{display:block;padding:1px 4px;font-style:normal}.vfrac i:first-child{border-bottom:1.5px solid currentColor}[hidden]{display:none!important}.frac-wrap{overflow:hidden}.frac-svg{display:block;width:100%;height:auto}.stage-note{margin:10px 0 0;color:var(--soft);font-size:13.5px}.general{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.general div{padding:10px;border:1px solid #d9c47e;border-radius:11px;background:#fffaf0;text-align:center}.general span{display:block;color:var(--muted);font-size:11px}.general b{font:600 14px var(--mono)}details{margin-top:13px;border-top:1px solid var(--line);padding-top:12px}summary{width:fit-content;color:var(--gold2);font-weight:700;font-size:13px;cursor:pointer}.detail-body{padding-top:10px;color:var(--soft);font-size:13.5px}.mini-packs{display:flex;gap:5px;flex-wrap:wrap;margin:10px 0}.mini-pack{display:flex;gap:2px;padding:3px;border:1.5px solid var(--gold);border-radius:6px}.mini-pack i{display:block;width:8px;height:18px;border-radius:2px;background:var(--goldp)}.mini-pack.half{border-style:dashed;background:#fff}.scope{margin-bottom:0;color:var(--muted);font-size:12px}.closing{margin-top:20px;padding:17px 20px;border:1px solid rgba(31,107,84,.24);border-radius:17px;background:var(--greenp)}.closing h2{margin:0 0 4px;font:500 20px var(--serif);color:var(--green)}.closing p{margin:0;color:var(--soft);font-size:14px}
+@media(max-width:650px){.wrap{padding:24px 13px 56px}.card{padding:16px}.workbench{padding:10px}.pyth-grid{grid-template-columns:1fr}.facts{grid-template-columns:repeat(3,1fr);gap:5px}.fact{padding:8px 6px;text-align:center;font-size:11px}.fact b{font-size:11px}.general{grid-template-columns:1fr}.frac-wrap{overflow:visible}.btn{width:100%;justify-content:center}.actions{display:grid;grid-template-columns:1fr;width:100%}.actions .ghost{order:2}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}.btn:hover{transform:none}}
+</style>
+<style>.general .vfrac{display:inline-grid;color:inherit;font-size:inherit}</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <span class="badge">La méthode en action · Collège</span>
+    <h1>Voir une règle <em>se construire</em></h1>
+    <p class="intro">Deux expériences courtes : les mêmes pièces changent de place, puis les mêmes parts forment des paquets. À chaque fois, la règle arrive après le mécanisme.</p>
+  </header>
+
+  <section class="card" aria-labelledby="pyth-title">
+    <p class="eyebrow">Expérience 1 · Pythagore</p>
+    <h2 id="pyth-title">Quatre triangles, deux rangements</h2>
+    <p class="lead">Les quatre triangles rectangles sont congruents : chacun a des côtés perpendiculaires de longueurs <strong>a</strong> et <strong>b</strong>, et une hypoténuse <strong>c</strong>. Le grand carré a pour côté <strong>a + b</strong>.</p>
+    <div class="workbench pyth-grid">
+      <svg id="pythSvg" class="diagram" viewBox="0 0 380 355" role="img" aria-labelledby="pythSvgTitle pythSvgDesc">
+        <title id="pythSvgTitle">Quatre triangles rectangles dans un grand carré</title>
+        <desc id="pythSvgDesc">Les quatre mêmes triangles se déplacent entre deux pavages du même carré.</desc>
+        <polygon id="centralGap" points="43,152 211,26 337,194 169,320" fill="#e2efe7" stroke="#1f6b54" stroke-width="2"/>
+        <rect id="gapB" x="43" y="26" width="168" height="168" fill="#e2efe7" stroke="#1f6b54" stroke-width="2" opacity="0"/>
+        <rect id="gapA" x="211" y="194" width="126" height="126" fill="#e2efe7" stroke="#1f6b54" stroke-width="2" opacity="0"/>
+        <g id="triangles"></g>
+        <rect x="43" y="26" width="294" height="294" fill="none" stroke="#14213d" stroke-width="3"/>
+        <g id="centralText"><text x="190" y="180" text-anchor="middle" fill="#1f6b54" font-family="JetBrains Mono,monospace" font-size="18" font-weight="600">c × c = c²</text></g>
+        <g id="initialMeasures" fill="#14213d" font-family="JetBrains Mono,monospace" font-size="16" font-weight="600">
+          <path d="M43 42 H59 V26" fill="none" stroke="#14213d" stroke-width="2"/>
+          <text x="127" y="46" text-anchor="middle">b</text>
+          <text x="58" y="96" text-anchor="middle">a</text>
+          <text x="132" y="101" text-anchor="middle">c</text>
+        </g>
+        <g id="squareTexts" opacity="0"><text x="127" y="104" text-anchor="middle" fill="#1f6b54" font-family="JetBrains Mono,monospace" font-size="18" font-weight="600">b²</text><text x="127" y="129" text-anchor="middle" fill="#1f6b54" font-family="Plus Jakarta Sans,sans-serif" font-size="14">côté b</text><text x="274" y="257" text-anchor="middle" fill="#1f6b54" font-family="JetBrains Mono,monospace" font-size="18" font-weight="600">a²</text><text x="274" y="281" text-anchor="middle" fill="#1f6b54" font-family="Plus Jakarta Sans,sans-serif" font-size="14">côté a</text></g>
+        <text x="190" y="344" text-anchor="middle" fill="#6f7385" font-family="Plus Jakarta Sans,sans-serif" font-size="14">même carré extérieur : côté a + b</text>
+      </svg>
+      <div class="facts" aria-label="Ce qui ne change pas">
+        <div class="fact"><b>1 grand carré</b>aire : (a + b)²</div>
+        <div class="fact"><b>4 triangles</b>aire totale : 2ab</div>
+        <div class="fact"><b>0 pièce ajoutée</b>seul le rangement change</div>
+      </div>
+    </div>
+    <p class="question" id="pythQuestion">Quand les triangles bougeront, <strong>que deviendra le carré vert c²&nbsp;?</strong></p>
+    <div class="actions">
+      <button class="btn" id="moveTriangles" type="button">Déplacer les mêmes triangles</button>
+      <button class="btn ghost" id="resetTriangles" type="button" hidden>↺ Recommencer</button>
+    </div>
+    <p class="status" id="pythStatus" aria-live="polite">Repère les triangles 1 à 4 : leur forme et leur aire vont rester identiques.</p>
+    <div class="reveal" id="pythReveal" hidden>
+      Même grand carré, mêmes quatre triangles : <strong>l’aire verte n’a pas changé.</strong> Elle valait c² ; elle vaut maintenant a² + b².
+      <div class="equation"><span>aire restante</span><span>=</span><span>(a + b)² − 2ab</span><span>=</span><span>a² + b²</span></div>
+      <div class="equation"><span>c²</span><span>=</span><span>a² + b²</span></div>
+      <div class="equation"><span>avec a = 3 et b = 4 :</span><span>c² = 9 + 16 = 25</span><span class="therefore">donc c = 5</span></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="frac-title">
+    <p class="eyebrow">Expérience 2 · Fractions</p>
+    <h2 id="frac-title">Combien de paquets peut-on former&nbsp;?</h2>
+    <p class="lead">On dispose de <strong>6 unités</strong>. Un paquet doit contenir exactement <strong>deux tiers d’unité</strong>. Suis les mêmes parts du découpage jusqu’au regroupement.</p>
+    <div class="workbench frac-wrap">
+      <svg id="fracSvg" class="frac-svg" role="img" aria-labelledby="fracSvgTitle fracSvgDesc"></svg>
+    </div>
+    <p class="question" id="fracQuestion">Avant de calculer : <strong>combien de paquets de deux tiers</strong> imagines-tu dans 6 unités&nbsp;?</p>
+    <div class="actions">
+      <button class="btn" id="fracNext" type="button">Découper chaque unité en tiers</button>
+      <button class="btn ghost" id="fracReset" type="button" hidden>↺ Recommencer</button>
+    </div>
+    <p class="status" id="fracStatus" aria-live="polite">Pour l’instant, on voit seulement les 6 unités entières.</p>
+    <div class="reveal" id="fracReveal" hidden>
+      <strong>On obtient 9 paquets.</strong> Les 6 unités sont devenues 18 tiers, puis 18 tiers regroupés 2 par 2 donnent 9 paquets.
+      <div class="equation"><span>6 ÷ <span class="vfrac"><i>2</i><i>3</i></span></span><span>=</span><span>18 ÷ 2</span><span>=</span><span class="therefore">9</span></div>
+      <div class="general" aria-label="Passage au cas général">
+        <div><span>n unités découpées en b</span><b>n × b parts</b></div>
+        <div><span>paquets de a parts</span><b>(n × b) ÷ a</b></div>
+        <div><span>la règle construite</span><b>n ÷ <span class="vfrac"><i>a</i><i>b</i></span> = n × <span class="vfrac"><i>b</i><i>a</i></span></b></div>
+      </div>
+      <details>
+        <summary>Et si le dernier paquet n’est pas entier&nbsp;?</summary>
+        <div class="detail-body">
+          <p>Avec 5 ÷ 2/5, les 5 unités donnent 25 cinquièmes. On forme 12 paquets de 2 cinquièmes, puis il reste 1 cinquième : la moitié d’un paquet.</p>
+          <div class="mini-packs" id="miniPacks" aria-label="Douze paquets complets de deux cinquièmes et un demi-paquet"></div>
+          <p><strong>12 paquets + un demi-paquet = 12,5 paquets.</strong> Donc 5 ÷ 2/5 = 12,5.</p>
+        </div>
+      </details>
+      <p class="scope">Cette interprétation en paquets concerne ici des quantités positives, avec a et b entiers positifs.</p>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="closing-title">
+    <h2 id="closing-title">Le geste à retenir</h2>
+    <p>Avant la formule, on suit ce qui reste invariant : une aire quand les pièces bougent, puis un nombre de petites parts quand elles se regroupent.</p>
+  </section>
+</main>
+<script>
+(function(){
+  "use strict";
+  const NS="http://www.w3.org/2000/svg";
+  const reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const triLayer=document.getElementById("triangles");
+  const starts=[{x:43,y:26,r:0},{x:337,y:26,r:90},{x:337,y:320,r:180},{x:43,y:320,r:270}];
+  const ends=[{x:337,y:26,r:90},{x:211,y:194,r:270},{x:211,y:320,r:180},{x:43,y:194,r:360}];
+  const fills=["#f4dfaa","#efd38b","#f7e8bd","#e8c66d"];
+  const groups=[], labels=[];
+  function svgEl(name,attrs){const el=document.createElementNS(NS,name);Object.keys(attrs||{}).forEach(k=>el.setAttribute(k,attrs[k]));return el}
+  function posePoint(local,p){const a=p.r*Math.PI/180,c=Math.cos(a),s=Math.sin(a);return{x:p.x+local.x*c-local.y*s,y:p.y+local.x*s+local.y*c}}
+  for(let i=0;i<4;i++){
+    const g=svgEl("g",{}),poly=svgEl("polygon",{points:"0,0 168,0 0,126",fill:fills[i],stroke:"#9a7424","stroke-width":"2"});
+    g.appendChild(poly);triLayer.appendChild(g);groups.push(g);
+    const lab=svgEl("g",{}),circle=svgEl("circle",{r:"13",fill:"#14213d"}),text=svgEl("text",{x:"0",y:"5","text-anchor":"middle",fill:"white","font-family":"Plus Jakarta Sans,sans-serif","font-size":"13","font-weight":"700"});text.textContent=String(i+1);lab.append(circle,text);triLayer.appendChild(lab);labels.push(lab)
+  }
+  function lerp(a,b,t){return a+(b-a)*t}
+  function setPyth(t){groups.forEach((g,i)=>{const p={x:lerp(starts[i].x,ends[i].x,t),y:lerp(starts[i].y,ends[i].y,t),r:lerp(starts[i].r,ends[i].r,t)};g.setAttribute("transform",`translate(${p.x} ${p.y}) rotate(${p.r})`);const q=posePoint({x:56,y:42},p);labels[i].setAttribute("transform",`translate(${q.x} ${q.y})`)});document.getElementById("centralGap").setAttribute("opacity",1-t);document.getElementById("centralText").setAttribute("opacity",1-t);document.getElementById("initialMeasures").setAttribute("opacity",1-t);document.getElementById("gapA").setAttribute("opacity",t);document.getElementById("gapB").setAttribute("opacity",t);document.getElementById("squareTexts").setAttribute("opacity",t)}
+  let pythToken=0;
+  function finishPyth(){setPyth(1);document.getElementById("moveTriangles").hidden=true;document.getElementById("moveTriangles").disabled=false;document.getElementById("resetTriangles").hidden=false;document.getElementById("pythReveal").hidden=false;document.getElementById("pythQuestion").innerHTML="Après le déplacement, <strong>pourquoi l’aire verte est-elle restée la même&nbsp;?</strong>";document.getElementById("pythStatus").textContent="Même contour, mêmes quatre triangles : seul l’espace restant est rangé autrement."}
+  document.getElementById("moveTriangles").addEventListener("click",()=>{const button=document.getElementById("moveTriangles");button.disabled=true;const token=++pythToken;if(reduced){finishPyth();return}const start=performance.now(),duration=1050;function frame(now){if(token!==pythToken)return;const k=Math.min(1,(now-start)/duration),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;setPyth(e);if(k<1)requestAnimationFrame(frame);else finishPyth()}requestAnimationFrame(frame)});
+  document.getElementById("resetTriangles").addEventListener("click",()=>{pythToken++;setPyth(0);document.getElementById("moveTriangles").hidden=false;document.getElementById("moveTriangles").disabled=false;document.getElementById("resetTriangles").hidden=true;document.getElementById("pythReveal").hidden=true;document.getElementById("pythQuestion").innerHTML="Quand les triangles bougeront, <strong>que deviendra le carré vert c²&nbsp;?</strong>";document.getElementById("pythStatus").textContent="Repère les triangles 1 à 4 : leur forme et leur aire vont rester identiques."});
+  setPyth(0);
+
+  const fracSvg=document.getElementById("fracSvg");let fracStep=0, mobile=false, parts=[],unitFrames=[],packFrames=[];
+  function coords(index,target,isMobile){
+    if(!target){const u=Math.floor(index/3),k=index%3;if(isMobile)return{x:12+(u%2)*152+k*44,y:24+Math.floor(u/2)*86};return{x:10+(u%3)*160+k*44,y:25+Math.floor(u/3)*88}}
+    const g=Math.floor(index/2),k=index%2;if(isMobile)return{x:34+(g%2)*152+k*47,y:19+Math.floor(g/2)*92};return{x:30+(g%3)*155+k*47,y:19+Math.floor(g/3)*90}
+  }
+  function buildFrac(){
+    mobile=window.matchMedia("(max-width:520px)").matches;fracSvg.innerHTML="";parts=[];unitFrames=[];packFrames=[];fracSvg.setAttribute("viewBox",mobile?"0 0 320 480":"0 0 500 290");
+    const bg=svgEl("rect",{x:"1",y:"1",width:mobile?"318":"498",height:mobile?"478":"288",rx:"13",fill:"#fffdf8",stroke:"#e7decc"});fracSvg.appendChild(bg);
+    for(let u=0;u<6;u++){const first=coords(u*3,false,mobile),frame=svgEl("rect",{x:first.x-3,y:first.y-3,width:"138",height:"58",rx:"7",fill:"none",stroke:"#14213d","stroke-width":"2"});fracSvg.appendChild(frame);unitFrames.push(frame);const lab=svgEl("text",{x:first.x+66,y:first.y+73,"text-anchor":"middle",fill:"#6f7385","font-family":"Plus Jakarta Sans,sans-serif","font-size":"14"});lab.textContent=`unité ${u+1}`;fracSvg.appendChild(lab);frame._lab=lab}
+    for(let g=0;g<9;g++){const first=coords(g*2,true,mobile),frame=svgEl("rect",{x:first.x-5,y:first.y-5,width:"99",height:"62",rx:"9",fill:"none",stroke:"#9a7424","stroke-width":"2.5",opacity:"0"});fracSvg.appendChild(frame);packFrames.push(frame);const lab=svgEl("text",{x:first.x+45,y:first.y+72,"text-anchor":"middle",fill:"#9a7424","font-family":"Plus Jakarta Sans,sans-serif","font-size":"14","font-weight":"700",opacity:"0"});lab.textContent=`paquet ${g+1}`;fracSvg.appendChild(lab);frame._lab=lab}
+    for(let i=0;i<18;i++){const p=coords(i,false,mobile),g=svgEl("g",{transform:`translate(${p.x} ${p.y})`}),rect=svgEl("rect",{width:"42",height:"52",rx:"3",fill:i%2?"#f7e8bd":"#f4dfaa",stroke:"#d2b15d","stroke-width":"1"}),lab=svgEl("text",{x:"21",y:"32","text-anchor":"middle",fill:"#6f5319","font-family":"JetBrains Mono,monospace","font-size":"15","font-weight":"600",opacity:"0"});lab.textContent="1/3";g.append(rect,lab);fracSvg.appendChild(g);parts.push({g,lab,start:p,end:coords(i,true,mobile)})}
+    applyFracStep(fracStep,false)
+  }
+  function applyFracStep(step,animate){
+    parts.forEach(p=>{p.g.style.transition=animate&&!reduced?"transform .75s cubic-bezier(.22,1,.36,1)":"none";const q=step<2?p.start:p.end;p.g.setAttribute("transform",`translate(${q.x} ${q.y})`);p.lab.setAttribute("opacity",step>=1?"1":"0")});unitFrames.forEach(f=>{f.setAttribute("opacity",step<2?"1":"0");f._lab.setAttribute("opacity",step<2?"1":"0")});packFrames.forEach(f=>{f.setAttribute("opacity",step>=2?"1":"0");f._lab.setAttribute("opacity",step>=2?"1":"0")})
+  }
+  const fracNext=document.getElementById("fracNext"),fracReset=document.getElementById("fracReset"),fracStatus=document.getElementById("fracStatus"),fracReveal=document.getElementById("fracReveal");
+  function showFracStep(){applyFracStep(fracStep,true);fracReset.hidden=false;if(fracStep===1){fracStatus.textContent="6 unités × 3 tiers par unité = 18 tiers. Ce sont toujours les mêmes 18 parts.";fracNext.textContent="Regrouper les tiers deux par deux";document.getElementById("fracQuestion").innerHTML="Nous avons 18 tiers. <strong>Combien de groupes de 2</strong> peut-on former&nbsp;?"}else if(fracStep===2){fracStatus.textContent="Chaque contour doré réunit 2 tiers. Compte les neuf paquets.";fracNext.hidden=true;fracReveal.hidden=false;document.getElementById("fracQuestion").innerHTML="Les mêmes 18 tiers ont changé de place : <strong>9 paquets</strong> apparaissent."}}
+  let fracLocked=false;
+  fracNext.addEventListener("click",()=>{if(fracStep>=2||fracLocked)return;fracLocked=true;fracStep++;showFracStep();if(reduced){fracLocked=false}else{setTimeout(()=>{fracLocked=false},780)}});
+  fracReset.addEventListener("click",()=>{fracLocked=false;fracStep=0;applyFracStep(0,false);fracNext.hidden=false;fracNext.textContent="Découper chaque unité en tiers";fracReset.hidden=true;fracReveal.hidden=true;fracStatus.textContent="Pour l’instant, on voit seulement les 6 unités entières.";document.getElementById("fracQuestion").innerHTML="Avant de calculer : <strong>combien de paquets de deux tiers</strong> imagines-tu dans 6 unités&nbsp;?"});
+  let resizeTimer;window.addEventListener("resize",()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{const nextMobile=window.matchMedia("(max-width:520px)").matches;if(nextMobile!==mobile)buildFrac()},120)});
+  const mini=document.getElementById("miniPacks");for(let i=0;i<13;i++){const pack=document.createElement("span");pack.className="mini-pack"+(i===12?" half":"");pack.appendChild(document.createElement("i"));if(i<12)pack.appendChild(document.createElement("i"));mini.appendChild(pack)}
+  buildFrac();
+})();
+</script>
+</body>
+</html>

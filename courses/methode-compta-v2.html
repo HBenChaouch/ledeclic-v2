@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prototype — Démonstration : le seuil de rentabilité | Le Déclic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,0,400;9..144,0,500;9..144,1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F2EA; --bg-2:#F1EADC; --surface:#FFFFFF; --ink:#14213D; --ink-soft:#2B385A;
+  --muted:#6F7385; --border:#E7DECC; --navy:#14213D; --gold:#C9A24B; --gold-2:#B68D34;
+  --gold-tint:#F6EBCF; --green:#1f6b54; --green-tint:#E2EFE7; --rose:#C0392B; --rose-tint:#F6E6DD;
+  --blue-tint:#E7EAF2;
+  --ff-serif:"Fraunces",Georgia,serif; --ff-sans:"Plus Jakarta Sans",system-ui,sans-serif; --ff-mono:"JetBrains Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--ff-sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:920px;margin:0 auto;padding:40px 20px 80px;display:flex;flex-direction:column;gap:22px;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-2);background:var(--gold-tint);border:1px solid rgba(201,162,75,.4);border-radius:999px;padding:6px 12px;width:fit-content;}
+h1{font-family:var(--ff-serif);font-weight:500;font-size:clamp(26px,4vw,38px);line-height:1.1;letter-spacing:-.02em;margin-top:10px;}
+h1 em{font-style:italic;color:var(--gold-2);}
+.sub{color:var(--ink-soft);max-width:76ch;font-size:16px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 8px 26px rgba(20,33,61,.06);display:grid;gap:16px;}
+.stage-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;}
+.stage-title{font-family:var(--ff-serif);font-weight:500;font-size:21px;line-height:1.25;display:flex;align-items:center;gap:10px;}
+.stage-title::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--gold);flex:none;}
+.stage-ctl{display:flex;gap:8px;flex-wrap:wrap;}
+.btn{appearance:none;border:1px solid rgba(201,162,75,.34);background:linear-gradient(180deg,rgba(246,236,208,.96) 0%,rgba(255,245,221,.98) 100%);color:var(--navy);border-radius:999px;padding:10px 18px;font-family:var(--ff-sans);font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 8px 16px rgba(20,33,61,.08);transition:transform .2s ease,box-shadow .2s ease;}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 20px rgba(20,33,61,.12);}
+.btn.ghost{background:var(--surface);border-color:var(--border);box-shadow:none;}
+.btn.ghost:hover{background:var(--bg);}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted);}
+.legend i{width:12px;height:12px;border-radius:3px;display:inline-block;margin-right:6px;vertical-align:-1px;}
+.case-data{display:grid;gap:9px;background:#FFFCF6;border:1px solid var(--border);border-radius:16px;padding:14px 16px;}
+.case-title{font-family:var(--ff-serif);font-size:17px;font-weight:500;color:var(--navy);}
+.case-note{font-size:13.5px;color:var(--ink-soft);}
+.case-values{display:flex;flex-wrap:wrap;gap:8px;}
+.stage-body{display:grid;gap:14px;margin-top:6px;min-height:80px;}
+.line{font-size:15.5px;color:var(--ink-soft);}
+.line b{color:var(--navy);}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+.op{color:var(--muted);font-family:var(--ff-mono);font-weight:600;}
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-mono);font-size:14.5px;font-weight:600;color:var(--ink);border-radius:12px;padding:8px 14px;border:1.5px solid;background:#FFFCF6;white-space:nowrap;}
+.chip b{font-size:16px;}
+.chip.gold{border-color:rgba(201,162,75,.55);background:var(--gold-tint);color:var(--gold-2);}
+.chip.rose{border-color:rgba(192,57,43,.4);background:var(--rose-tint);color:var(--rose);}
+.chip.blue{border-color:rgba(143,160,196,.6);background:var(--blue-tint);color:var(--ink-soft);}
+.chip.navy{border-color:rgba(20,33,61,.5);background:var(--blue-tint);color:var(--navy);}
+.bar{display:flex;width:100%;height:46px;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#FFFCF6;}
+.seg{display:flex;align-items:center;justify-content:center;font-family:var(--ff-mono);font-size:13.5px;font-weight:600;white-space:nowrap;gap:4px;}
+.seg b{font-size:15px;}
+.seg.var{background:var(--blue-tint);color:var(--ink-soft);}
+.seg.mscv{background:var(--gold-tint);color:var(--gold-2);}
+.seg.fix{background:var(--rose-tint);color:var(--rose);}
+.seg.md{background:var(--green-tint);color:var(--green);}
+.frac{display:inline-flex;flex-direction:column;align-items:center;font-family:var(--ff-mono);font-weight:700;font-size:15px;color:var(--ink);vertical-align:middle;}
+.frac .num{padding:2px 12px;}
+.frac .den{border-top:2.5px solid var(--navy);padding:2px 12px;}
+.big{font-family:var(--ff-mono);font-weight:700;font-size:21px;color:var(--gold-2);white-space:nowrap;}
+.tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{font-family:var(--ff-mono);font-size:13.5px;color:var(--ink-soft);background:var(--gold-tint);border:1px solid rgba(201,162,75,.45);border-radius:10px;padding:7px 12px;}
+.tag b{color:var(--navy);}
+.tag.dest{background:var(--green);color:#fff;border-color:var(--green);font-size:15px;font-weight:700;}
+.tag.dest b{color:#FFE9B8;}
+.converge{display:flex;flex-direction:column;align-items:center;gap:5px;margin:2px 0;}
+.c-src{font-family:var(--ff-mono);font-size:13.5px;font-weight:600;color:var(--ink-soft);background:var(--bg-2);border:1px solid var(--border);border-radius:10px;padding:6px 14px;}
+.c-arrow{color:var(--gold-2);font-size:15px;line-height:1;}
+.c-dest{font-family:var(--ff-mono);font-size:16px;font-weight:700;color:#fff;background:var(--green);border-radius:12px;padding:10px 18px;}
+.c-dest b{color:#FFE9B8;}
+.pop{animation:pop .5s cubic-bezier(0.22,1,0.36,1);}
+@keyframes pop{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.coef-stage{display:grid;gap:10px;min-height:52px;align-content:start;}
+.coef-ctl{display:flex;gap:8px;flex-wrap:wrap;}
+.annex-note{font-size:13.5px;color:var(--muted);}
+.prompt{font-size:15px;color:var(--ink);background:var(--bg-2);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:10px 14px;}
+.formula-map{display:grid;gap:10px;justify-items:start;}
+.formula-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+.mapped-term{display:inline-flex;flex-direction:column;align-items:center;gap:4px;}
+.result-pair{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;}
+.role{font-family:var(--ff-mono);font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--green);background:var(--green-tint);border-radius:999px;padding:2px 8px;}
+.general-formula{font-family:var(--ff-mono);font-size:16px;font-weight:700;color:var(--navy);background:#FFFCF6;border:1px dashed rgba(31,107,84,.45);border-radius:12px;padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.general-stack{display:grid;gap:8px;}
+.formula-block{display:grid;gap:5px;justify-items:start;}
+.formula-def{font-size:12.5px;color:var(--muted);max-width:68ch;}
+.formula-def b{color:var(--ink-soft);}
+.theory{display:grid;gap:9px;background:#FFFCF6;border:1px solid var(--border);border-radius:16px;padding:16px;}
+.theory-title{font-family:var(--ff-serif);font-size:18px;font-weight:500;color:var(--navy);}
+.theory-line{font-family:var(--ff-mono);font-size:14px;color:var(--ink-soft);display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+.theory-arrow{color:var(--gold-2);font-weight:700;}
+.theory-result{font-family:var(--ff-mono);font-size:15px;font-weight:700;color:#fff;background:var(--green);border-radius:10px;padding:8px 12px;width:fit-content;}
+.example-dim{opacity:.62;}
+.exercise-data{display:flex;flex-wrap:wrap;gap:8px;}
+.routes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start;}
+.route-card{display:grid;gap:10px;align-content:start;min-height:150px;background:#FFFCF6;border:1px solid var(--border);border-radius:14px;padding:14px;transition:opacity .3s ease,border-color .3s ease;}
+.route-card.pending{opacity:.42;}
+.route-card.active{border-color:rgba(201,162,75,.7);}
+.route-title{font-family:var(--ff-serif);font-size:16px;font-weight:500;color:var(--navy);}
+.route-body{display:grid;gap:9px;align-content:start;}
+.formula-line{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:13.5px;color:var(--ink);}
+.formula-scroll{max-width:100%;overflow-x:auto;padding:2px 0 5px;}
+.big-frac{font-size:17px;}
+.inner-frac{font-size:12.5px;}
+.slide-in{animation:slideIn .42s cubic-bezier(.22,1,.36,1);}
+@keyframes slideIn{from{opacity:0;transform:translateX(-18px);}to{opacity:1;transform:none;}}
+[hidden]{display:none!important;}
+@media (max-width:600px){
+  .line{font-size:14.5px;}
+  .chip{font-size:13px;padding:7px 10px;}
+  .chip b{font-size:14.5px;}
+  .seg{font-size:12px;}
+  .seg b{font-size:13.5px;}
+  .big{font-size:18px;}
+  .frac .num,.frac .den{font-size:13.5px;padding:2px 8px;}
+  .tag{font-size:12.5px;}
+  .bar{height:42px;}
+  .stage-title{font-size:18px;}
+  .prompt{font-size:14px;}
+  .general-formula,.theory-result{font-size:13px;}
+  .theory-line{font-size:12.5px;}
+  .routes{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion:reduce){
+  .pop,.slide-in{animation:none;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div>
+    <span class="badge">Prototype — La méthode en action · Gestion / Comptabilité</span>
+    <h1>Le seuil de rentabilité, <em>sous vos yeux</em></h1>
+    <p class="sub">Suivez un exemple chiffré, puis regardez sa structure devenir une formule générale.</p>
+  </div>
+
+  <section class="card">
+    <div class="stage-top">
+      <h2 class="stage-title" id="actTitle">La démonstration</h2>
+      <div class="stage-ctl">
+        <button class="btn" id="launchBtn" type="button">▸ Lancer la démonstration</button>
+        <button class="btn ghost" id="replayBtn" type="button" hidden>↺ Rejouer</button>
+      </div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--gold-tint);border:1px solid rgba(201,162,75,.5)"></i>ce qui reste pour les charges fixes</span>
+      <span><i style="background:var(--blue-tint);border:1px solid rgba(143,160,196,.6)"></i>coûts variables</span>
+      <span><i style="background:var(--rose-tint);border:1px solid rgba(192,57,43,.4)"></i>charges fixes</span>
+    </div>
+    <div class="case-data">
+      <div class="case-title">Données de la situation</div>
+      <p class="case-note">Une entreprise vend un seul produit. Sur la période étudiée :</p>
+      <div class="case-values"><span class="chip gold">prix de vente unitaire : <b>5 €</b></span><span class="chip blue">coût variable unitaire : <b>3 €</b></span><span class="chip rose">charges fixes : <b>40 €</b></span></div>
+    </div>
+    <div class="stage-body" id="stage"></div>
+    <div style="display:flex;justify-content:center;">
+      <button class="btn ghost" id="nextBtn" type="button" hidden>Voir la suite →</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="stage-title">Défi final · retrouver le seuil autrement</h2>
+    <p class="annex-note">Les charges fixes sont de 72 000 €. Le chiffre d'affaires représente 1,6 fois les coûts variables. Ni la marge ni son taux ne sont donnés.</p>
+    <div class="exercise-data"><span class="chip rose">CF = <b>72 000 €</b></span><span class="chip navy">CA ÷ CV = <b>1,6</b></span></div>
+    <div class="coef-stage" id="coefStage"></div>
+    <div class="coef-ctl">
+      <button class="btn" id="coefPlay" type="button">Commencer le défi</button>
+      <button class="btn ghost" id="coefReplay" type="button" hidden>↺ Recommencer</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const h = (html, cls) => {
+    const node = document.createElement('div');
+    if (cls) node.className = cls;
+    node.innerHTML = html;
+    return node;
+  };
+
+  const stage = document.getElementById('stage');
+  const actTitle = document.getElementById('actTitle');
+  const launchBtn = document.getElementById('launchBtn');
+  const replayBtn = document.getElementById('replayBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let token = 0;
+  let pendingContinue = null;
+
+  const beat = () => reduced ? Promise.resolve() : sleep(360);
+
+  function add(html, cls){
+    const node = h(html, cls === undefined && !reduced ? 'pop' : cls);
+    stage.appendChild(node);
+    return node;
+  }
+
+  function cancelCheckpoint(){
+    if (pendingContinue){
+      const resolve = pendingContinue;
+      pendingContinue = null;
+      resolve();
+    }
+  }
+
+  function checkpoint(question, label = 'Continuer'){
+    const prompt = add(question, 'prompt pop');
+    nextBtn.textContent = label;
+    nextBtn.hidden = false;
+    return new Promise(resolve => {
+      pendingContinue = resolve;
+      nextBtn.onclick = () => {
+        if (!pendingContinue) return;
+        pendingContinue = null;
+        nextBtn.blur();
+        nextBtn.hidden = true;
+        prompt.remove();
+        resolve();
+      };
+    });
+  }
+
+  function revealWithin(node, selector){
+    node.querySelectorAll(selector).forEach(element => {
+      element.hidden = false;
+      if (!reduced) element.classList.add('pop');
+    });
+  }
+
+  async function run(){
+    const my = ++token;
+    const alive = () => token === my;
+    launchBtn.hidden = true;
+    replayBtn.hidden = false;
+
+    actTitle.textContent = '1 · Une vente, concrètement';
+    add('<span class="line">Un produit est vendu <b>5 €</b>. Chaque vente déclenche <b>3 €</b> de coût variable.</span>');
+    add('<span class="row"><span class="chip gold">1 vente = <b>5 €</b></span><span class="chip blue">coût variable = <b>3 €</b></span></span>');
+    await checkpoint('Sur les <b>5 €</b> encaissés, combien reste-t-il après le coût variable ?', 'Voir ce qui reste');
+    if (!alive()) return;
+    add('<div class="bar"><div class="seg var" style="width:60%"><b>3 €</b> coûts variables</div><div class="seg mscv" style="width:40%"><b>2 €</b> restants</div></div>');
+    await beat(); if (!alive()) return;
+    add('<span class="line">Ces <b>2 €</b> peuvent maintenant absorber les <b>40 €</b> de charges fixes.</span>');
+    add('<span class="row"><span class="chip rose">à couvrir : <b>40 €</b></span><span class="chip gold">apport de chaque vente : <b>2 €</b></span></span>');
+
+    actTitle.textContent = '2 · Atteindre le seuil en volume';
+    await checkpoint('Si chaque vente apporte <b>2 €</b>, combien de ventes faut-il pour couvrir <b>40 €</b> ?', 'Construire le calcul');
+    if (!alive()) return;
+    const volumeMap = add('<div class="formula-map"><div class="formula-row"><span class="frac"><span class="mapped-term num"><span>40 €</span><small class="role" hidden>CF</small></span><span class="mapped-term den"><span>2 € par vente</span><small class="role" hidden>marge unitaire · MSCVu</small></span></span><span class="result-pair"><span class="op">=</span><span class="mapped-term"><span class="big">20 ventes</span><small class="role" hidden>SR en volume</small></span></span></div><div class="general-stack" hidden><div class="formula-block"><div class="general-formula"><span>MSCVu = PVu − CVu</span></div><p class="formula-def"><b>MSCVu</b> : marge sur coût variable unitaire · <b>PVu</b> : prix de vente unitaire · <b>CVu</b> : coût variable unitaire.</p></div><div class="formula-block"><div class="general-formula"><span>SR<sub>volume</sub> =</span><span class="frac"><span class="num">CF</span><span class="den">MSCVu</span></span></div><p class="formula-def"><b>SR en volume</b> : nombre d’unités à vendre pour atteindre un résultat nul.</p></div></div></div>');
+    await checkpoint('Quel rôle joue chacun de ces trois nombres ?', 'Afficher les rôles');
+    if (!alive()) return;
+    revealWithin(volumeMap, '.role');
+    await checkpoint('Si les nombres changeaient, quelle structure resterait vraie ?', 'Passer au général');
+    if (!alive()) return;
+    volumeMap.querySelector('.general-stack').hidden = false;
+    await beat(); if (!alive()) return;
+
+    actTitle.textContent = '3 · Pourquoi ce niveau est-il un seuil ?';
+    await checkpoint('Ces <b>20 ventes</b> représentent quel chiffre d’affaires ?', 'Passer aux valeurs');
+    if (!alive()) return;
+    add('<span class="row"><span class="chip navy">20 ventes</span><span class="op">×</span><span class="chip gold">5 €</span><span class="op">=</span><span class="chip navy"><b>100 € de CA</b></span></span>');
+    await beat(); if (!alive()) return;
+    add('<span class="row"><span class="chip navy">20 ventes</span><span class="op">×</span><span class="chip blue">3 €</span><span class="op">=</span><span class="chip blue"><b>60 € de CV</b></span></span>');
+    add('<div class="bar"><div class="seg var" style="width:60%"><b>60 €</b> coûts variables</div><div class="seg fix" style="width:40%"><b>40 €</b> charges fixes</div></div>');
+    await checkpoint('Qu’a de particulier ce niveau de <b>100 €</b> ?', 'Faire apparaître la définition');
+    if (!alive()) return;
+    const theory = add('<div class="theory"><div class="theory-title">Ce que l’exemple vient de définir</div></div>');
+    const theoryBox = theory.querySelector('.theory');
+    const theoryLines = [
+      'Le seuil est le niveau d’activité pour lequel <b>R = 0</b>. Exprimé en valeur, c’est un chiffre d’affaires.',
+      '<span><b>CA</b> : chiffre d’affaires · <b>CV</b> : coûts variables · <b>CF</b> : charges fixes · <b>R</b> : résultat.</span>',
+      '<span>R = CA − CV − CF</span><span class="theory-arrow">→ au seuil →</span><span>0 = CA − CV − CF</span>',
+      '<span>CA − CV = CF</span>',
+      '<span>MSCV = CA − CV · <b>MSCV</b> : marge sur coûts variables.</span>',
+      '<span class="theory-result">Au seuil : MSCV = CF</span>'
+    ];
+    for (const line of theoryLines){
+      const item = h(line, 'theory-line pop');
+      theoryBox.appendChild(item);
+      await beat(); if (!alive()) return;
+    }
+
+    actTitle.textContent = '4 · Retrouver le même seuil par le taux';
+    await checkpoint('Les <b>2 €</b> restants représentent quelle part des <b>5 €</b> encaissés ?', 'Voir la proportion');
+    if (!alive()) return;
+    add('<span class="row"><span class="frac"><span class="num">2 € restants</span><span class="den">5 € encaissés</span></span><span class="op">=</span><span class="big">40 %</span></span>');
+    add('<div class="tags"><span class="tag">TMSCV = MSCVu ÷ PVu = MSCV ÷ CA = <b>0,40</b></span><span class="tag">chaque euro de CA laisse <b>0,40 €</b> pour les charges fixes</span></div>');
+    await checkpoint('Si chaque euro apporte <b>0,40 €</b>, combien de chiffre d’affaires faut-il pour couvrir <b>40 €</b> ?', 'Construire la seconde route');
+    if (!alive()) return;
+    const rateMap = add('<div class="formula-map"><div class="formula-row"><span class="frac"><span class="mapped-term num"><span>40 €</span><small class="role" hidden>CF</small></span><span class="mapped-term den"><span>0,40</span><small class="role" hidden>TMSCV</small></span></span><span class="result-pair"><span class="op">=</span><span class="mapped-term"><span class="big">100 €</span><small class="role" hidden>SR en valeur</small></span></span></div><div class="general-stack" hidden><div class="formula-block"><div class="general-formula"><span>TMSCV =</span><span class="frac"><span class="num">MSCV</span><span class="den">CA</span></span></div><p class="formula-def"><b>TMSCV</b> : taux de marge sur coûts variables, la part du CA restant après les coûts variables.</p></div><div class="formula-block"><div class="general-formula"><span>SR<sub>valeur</sub> =</span><span class="frac"><span class="num">CF</span><span class="den">TMSCV</span></span></div><p class="formula-def"><b>SR en valeur</b> : chiffre d’affaires pour lequel le résultat est nul.</p></div></div></div>');
+    await checkpoint('Que représentent maintenant <b>40</b>, <b>0,40</b> et <b>100</b> ?', 'Afficher les rôles');
+    if (!alive()) return;
+    revealWithin(rateMap, '.role');
+    await checkpoint('Et sans les nombres ?', 'Révéler la formule générale');
+    if (!alive()) return;
+    rateMap.querySelector('.general-stack').hidden = false;
+    await beat(); if (!alive()) return;
+    add('<div class="converge"><span class="c-src">route du volume : 20 × 5 €</span><span class="c-arrow">↓</span><span class="c-src">route du taux : 40 ÷ 0,40</span><span class="c-arrow">↓</span><span class="c-dest">même seuil de rentabilité : <b>100 €</b></span></div>');
+
+    actTitle.textContent = '5 · La marge et l’indice, en bref';
+    await checkpoint('Le CA réel est de <b>150 €</b>. Jusqu’où peut-il baisser avant de passer sous le seuil ?', 'Voir la distance au seuil');
+    if (!alive()) return;
+    add('<div class="bar"><div class="seg fix" style="width:66.7%">jusqu’au seuil : 100 €</div><div class="seg md" style="width:33.3%"><b>50 €</b> au-delà</div></div>');
+    add('<div class="tags"><span class="tag">marge de sécurité : MdS = CA − SR = 150 − 100 = <b>50 €</b></span></div>');
+    await checkpoint('Ces <b>50 €</b> représentent quelle part du CA réel ?', 'Rapporter la marge au CA');
+    if (!alive()) return;
+    add('<span class="row"><span class="frac"><span class="num">50</span><span class="den">150</span></span><span class="op">≈</span><span class="big">33,3 %</span></span>');
+    add('<div class="tags"><span class="tag">indice de sécurité = MdS ÷ CA ≈ <b>33,3 %</b></span></div>');
+    nextBtn.hidden = true;
+  }
+
+  launchBtn.onclick = run;
+  replayBtn.onclick = () => {
+    token++;
+    cancelCheckpoint();
+    stage.innerHTML = '';
+    actTitle.textContent = 'La démonstration';
+    nextBtn.hidden = true;
+    run();
+  };
+
+  const coefStage = document.getElementById('coefStage');
+  const coefPlay = document.getElementById('coefPlay');
+  const coefReplay = document.getElementById('coefReplay');
+  let coefStep = 0;
+
+  function advanceCoef(){
+    if (coefStep === 0){
+      coefStage.innerHTML = '<div class="routes"><section class="route-card active" id="routeA"><h3 class="route-title">Route 1 · retrouver la part disponible</h3><div class="route-body" id="routeABody"><div class="prompt slide-in">Si CA ÷ CV = 1,6, quelle part du chiffre d’affaires est absorbée par les coûts variables ?</div></div></section><section class="route-card pending" id="routeB"><h3 class="route-title">Route 2 · remplacer directement dans la formule</h3><div class="route-body" id="routeBBody"></div></section></div>';
+      coefPlay.textContent = 'Construire la première route';
+      coefReplay.hidden = false;
+    } else if (coefStep === 1){
+      const body = document.getElementById('routeABody');
+      body.querySelector('.prompt')?.remove();
+      body.appendChild(h('<div class="formula-line"><span class="frac"><span class="num">CV</span><span class="den">CA</span></span><span class="op">=</span><span class="frac"><span class="num">1</span><span class="den">1,6</span></span><span class="op">=</span><span class="big">62,5 %</span></div>', 'slide-in'));
+      body.appendChild(h('Quelle part reste-t-il pour couvrir les charges fixes ?', 'prompt slide-in'));
+      coefPlay.textContent = 'Trouver la part restante';
+    } else if (coefStep === 2){
+      const body = document.getElementById('routeABody');
+      body.querySelector('.prompt')?.remove();
+      body.appendChild(h('<div class="formula-line"><span>TMSCV = 1 − 62,5 % =</span><span class="big">37,5 %</span></div>', 'slide-in'));
+      body.appendChild(h('<div class="formula-line"><span>SR =</span><span class="frac"><span class="num">72 000 €</span><span class="den">0,375</span></span><span class="op">=</span><span class="big">192 000 €</span></div>', 'slide-in'));
+      coefPlay.textContent = 'Passer à la seconde route';
+    } else if (coefStep === 3){
+      document.getElementById('routeA').classList.remove('active');
+      const routeB = document.getElementById('routeB');
+      routeB.classList.remove('pending');
+      routeB.classList.add('active');
+      document.getElementById('routeBBody').appendChild(h('<div class="formula-scroll"><div class="formula-line"><span>SR =</span><span class="frac big-frac"><span class="num">CF</span><span class="den">TMSCV</span></span></div></div><div class="prompt">TMSCV = MSCV ÷ CA : on remplace le taux par sa définition.</div>', 'slide-in'));
+      coefPlay.textContent = 'Remplacer TMSCV';
+    } else if (coefStep === 4){
+      const body = document.getElementById('routeBBody');
+      body.querySelector('.prompt')?.remove();
+      body.appendChild(h('<div class="formula-scroll"><div class="formula-line"><span>SR =</span><span class="frac big-frac"><span class="num">CF</span><span class="den"><span class="frac inner-frac"><span class="num">MSCV</span><span class="den">CA</span></span></span></span></div></div><div class="prompt">On remplace maintenant MSCV par sa définition : CA − CV.</div>', 'slide-in'));
+      coefPlay.textContent = 'Remplacer MSCV';
+    } else if (coefStep === 5){
+      const body = document.getElementById('routeBBody');
+      body.querySelector('.prompt')?.remove();
+      body.appendChild(h('<div class="formula-scroll"><div class="formula-line"><span>SR =</span><span class="frac big-frac"><span class="num">CF</span><span class="den"><span class="frac inner-frac"><span class="num">CA − CV</span><span class="den">CA</span></span></span></span></div></div><div class="prompt">Puisque CA = 1,6CV, on le remplace dans le taux.</div>', 'slide-in'));
+      coefPlay.textContent = 'Remplacer CA';
+    } else if (coefStep === 6){
+      const body = document.getElementById('routeBBody');
+      body.querySelector('.prompt')?.remove();
+      body.appendChild(h('<div class="formula-scroll"><div class="formula-line"><span>SR =</span><span class="frac big-frac"><span class="num">72 000 €</span><span class="den"><span class="frac inner-frac"><span class="num">1,6CV − CV</span><span class="den">1,6CV</span></span></span></span></div></div><div class="prompt">Les CV se simplifient : il reste 0,6 ÷ 1,6 au dénominateur.</div>', 'slide-in'));
+      coefPlay.textContent = 'Simplifier';
+    } else {
+      const body = document.getElementById('routeBBody');
+      body.querySelector('.prompt')?.remove();
+      body.appendChild(h('<div class="formula-scroll"><div class="formula-line"><span>SR =</span><span class="frac big-frac"><span class="num">72 000 €</span><span class="den"><span class="frac inner-frac"><span class="num">0,6</span><span class="den">1,6</span></span></span></span><span class="op">=</span><span class="frac"><span class="num">72 000 €</span><span class="den">0,375</span></span><span class="op">=</span><span class="big">192 000 €</span></div></div><div class="tags"><span class="tag dest">même seuil de rentabilité : <b>192 000 €</b></span></div>', 'slide-in'));
+      coefPlay.hidden = true;
+    }
+    coefStep++;
+  }
+
+  coefPlay.onclick = advanceCoef;
+  coefReplay.onclick = () => {
+    coefStep = 0;
+    coefStage.innerHTML = '';
+    coefPlay.hidden = false;
+    coefPlay.textContent = 'Commencer le défi';
+    coefReplay.hidden = true;
+  };
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seuil de rentabilité — Le Déclic</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #F7F2EA;
+  --bg-2:      #F1EADC;
+  --surface:   #FFFFFF;
+  --ink:       #14213D;
+  --ink-soft:  #2B385A;
+  --muted:     #6F7385;
+  --border:    #E7DECC;
+  --navy:      #14213D;
+  --gold:      #C9A24B;
+  --gold-2:    #B68D34;
+  --gold-tint: #F6EBCF;
+  --ff-serif:  "Fraunces", Georgia, serif;
+  --ff-sans:   "Plus Jakarta Sans", system-ui, sans-serif;
+  --ff-mono:   "JetBrains Mono", monospace;
+  --r-md: 14px; --r-lg: 20px; --r-xl: 28px;
+  --sh-md: 0 4px 14px rgba(20,33,61,.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--ff-sans); background: var(--bg); color: var(--ink); min-height: 100vh; padding: clamp(24px,4vw,48px) clamp(18px,4vw,40px); -webkit-font-smoothing: antialiased; }
+/* iOS : rend la zone immédiatement "cliquable" (1er touch livré, pas consommé). Tactile uniquement. */
+@media (pointer: coarse) { body { cursor: pointer; } }
+
+.page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-2); }
+.page-header { display: flex; flex-direction: column; gap: 10px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.page-header h1 { font-family: var(--ff-serif); font-size: clamp(24px,3.5vw,36px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+.page-header h1 em { font-style: italic; color: var(--gold-2); }
+.page-header p { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 54ch; }
+
+.block { display: flex; flex-direction: column; gap: 14px; }
+.block-label { display: flex; align-items: center; gap: 12px; }
+.block-num { font-family: var(--ff-serif); font-size: 2.4rem; font-weight: 400; color: var(--border); line-height: 1; }
+.block-title { font-family: var(--ff-serif); font-size: 1.15rem; font-weight: 500; }
+.block p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.block p strong { color: var(--ink); }
+
+.canvas-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-md); }
+.canvas-card canvas { display: block; width: 100%; }
+
+.controls { padding: 14px 20px; border-top: 1px solid var(--border); background: var(--bg-2); display: flex; flex-direction: column; gap: 10px; }
+.slider-row { display: flex; align-items: center; gap: 12px; }
+.slider-row label { font-size: 12px; color: var(--muted); font-family: var(--ff-mono); white-space: nowrap; min-width: 130px; }
+.slider-row input[type=range] { flex: 1; accent-color: var(--navy); cursor: pointer; }
+.slider-val { font-family: var(--ff-mono); font-size: 13px; font-weight: 600; color: var(--navy); min-width: 72px; text-align: right; }
+
+/* KPI strip */
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+}
+.kpi { padding: 14px 18px; display: flex; flex-direction: column; gap: 4px; border-right: 1px solid var(--border); }
+.kpi:last-child { border-right: none; }
+.kpi-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.kpi-val { font-family: var(--ff-mono); font-size: 1.3rem; font-weight: 700; color: var(--navy); }
+.kpi-val.pos { color: #1f6b54; }
+.kpi-val.neg { color: #C0392B; }
+
+.formula { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 0 var(--r-md) var(--r-md) 0; padding: 14px 18px; font-family: var(--ff-mono); font-size: 13px; line-height: 2; }
+.formula .cm { color: var(--muted); font-size: 11px; }
+.acc { color: #C0392B; font-weight: 600; }
+.grn { color: #1f6b54; font-weight: 600; }
+.blu { color: #1a4a8a; font-weight: 600; }
+.gld { color: var(--gold-2); font-weight: 600; }
+
+.steps { display: flex; flex-direction: column; gap: 8px; }
+.step { display: flex; gap: 12px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); font-size: 13px; line-height: 1.65; }
+.step .sn { color: var(--gold-2); font-family: var(--ff-mono); font-weight: 600; flex-shrink: 0; }
+.step .st { color: var(--ink-soft); }
+.step .st strong { color: var(--ink); }
+
+.callout { background: var(--gold-tint); border: 1px solid rgba(201,162,75,.35); border-radius: var(--r-md); padding: 14px 18px; font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
+.callout strong { color: var(--ink); }
+
+@media (max-width: 600px) {
+  /* KPI : 3 colonnes compactes — valeurs nettement réduites (les premières victimes) */
+  .kpi { padding: 8px 8px; gap: 2px; }
+  .kpi-label { font-size: 8.5px; letter-spacing: .06em; }
+  .kpi-val { font-size: 0.86rem; line-height: 1.2; }
+  .controls { padding: 12px 14px; gap: 14px; }
+
+  /* Sliders : layout 2 lignes (label au-dessus, slider+val en dessous) — fini les overflow */
+  .slider-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 10px;
+    align-items: center;
+  }
+  .slider-row label {
+    grid-column: 1 / -1;
+    min-width: 0;
+    white-space: normal;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+  .slider-row input[type=range] {
+    grid-row: 2; grid-column: 1;
+    width: 100%;
+  }
+  .slider-val {
+    grid-row: 2; grid-column: 2;
+    min-width: 0;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 420px) {
+  /* Sur Fold : on reste en 3 cols, on rétrécit encore values pour ne pas wrap */
+  .kpi-val { font-size: 0.78rem; }
+  .kpi-label { font-size: 8px; }
+  .kpi { padding: 7px 6px; }
+}
+@media (max-width: 320px) {
+  /* Vraie tour de force seulement si l'écran est plus étroit que Fold */
+  .kpi-strip { grid-template-columns: 1fr; }
+  .kpi { border-right: none; border-bottom: 1px solid var(--border); padding: 8px 12px; }
+  .kpi:last-child { border-bottom: none; }
+}
+</style>
+<style>
+.demo-topbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--muted); }
+.demo-topbar a { color: var(--navy); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.demo-topbar a:hover { color: var(--gold-2); }
+.demo-framing { font-size: 13.5px; color: var(--muted); background: rgba(255,255,255,.6); border: 1px dashed var(--border); border-radius: 12px; padding: 12px 16px; line-height: 1.6; }
+.demo-framing strong { color: var(--ink); }
+.demo-cta-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px 22px; text-align: center; box-shadow: 0 10px 30px rgba(20,33,61,.10); display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.demo-cta-card h2 { font-family: var(--ff-serif); font-size: 20px; font-weight: 500; color: var(--ink); margin: 0; line-height: 1.25; }
+.demo-cta-card p { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 52ch; margin: 0; }
+.demo-wa-btn { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #052e1c; font-weight: 700; font-size: 15px; padding: 13px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 6px 18px -6px rgba(37,211,102,.55); }
+.demo-wa-btn:hover { background: #1FC95C; }
+.demo-back-link { font-size: 13px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.demo-back-link:hover { color: var(--navy); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="demo-topbar">
+    <a href="../index.html">← Retour au site</a>
+    <span>Le Déclic — cours particuliers</span>
+  </div>
+
+  <header class="page-header">
+    <span class="eyebrow">Gestion — BTS / Post-bac</span>
+    <h1>Seuil de <em>rentabilité</em></h1>
+    <p>À partir de combien d'unités vendues l'entreprise commence-t-elle à gagner de l'argent ? Modifie les paramètres et la réponse se dessine.</p>
+  </header>
+
+  <div class="demo-framing">
+    <strong>Démo de cours.</strong> C'est le type de support préparé pour chaque séance, adapté au chapitre et au niveau de votre enfant — et qu'il garde ensuite pour réviser seul.
+  </div>
+
+  <div class="block">
+    <div class="block-label">
+      <span class="block-num">1</span>
+      <span class="block-title">Le graphique — en direct</span>
+    </div>
+    <p>Le chiffre d'affaires (<strong>CA</strong>) monte linéairement avec les ventes. Les coûts totaux (<strong>CT</strong>) partent des charges fixes et montent avec les coûts variables. <strong>Le seuil</strong>, c'est le croisement.</p>
+
+    <div class="canvas-card">
+      <canvas id="cv" height="380"></canvas>
+      <div class="kpi-strip">
+        <div class="kpi">
+          <span class="kpi-label">Seuil (unités)</span>
+          <span class="kpi-val" id="kpiQ">—</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">Seuil (€)</span>
+          <span class="kpi-val" id="kpiCA">—</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">Résultat actuel</span>
+          <span class="kpi-val" id="kpiRes">—</span>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="slider-row">
+          <label>Prix de vente (p) =</label>
+          <input type="range" id="slP" min="5" max="100" value="40" step="1">
+          <span class="slider-val" id="svP">40 €</span>
+        </div>
+        <div class="slider-row">
+          <label>Coût variable (cv) =</label>
+          <input type="range" id="slCv" min="2" max="80" value="20" step="1">
+          <span class="slider-val" id="svCv">20 €</span>
+        </div>
+        <div class="slider-row">
+          <label>Charges fixes (CF) =</label>
+          <input type="range" id="slCF" min="500" max="20000" value="6000" step="100">
+          <span class="slider-val" id="svCF">6 000 €</span>
+        </div>
+        <div class="slider-row">
+          <label>Quantité produite =</label>
+          <input type="range" id="slQ" min="0" max="2000" value="800" step="10">
+          <span class="slider-val" id="svQ">800 u.</span>
+        </div>
+      </div>
+    </div>
+    <p id="impossibleMsg" style="display:none; margin-top:8px; font-size:12px; color:#C0392B; font-family:var(--ff-mono); text-align:center; line-height:1.5;"></p>
+  </div>
+
+  <!-- BLOC 2 -->
+  <div class="block">
+    <div class="block-label">
+      <span class="block-num">2</span>
+      <span class="block-title">Calcul détaillé</span>
+    </div>
+    <div class="steps" id="steps"></div>
+    <div class="callout" id="callout"></div>
+  </div>
+
+<div class="demo-cta-card">
+    <h2>Ce type de support est préparé pour chaque séance.</h2>
+    <p>Adapté au chapitre et au niveau de votre enfant, avec la correction et les exercices à refaire — conservés après le cours.</p>
+    <a class="demo-wa-btn" href="https://wa.me/33769913946?text=Bonjour%20Hamza%2C%20je%20viens%20de%20voir%20votre%20site%20et%20une%20d%C3%A9mo%20de%20cours%20%E2%80%94%20on%20cherche%20un%20soutien%20pour%20notre%20enfant.%20On%20peut%20en%20parler%20%3F" target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+    <a class="demo-back-link" href="../index.html">← Retour au site</a>
+  </div>
+
+</div>
+
+<script>
+const canvas = document.getElementById('cv');
+const ctx = canvas.getContext('2d');
+
+let p = 40, cv = 20, CF = 6000, Q = 800;
+
+function fmt(n) {
+  return n.toLocaleString('fr-FR', { maximumFractionDigits: 0 }) + ' €';
+}
+function fmtQ(n) {
+  return n.toLocaleString('fr-FR', { maximumFractionDigits: 0 }) + ' u.';
+}
+
+function dpr() { return window.devicePixelRatio || 1; }
+
+function resize() {
+  const W = canvas.parentElement.clientWidth;
+  if (W <= 0) return; // guard : element pas encore rendu, on skip
+  const vw = window.innerWidth;
+  const H = vw < 420 ? 240 : vw < 600 ? 280 : vw < 760 ? 320 : 380;
+  const r = dpr();
+  canvas.width = W * r; canvas.height = H * r;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  ctx.setTransform(r, 0, 0, r, 0, 0); // reset + scale en une opération (évite l'accumulation)
+  draw();
+}
+
+function draw() {
+  const W = canvas.width / dpr();
+  const H = canvas.height / dpr();
+
+  const m = p - cv;
+  const Qstar = m > 0 ? CF / m : Infinity;
+  // ── Qmax robuste : quand le seuil n'existe pas (m ≤ 0), on cadre sur Q et CF
+  //     plutôt que de viser Qstar = Infinity (qui fait tout collapser au coin)
+  const Qmax = isFinite(Qstar)
+    ? Math.max(Qstar * 1.9, Q * 1.4, 300)
+    : Math.max(Q * 1.4, 300);
+  // ── Ymax basé sur ce qui est réellement visible aux bornes du graph,
+  //     pas sur Qmax (sinon les courbes sont écrasées quand m est faible)
+  const CAend = Qmax * p;
+  const CTend = CF + Qmax * cv;
+  const Ymax = Math.max(CAend, CTend, CF * 1.5) * 1.08;
+
+  const pad = { t: 24, r: 24, b: 58, l: 68 };
+  const iw = W - pad.l - pad.r;
+  const ih = H - pad.t - pad.b;
+
+  const px = q => pad.l + (q / Qmax) * iw;
+  const py = y => pad.t + ih - (y / Ymax) * ih;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(0, 0, W, H);
+
+  // ── Zones profit / perte ──
+  if (isFinite(Qstar) && Qstar < Qmax) {
+    // perte : 0 → Qstar
+    ctx.fillStyle = 'rgba(192,57,43,.07)';
+    ctx.beginPath();
+    ctx.moveTo(px(0), py(0));
+    ctx.lineTo(px(Qstar), py(CF + Qstar * cv));
+    ctx.lineTo(px(Qstar), py(Ymax));
+    ctx.lineTo(px(0), py(Ymax));
+    ctx.closePath();
+    ctx.fill();
+    // profit : Qstar → Qmax
+    ctx.fillStyle = 'rgba(31,107,84,.07)';
+    ctx.beginPath();
+    ctx.moveTo(px(Qstar), py(CF + Qstar * cv));
+    ctx.lineTo(px(Qmax), py(Qmax * p));
+    ctx.lineTo(px(Qmax), py(Ymax));
+    ctx.lineTo(px(Qstar), py(Ymax));
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  // ── Grid ──
+  ctx.strokeStyle = '#E7DECC'; ctx.lineWidth = 0.6;
+  for (let i = 1; i <= 4; i++) {
+    const y = pad.t + (ih / 4) * i;
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
+  }
+
+  // ── Axes ──
+  ctx.strokeStyle = '#14213D'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, pad.t + ih); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(pad.l, pad.t + ih); ctx.lineTo(W - pad.r, pad.t + ih); ctx.stroke();
+
+  // Axis labels
+  ctx.fillStyle = '#6F7385'; ctx.font = `10px "JetBrains Mono", monospace`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+  ctx.fillText('Quantités (u.)', pad.l + iw / 2, pad.t + ih + 38);
+  ctx.save();
+  ctx.translate(14, pad.t + ih / 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('€', 0, 0); ctx.restore();
+
+  // Tick values Y — on saute le tick s'il chevauche le marqueur CF
+  const cfRatio = CF / Ymax; // position normalisée de CF sur l'axe (0..1)
+  ctx.fillStyle = '#6F7385'; ctx.font = `9px "JetBrains Mono", monospace`;
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 4; i++) {
+    const ratio = (4 - i) / 4;
+    if (Math.abs(ratio - cfRatio) < 0.08) continue; // skip tick trop proche de CF
+    const val = (Ymax / 4) * (4 - i);
+    ctx.textBaseline = 'middle';
+    ctx.fillText((val / 1000).toFixed(0) + 'k', pad.l - 5, pad.t + (ih / 4) * i);
+  }
+
+  // ── CT (coûts totaux) — rouge ──
+  ctx.beginPath();
+  ctx.moveTo(px(0), py(CF));
+  ctx.lineTo(px(Qmax), py(CF + Qmax * cv));
+  ctx.strokeStyle = '#C0392B'; ctx.lineWidth = 2.5; ctx.setLineDash([]);
+  ctx.stroke();
+  // label CT
+  ctx.fillStyle = '#C0392B'; ctx.font = `600 12px "Plus Jakarta Sans", sans-serif`;
+  ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+  ctx.fillText('CT', W - pad.r - 4, py(CF + Qmax * cv) - 4);
+
+  // Charges fixes — ligne horizontale pointillée
+  ctx.beginPath(); ctx.moveTo(pad.l, py(CF)); ctx.lineTo(W - pad.r, py(CF));
+  ctx.strokeStyle = 'rgba(192,57,43,.4)'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+  ctx.stroke(); ctx.setLineDash([]);
+  // Marqueur CF sur l'axe Y (toujours visible, à gauche de l'axe)
+  ctx.fillStyle = '#C0392B';
+  ctx.font = `700 9px "JetBrains Mono", monospace`;
+  ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  ctx.fillText(`CF ${(CF/1000).toFixed(0)}k`, pad.l - 5, py(CF));
+  // Petit tiret rouge sur l'axe pour relier le label à la ligne
+  ctx.strokeStyle = '#C0392B'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(pad.l - 3, py(CF)); ctx.lineTo(pad.l, py(CF)); ctx.stroke();
+
+  // ── CA (chiffre d'affaires) — vert ──
+  ctx.beginPath();
+  ctx.moveTo(px(0), py(0));
+  ctx.lineTo(px(Qmax), py(Qmax * p));
+  ctx.strokeStyle = '#1f6b54'; ctx.lineWidth = 2.5; ctx.setLineDash([]);
+  ctx.stroke();
+  ctx.fillStyle = '#1f6b54'; ctx.font = `600 12px "Plus Jakarta Sans", sans-serif`;
+  ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+  ctx.fillText('CA', W - pad.r - 4, py(Qmax * p) - 4);
+
+  // ── Seuil ──
+  // Message HTML "seuil impossible" — on le réinitialise d'abord
+  const impossibleMsg = document.getElementById('impossibleMsg');
+  impossibleMsg.textContent = '';
+  impossibleMsg.style.display = 'none';
+
+  if (isFinite(Qstar) && Qstar <= Qmax) {
+    const ys = CF + Qstar * cv;
+    // Ligne verticale seuil
+    ctx.beginPath(); ctx.moveTo(px(Qstar), py(ys)); ctx.lineTo(px(Qstar), pad.t + ih);
+    ctx.strokeStyle = var_gold(); ctx.lineWidth = 1.5; ctx.setLineDash([5, 3]);
+    ctx.stroke(); ctx.setLineDash([]);
+    // Point seuil
+    ctx.beginPath(); ctx.arc(px(Qstar), py(ys), 7, 0, Math.PI * 2);
+    ctx.fillStyle = var_gold(); ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.arc(px(Qstar), py(ys), 3.5, 0, Math.PI * 2); ctx.fill();
+    // Label Q* : sous l'axe X, centré sur Qstar (1re ligne) — "Quantités" descend encore plus bas
+    ctx.fillStyle = var_gold(); ctx.font = `700 11px "Plus Jakarta Sans", sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText(`Q* = ${Math.round(Qstar)} u.`, px(Qstar), pad.t + ih + 10);
+  } else {
+    // ── Seuil impossible : ligne sobre en HTML sous le graphe ──
+    impossibleMsg.style.display = '';
+    impossibleMsg.textContent = m === 0
+      ? 'Seuil impossible — p = cv : aucune marge sur chaque unité vendue'
+      : 'Seuil impossible — p < cv : chaque unité vendue creuse les pertes';
+  }
+
+  // ── Quantité actuelle Q ──
+  const Res = m * Q - CF;
+  const caQ = p * Q;
+  const ctQ = CF + cv * Q;
+  const yCA = py(caQ), yCT = py(ctQ);
+  const resColor = Res >= 0 ? '#1f6b54' : '#C0392B';
+
+  // 1. Guide vertical léger de l'axe X jusqu'à la courbe la plus haute (repère Q)
+  ctx.beginPath();
+  ctx.moveTo(px(Q), Math.min(yCA, yCT));
+  ctx.lineTo(px(Q), pad.t + ih);
+  ctx.strokeStyle = 'rgba(26,74,138,.22)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.stroke(); ctx.setLineDash([]);
+
+  // 2. Segment résultat entre les deux courbes (la vraie info : CA − CT = R)
+  if (Math.abs(yCA - yCT) > 3) {
+    ctx.beginPath();
+    ctx.moveTo(px(Q), yCA);
+    ctx.lineTo(px(Q), yCT);
+    ctx.strokeStyle = resColor; ctx.lineWidth = 3.5;
+    ctx.stroke();
+  }
+
+  // 3. Point sur CA (vert) et point sur CT (rouge)
+  [[yCA, '#1f6b54'], [yCT, '#C0392B']].forEach(([y, col]) => {
+    ctx.beginPath(); ctx.arc(px(Q), y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = col; ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.arc(px(Q), y, 2.5, 0, Math.PI * 2); ctx.fill();
+  });
+
+  // 4. Label résultat centré sur le segment, décalé latéralement
+  if (Math.abs(yCA - yCT) > 14) {
+    ctx.fillStyle = resColor;
+    ctx.font = `600 11px "Plus Jakarta Sans", sans-serif`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    const midY = (yCA + yCT) / 2;
+    const off = px(Q) + W * 0.05 < W - pad.r ? 34 : -34;
+    ctx.fillText(Res >= 0 ? `+${fmt(Res)}` : fmt(Res), px(Q) + off, midY);
+  }
+
+  // KPI
+  document.getElementById('kpiQ').textContent = isFinite(Qstar) ? fmtQ(Math.round(Qstar)) : '—';
+  document.getElementById('kpiCA').textContent = isFinite(Qstar) ? fmt(Math.round(Qstar * p)) : '—';
+  const kpiRes = document.getElementById('kpiRes');
+  kpiRes.textContent = fmt(Res);
+  kpiRes.className = 'kpi-val ' + (Res >= 0 ? 'pos' : 'neg');
+
+  // Steps
+  document.getElementById('steps').innerHTML = `
+    <div class="step"><span class="sn">①</span><span class="st"><strong>Marge sur coût variable :</strong> m = p − cv = ${p} − ${cv} = <strong>${m} €/u.</strong></span></div>
+    <div class="step"><span class="sn">②</span><span class="st"><strong>Seuil de rentabilité :</strong> Q* = CF / m = ${CF.toLocaleString('fr-FR')} / ${m} = <strong>${isFinite(Qstar) ? Math.round(Qstar).toLocaleString('fr-FR') + ' u.' : 'impossible (m ≤ 0)'}</strong></span></div>
+    <div class="step"><span class="sn">③</span><span class="st"><strong>CA au seuil :</strong> CA* = Q* × p = ${isFinite(Qstar) ? Math.round(Qstar).toLocaleString('fr-FR') + ' × ' + p + ' = ' + fmt(Math.round(Qstar * p)) : '—'}</span></div>
+    <div class="step"><span class="sn">④</span><span class="st"><strong>Résultat pour Q = ${Q} u. :</strong> R = m × Q − CF = ${m} × ${Q} − ${CF.toLocaleString('fr-FR')} = <strong style="color:${Res>=0?'#1f6b54':'#C0392B'}">${fmt(Res)}</strong></span></div>
+  `;
+
+  document.getElementById('callout').innerHTML = Q >= Qstar && isFinite(Qstar)
+    ? `<strong>Zone bénéfice.</strong> Chaque unité vendue au-delà du seuil rapporte exactement la marge <strong>${m} €</strong>. L'entreprise a déjà couvert ses ${fmt(CF)} de charges fixes à partir de la <strong>${Math.round(Qstar)}ᵉ unité</strong>.`
+    : `<strong>Zone perte.</strong> L'entreprise n'a pas encore couvert ses charges fixes de ${fmt(CF)}. Il manque <strong>${fmt(Math.abs(Res))}</strong> — il faut vendre ${isFinite(Qstar) ? Math.max(0, Math.round(Qstar) - Q).toLocaleString('fr-FR') + ' unités de plus' : 'plus'} pour atteindre l'équilibre.`;
+}
+
+function var_gold() { return '#B68D34'; }
+
+const slP  = document.getElementById('slP');  const svP  = document.getElementById('svP');
+const slCv = document.getElementById('slCv'); const svCv = document.getElementById('svCv');
+const slCF = document.getElementById('slCF'); const svCF = document.getElementById('svCF');
+const slQ  = document.getElementById('slQ');  const svQ  = document.getElementById('svQ');
+
+slP.addEventListener('input',  () => { p  = +slP.value;  svP.textContent  = p + ' €'; draw(); });
+slCv.addEventListener('input', () => { cv = +slCv.value; svCv.textContent = cv + ' €'; draw(); });
+slCF.addEventListener('input', () => { CF = +slCF.value; svCF.textContent = (+slCF.value).toLocaleString('fr-FR') + ' €'; draw(); });
+slQ.addEventListener('input',  () => { Q  = +slQ.value;  svQ.textContent  = Q.toLocaleString('fr-FR') + ' u.'; draw(); });
+
+window.addEventListener('resize', resize);
+resize();
+
+</script>
+</body>
+</html>

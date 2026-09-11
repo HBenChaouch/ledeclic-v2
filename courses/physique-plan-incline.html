@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forces sur plan incliné — Le Déclic</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #F7F2EA;
+  --bg-2:      #F1EADC;
+  --surface:   #FFFFFF;
+  --ink:       #14213D;
+  --ink-soft:  #2B385A;
+  --muted:     #6F7385;
+  --border:    #E7DECC;
+  --navy:      #14213D;
+  --gold:      #C9A24B;
+  --gold-2:    #B68D34;
+  --gold-tint: #F6EBCF;
+  --green:     #1f6b54;
+  --green-tint:#E2EFE7;
+  --red:       #C0392B;
+  --blue:      #1a4a8a;
+  --ff-serif:  "Fraunces", Georgia, serif;
+  --ff-sans:   "Plus Jakarta Sans", system-ui, sans-serif;
+  --ff-mono:   "JetBrains Mono", monospace;
+  --r-md: 14px; --r-lg: 20px; --r-xl: 28px;
+  --sh-md: 0 4px 14px rgba(20,33,61,.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--ff-sans); background: var(--bg); color: var(--ink); min-height: 100vh; padding: clamp(24px,4vw,48px) clamp(18px,4vw,40px); -webkit-font-smoothing: antialiased; }
+/* iOS : rend la zone immédiatement "cliquable" (1er touch livré, pas consommé). Tactile uniquement. */
+@media (pointer: coarse) { body { cursor: pointer; } }
+
+.page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-2); }
+.page-header { display: flex; flex-direction: column; gap: 10px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.page-header h1 { font-family: var(--ff-serif); font-size: clamp(24px,3.5vw,36px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+.page-header h1 em { font-style: italic; color: var(--gold-2); }
+.page-header p { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 54ch; }
+
+.block { display: flex; flex-direction: column; gap: 14px; }
+.block-label { display: flex; align-items: center; gap: 12px; }
+.block-num { font-family: var(--ff-serif); font-size: 2.4rem; font-weight: 400; color: var(--border); line-height: 1; }
+.block-title { font-family: var(--ff-serif); font-size: 1.15rem; font-weight: 500; }
+.block p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.block p strong { color: var(--ink); }
+
+.canvas-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-md); }
+.canvas-card canvas { display: block; width: 100%; }
+
+.controls { padding: 14px 20px; border-top: 1px solid var(--border); background: var(--bg-2); display: flex; flex-direction: column; gap: 10px; }
+.slider-row { display: flex; align-items: center; gap: 12px; }
+.slider-row label { font-size: 12px; color: var(--muted); font-family: var(--ff-mono); white-space: nowrap; min-width: 110px; }
+.slider-row input[type=range] { flex: 1; accent-color: var(--navy); cursor: pointer; }
+.slider-val { font-family: var(--ff-mono); font-size: 13px; font-weight: 600; color: var(--navy); min-width: 56px; text-align: right; }
+
+.status-bar { display: flex; align-items: center; gap: 10px; padding: 10px 20px; border-top: 1px solid var(--border); font-size: 13px; font-weight: 600; transition: background .3s; }
+.status-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 14px; padding: 12px 20px; }
+.leg { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
+.leg-line { width: 20px; height: 3px; border-radius: 2px; }
+.leg-fill { width: 14px; height: 10px; border-radius: 2px; }
+
+.given { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 0 var(--r-md) var(--r-md) 0; padding: 14px 18px; font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
+.given strong { color: var(--ink); }
+.given .label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+.given code { font-family: var(--ff-mono); color: var(--navy); background: var(--bg-2); padding: 2px 6px; border-radius: 4px; }
+
+.assembly { display: flex; flex-direction: column; gap: 16px; }
+.gems-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.gem { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; transition: all .5s cubic-bezier(.2,.7,.2,1); box-shadow: var(--sh-md); position: relative; }
+.gem-label { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.gem-expr { font-family: var(--ff-mono); font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
+.gem-result { font-family: var(--ff-mono); font-size: 1rem; font-weight: 700; color: var(--navy); margin-top: auto; }
+.gem.gem-p   { border-left: 3px solid var(--red); }
+.gem.gem-p   .gem-label { color: var(--red); }
+.gem.gem-par { border-left: 3px solid var(--gold-2); }
+.gem.gem-par .gem-label { color: var(--gold-2); }
+.gem.gem-n   { border-left: 3px solid var(--blue); }
+.gem.gem-n   .gem-label { color: var(--blue); }
+.gem.gem-f   { border-left: 3px solid var(--green); }
+.gem.gem-f   .gem-label { color: var(--green); }
+.gem.fired { animation: gemPulse .6s ease; }
+@keyframes gemPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.025); box-shadow: 0 8px 24px rgba(20,33,61,.14); }
+}
+.assemble-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border-radius: 999px; background: var(--navy); color: white; font-weight: 600; font-size: 14px; border: none; cursor: pointer; align-self: center; transition: all .2s; box-shadow: 0 6px 18px -6px rgba(20,33,61,.4); }
+.assemble-btn:hover { background: #1F2D52; transform: translateY(-1px); }
+.assemble-btn svg { width: 16px; height: 16px; }
+.assembly-status { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: var(--r-md); background: var(--bg-2); font-size: 13px; color: var(--muted); }
+.assembly-status.armed { background: var(--green-tint); color: var(--green); }
+.assembly-status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); transition: all .3s; }
+.assembly-status.armed .dot { background: var(--green); box-shadow: 0 0 0 4px rgba(31,107,84,.2); }
+.result-gem { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 0 var(--r-md) var(--r-md) 0; padding: 0 22px; font-family: var(--ff-mono); font-size: 14px; line-height: 1.9; opacity: 0; max-height: 0; overflow: hidden; transition: all .6s cubic-bezier(.2,.7,.2,1); }
+.result-gem.shown { opacity: 1; max-height: 400px; padding: 18px 22px; }
+.result-gem .cm { color: var(--muted); font-size: 11px; }
+.result-gem .gld { color: var(--gold-2); font-weight: 700; }
+.result-gem .grn { color: var(--green); font-weight: 700; }
+.result-gem .red { color: var(--red); font-weight: 700; }
+.result-gem .conclusion { display: block; margin-top: 10px; font-weight: 700; color: var(--gold-2); font-family: var(--ff-serif); font-style: italic; font-size: 15px; }
+</style>
+<style>
+.demo-topbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--muted); }
+.demo-topbar a { color: var(--navy); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.demo-topbar a:hover { color: var(--gold-2); }
+.demo-framing { font-size: 13.5px; color: var(--muted); background: rgba(255,255,255,.6); border: 1px dashed var(--border); border-radius: 12px; padding: 12px 16px; line-height: 1.6; }
+.demo-framing strong { color: var(--ink); }
+.demo-cta-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px 22px; text-align: center; box-shadow: 0 10px 30px rgba(20,33,61,.10); display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.demo-cta-card h2 { font-family: var(--ff-serif); font-size: 20px; font-weight: 500; color: var(--ink); margin: 0; line-height: 1.25; }
+.demo-cta-card p { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 52ch; margin: 0; }
+.demo-wa-btn { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #052e1c; font-weight: 700; font-size: 15px; padding: 13px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 6px 18px -6px rgba(37,211,102,.55); }
+.demo-wa-btn:hover { background: #1FC95C; }
+.demo-back-link { font-size: 13px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.demo-back-link:hover { color: var(--navy); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="demo-topbar">
+    <a href="../index.html">← Retour au site</a>
+    <span>Le Déclic — cours particuliers</span>
+  </div>
+
+  <header class="page-header">
+    <span class="eyebrow">Physique — Seconde / Première</span>
+    <h1>Forces sur un plan <em>incliné</em></h1>
+    <p>Fais varier l'angle et observe : quand est-ce que l'objet se met à glisser ?</p>
+  </header>
+
+  <div class="demo-framing">
+    <strong>Démo de cours.</strong> C'est le type de support préparé pour chaque séance, adapté au chapitre et au niveau de votre enfant — et qu'il garde ensuite pour réviser seul.
+  </div>
+
+  <div class="block">
+    <div class="block-label">
+      <span class="block-num">1</span>
+      <span class="block-title">La situation</span>
+    </div>
+    <p>Trois forces agissent sur le bloc : le <strong>poids P</strong> qui le tire vers le bas, la <strong>réaction normale N</strong> qui le pousse perpendiculairement au plan, et la <strong>force de frottement f</strong> qui s'oppose au glissement.</p>
+
+    <div class="canvas-card">
+      <canvas id="cv" height="380"></canvas>
+      <div class="legend">
+        <div class="leg"><div class="leg-line" style="background:var(--red)"></div>Poids P</div>
+        <div class="leg"><div class="leg-line" style="background:var(--blue)"></div>Réaction normale N</div>
+        <div class="leg"><div class="leg-line" style="background:var(--green)"></div>Frottement f</div>
+        <div class="leg"><div class="leg-fill" style="background:rgba(201,162,75,.45)"></div>Composante P<sub>‖</sub> (force motrice)</div>
+      </div>
+      <div class="controls">
+        <div class="slider-row">
+          <label>Angle α =</label>
+          <input type="range" id="slAngle" min="0" max="75" value="25" step="1">
+          <span class="slider-val" id="svAngle">25°</span>
+        </div>
+        <div class="slider-row">
+          <label>Masse m =</label>
+          <input type="range" id="slMass" min="1" max="20" value="5" step="1">
+          <span class="slider-val" id="svMass">5 kg</span>
+        </div>
+        <div class="slider-row">
+          <label>μ (frottement) =</label>
+          <input type="range" id="slMu" min="0" max="80" value="35" step="1">
+          <span class="slider-val" id="svMu">0.35</span>
+        </div>
+      </div>
+      <div class="status-bar" id="statusBar">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">
+      <span class="block-num">2</span>
+      <span class="block-title">Données</span>
+    </div>
+    <div class="given">
+      <span class="label">Ce qu'on a</span>
+      <div>Masse : <code id="givenM">5 kg</code> &nbsp;·&nbsp; Angle : <code id="givenAlpha">25°</code> &nbsp;·&nbsp; Coefficient de frottement : <code id="givenMu">0.35</code></div>
+      <div>Constante : <code>g = 9,81 m/s²</code></div>
+      <div style="margin-top: 8px;">
+        <span class="label" style="margin-top:6px;">À déterminer</span>
+        L'objet est-il en équilibre, ou glisse-t-il ?
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">
+      <span class="block-num">3</span>
+      <span class="block-title">Assemblage de la condition d'équilibre</span>
+    </div>
+    <p>On calcule chaque grandeur dans sa pièce, puis on compare la composante motrice (P<sub>‖</sub>) au frottement maximal disponible (f<sub>max</sub>).</p>
+
+    <div class="assembly">
+      <div class="gems-row">
+        <div class="gem gem-p" id="gemP">
+          <span class="gem-label">① Poids total</span>
+          <div class="gem-expr">P = m·g</div>
+          <div class="gem-result" id="gemPval">P = 49,1 N</div>
+        </div>
+        <div class="gem gem-par" id="gemPar">
+          <span class="gem-label">② Composante motrice</span>
+          <div class="gem-expr">P<sub>‖</sub> = P · sin(α)</div>
+          <div class="gem-result" id="gemParval">P<sub>‖</sub> = 20,7 N</div>
+        </div>
+        <div class="gem gem-n" id="gemN">
+          <span class="gem-label">③ Réaction normale</span>
+          <div class="gem-expr">N = P · cos(α)</div>
+          <div class="gem-result" id="gemNval">N = 44,5 N</div>
+        </div>
+        <div class="gem gem-f" id="gemF">
+          <span class="gem-label">④ Frottement max</span>
+          <div class="gem-expr">f<sub>max</sub> = μ · N</div>
+          <div class="gem-result" id="gemFval">f<sub>max</sub> = 15,6 N</div>
+        </div>
+      </div>
+
+      <div class="assembly-status armed" id="assemblyStatus">
+        <span class="dot"></span>
+        <span id="assemblyStatusText">Les quatre pièces sont prêtes — assemblez pour comparer P<sub>‖</sub> et f<sub>max</sub>.</span>
+      </div>
+
+      <button class="assemble-btn" id="assembleBtn">
+        Assembler la condition
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+
+      <div class="result-gem" id="resultGem"></div>
+    </div>
+  </div>
+
+  <div class="demo-cta-card">
+    <h2>Ce type de support est préparé pour chaque séance.</h2>
+    <p>Adapté au chapitre et au niveau de votre enfant, avec la correction et les exercices à refaire — conservés après le cours.</p>
+    <a class="demo-wa-btn" href="https://wa.me/33769913946?text=Bonjour%20Hamza%2C%20je%20viens%20de%20voir%20votre%20site%20et%20une%20d%C3%A9mo%20de%20cours%20%E2%80%94%20on%20cherche%20un%20soutien%20pour%20notre%20enfant.%20On%20peut%20en%20parler%20%3F" target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+    <a class="demo-back-link" href="../index.html">← Retour au site</a>
+  </div>
+
+</div>
+
+<script>
+const canvas = document.getElementById('cv');
+const ctx = canvas.getContext('2d');
+const dpr = () => window.devicePixelRatio || 1;
+const g = 9.81;
+
+const C = {
+  bg: '#FFFFFF', border: '#E7DECC', muted: '#6F7385',
+  ink: '#14213D', navy: '#14213D', gold: '#C9A24B', gold2: '#B68D34',
+  red: '#C0392B', green: '#1f6b54', blue: '#1a4a8a',
+};
+
+let alpha = 25, mass = 5, mu = 0.35;
+
+function resize() {
+  const W = canvas.parentElement.clientWidth;
+  const H = 380;
+  const r = dpr();
+  canvas.width = W * r; canvas.height = H * r;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  ctx.setTransform(r, 0, 0, r, 0, 0);
+  draw();
+}
+
+function arrow(x1, y1, x2, y2, color, width) {
+  const dx = x2 - x1, dy = y2 - y1;
+  const len = Math.hypot(dx, dy);
+  if (len < 4) return;
+  const ux = dx / len, uy = dy / len;
+  const hw = 5, hl = 9;
+  ctx.save();
+  ctx.strokeStyle = color; ctx.fillStyle = color;
+  ctx.lineWidth = width; ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2 - ux * hl, y2 - uy * hl);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - ux * hl - uy * hw, y2 - uy * hl + ux * hw);
+  ctx.lineTo(x2 - ux * hl + uy * hw, y2 - uy * hl - ux * hw);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+
+function labelAt(x, y, text, color, align = 'center') {
+  ctx.fillStyle = color;
+  ctx.font = `700 12px "Plus Jakarta Sans", sans-serif`;
+  ctx.textAlign = align;
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, x, y);
+}
+
+function draw() {
+  const W = canvas.width / dpr();
+  const H = canvas.height / dpr();
+  const rad = alpha * Math.PI / 180;
+  const cos = Math.cos(rad), sin = Math.sin(rad);
+
+  // Calculs physiques
+  const P = mass * g;
+  const Ppar = P * sin;
+  const N = P * cos;
+  const fmax = mu * N;
+  const sliding = Ppar > fmax;
+  const fActual = sliding ? fmax : Ppar;
+  const alphaCrit = Math.atan(mu) * 180 / Math.PI;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+
+  // ── Plan incliné ──
+  const planW = Math.min(W * 0.6, 420);
+  const baseX = W / 2 - planW / 2 + 20;
+  const baseY = H * 0.78;
+
+  ctx.beginPath();
+  ctx.moveTo(baseX, baseY);
+  ctx.lineTo(baseX + planW * cos, baseY - planW * sin);
+  ctx.lineTo(baseX + planW * cos, baseY);
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(20,33,61,.05)';
+  ctx.fill();
+  ctx.strokeStyle = C.border; ctx.lineWidth = 1.2; ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(baseX, baseY);
+  ctx.lineTo(baseX + planW * cos, baseY - planW * sin);
+  ctx.strokeStyle = C.ink; ctx.lineWidth = 2.5; ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(baseX - 20, baseY); ctx.lineTo(baseX + planW * cos + 20, baseY);
+  ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2; ctx.stroke();
+
+  // Angle α
+  const arcR = 36;
+  ctx.beginPath();
+  ctx.arc(baseX, baseY, arcR, -rad, 0);
+  ctx.strokeStyle = C.gold; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = C.gold2; ctx.font = `italic 13px "Fraunces", serif`;
+  ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText('α', baseX + arcR + 6, baseY - arcR * 0.4);
+
+  // ── Bloc ──
+  const t = 0.55;
+  const bx = baseX + planW * t * cos;
+  const by = baseY - planW * t * sin;
+  const bSize = 28;
+
+  // ── Composante P// visualisée comme zone teintée le long du plan ──
+  const ppx = cos, ppy = -sin;      // vecteur unitaire le long du plan, vers le bas (descendant)
+  const npx = -sin, npy = -cos;     // perpendiculaire au plan, sortant (vers l'extérieur)
+
+  // Longueur fixe normalisée pour P// : longueur visuelle uniquement fonction de l'angle
+  const REF_LEN = 100; // longueur de référence pour P (constante visuellement)
+  const parVisualLen = REF_LEN * sin; // = (Ppar/P) * REF_LEN
+
+  // Zone rectangulaire dorée le long du plan
+  const thick = 14;
+  if (parVisualLen > 6) {
+    const x1 = bx, y1 = by;
+    const x2 = bx + ppx * parVisualLen, y2 = by + ppy * parVisualLen;
+    const x3 = x2 - npx * thick, y3 = y2 - npy * thick;
+    const x4 = x1 - npx * thick, y4 = y1 - npy * thick;
+
+    ctx.beginPath();
+    ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.lineTo(x3, y3); ctx.lineTo(x4, y4); ctx.closePath();
+    ctx.fillStyle = 'rgba(201,162,75,.32)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(184,141,52,.55)'; ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    // Flèche directionnelle au milieu de la zone, parallèle au plan
+    const arrowMidX = (x1 + x2) / 2 - npx * (thick / 2);
+    const arrowMidY = (y1 + y2) / 2 - npy * (thick / 2);
+    const arrLen = Math.min(parVisualLen * 0.55, 36);
+    arrow(arrowMidX - ppx * arrLen / 2, arrowMidY - ppy * arrLen / 2,
+          arrowMidX + ppx * arrLen / 2, arrowMidY + ppy * arrLen / 2,
+          C.gold2, 2.2);
+
+    // Label P// sous la zone (du côté extérieur au plan, parallèle au plan)
+    const labelOffset = thick + 14;
+    const labelX = (x1 + x2) / 2 - npx * labelOffset;
+    const labelY = (y1 + y2) / 2 - npy * labelOffset;
+    ctx.save();
+    ctx.translate(labelX, labelY);
+    ctx.rotate(-rad);
+    labelAt(0, 0, `P‖ = ${Ppar.toFixed(0)} N`, C.gold2);
+    ctx.restore();
+  }
+
+  // ── Bloc ──
+  ctx.save();
+  ctx.translate(bx, by); ctx.rotate(-rad);
+  ctx.fillStyle = '#FAFAF7'; ctx.strokeStyle = C.ink; ctx.lineWidth = 1.5;
+  ctx.shadowColor = 'rgba(20,33,61,.12)'; ctx.shadowBlur = 6;
+  ctx.beginPath(); ctx.roundRect(-bSize / 2, -bSize, bSize, bSize, 5);
+  ctx.fill(); ctx.shadowBlur = 0; ctx.stroke();
+  ctx.fillStyle = C.ink;
+  ctx.font = `600 10px "Plus Jakarta Sans", sans-serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(`${mass} kg`, 0, -bSize / 2);
+  ctx.restore();
+
+  // ── Vecteurs des forces : longueurs NORMALISÉES, indépendantes de la masse ──
+  // P est toujours dessiné avec longueur REF_LEN, peu importe m.
+  // Les autres forces sont en proportion : N = P*cos => longueur = REF_LEN*cos ; f = fActual = (fActual/P) * REF_LEN
+  // Origine des vecteurs : barycentre du bloc (centre de masse)
+  // (bx, by) = point de contact bloc/plan ; on remonte de bSize/2 le long de la normale sortante
+  const ox = bx + npx * (bSize / 2);
+  const oy = by + npy * (bSize / 2);
+
+  // Poids P — vertical vers le bas
+  arrow(ox, oy, ox, oy + REF_LEN, C.red, 2.5);
+  labelAt(ox + 22, oy + REF_LEN * 0.55, `P = ${P.toFixed(0)} N`, C.red, 'left');
+
+  // Normale N — perpendiculaire au plan, sortante
+  const nLenVisual = REF_LEN * cos;
+  const nEndX = ox + npx * nLenVisual;
+  const nEndY = oy + npy * nLenVisual;
+  arrow(ox, oy, nEndX, nEndY, C.blue, 2.5);
+  // label N décalé du côté gauche du vecteur
+  const nLabelX = nEndX + npx * 16 + ppx * 10;
+  const nLabelY = nEndY + npy * 16 + ppy * 10;
+  labelAt(nLabelX, nLabelY, `N = ${N.toFixed(0)} N`, C.blue);
+
+  // Frottement f — le long du plan vers le haut (oppose le glissement)
+  const fLenVisual = (fActual / P) * REF_LEN;
+  if (fLenVisual > 4) {
+    const fEndX = ox + (-ppx) * fLenVisual;
+    const fEndY = oy + (-ppy) * fLenVisual;
+    arrow(ox, oy, fEndX, fEndY, C.green, 2.5);
+    // label : au-dessus du plan, à l'extrémité de la flèche
+    const fLabelX = fEndX + npx * 14 - ppx * 4;
+    const fLabelY = fEndY + npy * 14 - ppy * 4;
+    labelAt(fLabelX, fLabelY, `f = ${fActual.toFixed(0)} N`, C.green);
+  }
+
+  // ── Status bar ──
+  const bar = document.getElementById('statusBar');
+  const dot = document.getElementById('statusDot');
+  const text = document.getElementById('statusText');
+  if (sliding) {
+    bar.style.background = 'rgba(192,57,43,.08)';
+    bar.style.borderTop = '1px solid rgba(192,57,43,.25)';
+    dot.style.background = C.red;
+    text.style.color = C.red;
+    text.textContent = `Glissement — tan(α) = ${Math.tan(rad).toFixed(2)} > μ = ${mu.toFixed(2)} (seuil : α = ${alphaCrit.toFixed(1)}°)`;
+  } else {
+    bar.style.background = 'rgba(31,107,84,.07)';
+    bar.style.borderTop = '1px solid rgba(31,107,84,.22)';
+    dot.style.background = C.green;
+    text.style.color = C.green;
+    text.textContent = `Équilibre — tan(α) = ${Math.tan(rad).toFixed(2)} ≤ μ = ${mu.toFixed(2)} (seuil : α = ${alphaCrit.toFixed(1)}°)`;
+  }
+
+  // Update gems
+  document.getElementById('gemPval').textContent   = `P = ${P.toFixed(1)} N`;
+  document.getElementById('gemParval').innerHTML   = `P<sub>‖</sub> = ${Ppar.toFixed(1)} N`;
+  document.getElementById('gemNval').textContent   = `N = ${N.toFixed(1)} N`;
+  document.getElementById('gemFval').innerHTML     = `f<sub>max</sub> = ${fmax.toFixed(1)} N`;
+  document.getElementById('givenM').textContent    = `${mass} kg`;
+  document.getElementById('givenAlpha').textContent= `${alpha}°`;
+  document.getElementById('givenMu').textContent   = mu.toFixed(2);
+
+  if (assembled) renderResult();
+}
+
+let assembled = false;
+const btn = document.getElementById('assembleBtn');
+const resultGem = document.getElementById('resultGem');
+const statusBox = document.getElementById('assemblyStatus');
+const statusText = document.getElementById('assemblyStatusText');
+const gems = ['gemP', 'gemPar', 'gemN', 'gemF'].map(id => document.getElementById(id));
+
+function renderResult() {
+  const P = mass * g;
+  const Ppar = P * Math.sin(alpha * Math.PI / 180);
+  const N = P * Math.cos(alpha * Math.PI / 180);
+  const fmax = mu * N;
+  const sliding = Ppar > fmax;
+  const verdictColor = sliding ? 'var(--red)' : 'var(--green)';
+  const verdictText = sliding ? 'Glissement' : 'Équilibre';
+
+  resultGem.innerHTML = `
+    <span class="cm">// Comparaison P<sub>‖</sub> vs f<sub>max</sub> :</span><br>
+    &nbsp;&nbsp;<span class="red">P<sub>‖</sub> = ${Ppar.toFixed(1)} N</span> &nbsp;${sliding ? '>' : '≤'}&nbsp; <span class="grn">f<sub>max</sub> = ${fmax.toFixed(1)} N</span><br><br>
+    <span class="cm">// Condition simplifiée — m disparaît :</span><br>
+    &nbsp;&nbsp;tan(α) = ${Math.tan(alpha*Math.PI/180).toFixed(3)} &nbsp;${sliding ? '>' : '≤'}&nbsp; μ = ${mu.toFixed(2)}<br>
+    &nbsp;&nbsp;⟹ <span style="color:${verdictColor};font-weight:700">${verdictText}</span>
+    <span class="conclusion">${sliding ? `Le frottement ne suffit plus à retenir la composante motrice du poids.` : `Le frottement compense exactement la composante motrice — l'objet reste immobile.`}</span>
+  `;
+}
+
+btn.addEventListener('click', () => {
+  if (assembled) {
+    assembled = false;
+    resultGem.classList.remove('shown');
+    btn.innerHTML = `Assembler la condition <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>`;
+    statusBox.classList.add('armed');
+    statusText.innerHTML = 'Les quatre pièces sont prêtes — assemblez pour comparer P<sub>‖</sub> et f<sub>max</sub>.';
+    return;
+  }
+  gems.forEach((g, i) => setTimeout(() => g.classList.add('fired'), i * 120));
+  setTimeout(() => {
+    gems.forEach(g => g.classList.remove('fired'));
+    renderResult();
+    resultGem.classList.add('shown');
+    statusBox.classList.remove('armed');
+    statusText.innerHTML = '<strong style="color:var(--gold-2)">Condition évaluée</strong> — voir le verdict ci-dessous.';
+    btn.innerHTML = `Réinitialiser <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>`;
+    assembled = true;
+  }, 700);
+});
+
+const slAngle = document.getElementById('slAngle');
+const svAngle = document.getElementById('svAngle');
+const slMass  = document.getElementById('slMass');
+const svMass  = document.getElementById('svMass');
+const slMu    = document.getElementById('slMu');
+const svMu    = document.getElementById('svMu');
+
+slAngle.addEventListener('input', () => { alpha = +slAngle.value; svAngle.textContent = alpha + '°'; draw(); });
+slMass.addEventListener('input',  () => { mass  = +slMass.value;  svMass.textContent  = mass + ' kg'; draw(); });
+slMu.addEventListener('input',    () => { mu    = slMu.value/100; svMu.textContent    = mu.toFixed(2); draw(); });
+
+window.addEventListener('resize', resize);
+resize();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,4469 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Le Déclic — cours particuliers en maths, physique-chimie & comptabilité</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Le Déclic — cours particuliers en maths, physique-chimie et comptabilité pour comprendre vraiment. Du collège au post-bac. Visio ou présentiel à Paris et proche petite couronne.">
+<meta name="theme-color" content="#F7F2EA">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Open Graph (partage réseaux sociaux, WhatsApp, iMessage…) -->
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="Le Déclic — cours particuliers en maths, physique-chimie & comptabilité">
+<meta property="og:description" content="Cours particuliers pour comprendre vraiment. Du collège au post-bac. Visio partout, présentiel à Paris et proche petite couronne.">
+<meta property="og:image"       content="https://ledeclic.eu/assets/og.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url"         content="https://ledeclic.eu/">
+<meta property="og:locale"      content="fr_FR">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Le Déclic — cours particuliers en maths, physique-chimie & comptabilité">
+<meta name="twitter:description" content="Cours particuliers pour comprendre vraiment. Du collège au post-bac. Visio partout, présentiel à Paris et proche petite couronne.">
+<meta name="twitter:image"       content="https://ledeclic.eu/assets/og.png">
+
+<link rel="canonical" href="https://ledeclic.eu/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS — V2, brand: Le Déclic (navy + or sur ivoire)
+   ============================================================ */
+:root {
+  color-scheme: light;
+
+  --bg:           #F7F2EA;
+  --bg-2:         #F1EADC;
+  --surface:      #FFFFFF;
+
+  --ink:          #14213D;   /* navy du logo */
+  --ink-soft:     #2B385A;
+  --muted:        #6F7385;
+  --border:       #E7DECC;
+  --border-soft:  #EFE7D7;
+
+  --navy:         #14213D;
+  --navy-2:       #1F2D52;
+  --navy-tint:    #E7EAF2;
+
+  --gold:         #C9A24B;
+  --gold-2:       #B68D34;
+  --gold-tint:    #F6EBCF;
+
+  --green-tint:   #E2EFE7;
+  --rose-tint:    #F6E6DD;
+  --sky-tint:      #D9E5F2;
+  --lavender-tint: #E8E0F2;
+  --peach-tint:    #F6E3CD;
+  --coral-tint:    #F6DAD0;
+  --navy-stroke:     #A0AAC4;
+  --sky-stroke:      #A8C4E3;
+  --green-stroke:    #8FBFA1;
+  --rose-stroke:     #D6A788;
+  --gold-stroke:     #C9A24B;
+  --peach-stroke:    #D9B077;
+  --lavender-stroke: #BAA9D4;
+  --coral-stroke:    #D89B82;
+  --whatsapp:     #25D366;
+
+  --ff-serif:  "Fraunces", "Iowan Old Style", Georgia, serif;
+  --ff-sans:   "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --ff-mono:   "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --r-sm: 10px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px;
+  --sh-sm: 0 1px 2px rgba(20,33,61,.05), 0 1px 3px rgba(20,33,61,.04);
+  --sh-md: 0 4px 14px rgba(20,33,61,.07), 0 1px 3px rgba(20,33,61,.04);
+  --sh-lg: 0 18px 40px -12px rgba(20,33,61,.18), 0 4px 12px rgba(20,33,61,.05);
+  --sh-xl: 0 28px 60px -16px rgba(20,33,61,.26), 0 8px 18px rgba(20,33,61,.07);
+
+  --maxw: 1320px;
+  --pad: clamp(20px, 4vw, 40px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--ff-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; }
+::selection { background: var(--navy); color: #fff; }
+
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+@supports (padding: max(0px, env(safe-area-inset-left))) {
+  .wrap {
+    padding-left: max(var(--pad), env(safe-area-inset-left));
+    padding-right: max(var(--pad), env(safe-area-inset-right));
+  }
+}
+
+.eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--gold-2);
+}
+h1, h2, h3 {
+  font-family: var(--ff-serif); color: var(--ink); font-weight: 500;
+  letter-spacing: -0.018em; margin: 0; text-wrap: balance;
+}
+h1 { font-size: clamp(34px, 5.2vw, 58px); line-height: 1.05; letter-spacing: -0.028em; }
+h2 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.1; letter-spacing: -0.02em; }
+h3 { font-size: clamp(18px, 1.7vw, 21px); line-height: 1.25; font-weight: 600; }
+p  { margin: 0; text-wrap: pretty; }
+.lead { font-size: clamp(16px, 1.4vw, 18px); color: var(--ink-soft); line-height: 1.6; }
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 22px; border-radius: 999px;
+  font-weight: 600; font-size: 15px; line-height: 1;
+  transition: transform .15s ease, box-shadow .25s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  white-space: nowrap; border: 1px solid transparent;
+}
+.btn:active { transform: translateY(1px); }
+.btn .ico { width: 18px; height: 18px; flex: none; }
+
+.btn-primary {
+  background: var(--whatsapp); color: #052e1c;
+  box-shadow: 0 6px 18px -6px rgba(37,211,102,.55), 0 1px 0 rgba(255,255,255,.4) inset;
+}
+.btn-primary:hover { background: #1FC95C; box-shadow: 0 10px 26px -8px rgba(37,211,102,.7); }
+
+.btn-secondary {
+  background: var(--surface); color: var(--ink);
+  border-color: var(--border); box-shadow: var(--sh-sm);
+}
+.btn-secondary:hover { border-color: var(--ink); }
+
+.btn-dark { background: var(--navy); color: #fff; }
+.btn-dark:hover { background: var(--navy-2); }
+
+.btn-ghost { color: var(--ink); padding: 10px 14px; font-size: 14px; font-weight: 500; }
+.btn-ghost:hover { color: var(--gold-2); }
+
+/* ===== Header ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(247,242,234,.78);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s ease, background .2s ease;
+}
+.site-header.scrolled { border-bottom-color: var(--border); background: rgba(247,242,234,.92); }
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px; gap: 24px;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; }
+.brand img { height: 48px; width: auto; }
+.nav-links { display: flex; gap: 2px; align-items: center; }
+.nav-links a {
+  padding: 8px 14px; border-radius: 999px;
+  font-size: 14px; color: var(--ink-soft); font-weight: 500;
+  transition: background .15s, color .15s;
+}
+.nav-links a:hover { background: rgba(20,33,61,.06); color: var(--ink); }
+.header-cta { display: inline-flex; gap: 10px; align-items: center; }
+
+.burger {
+  display: none;
+  width: 42px; height: 42px; border-radius: 12px;
+  align-items: center; justify-content: center;
+  border: 1px solid var(--border); background: var(--surface);
+}
+.burger span { display: block; width: 18px; height: 1.8px; background: var(--ink); position: relative; }
+.burger span::before, .burger span::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 1.8px; background: var(--ink);
+}
+.burger span::before { top: -6px; }
+.burger span::after  { top:  6px; }
+
+@media (max-width: 880px) {
+  .nav-links { display: none; }
+  .header-cta .btn-ghost { display: none; }
+  .burger { display: inline-flex; }
+  .site-header .wrap { height: 64px; }
+  .brand img { height: 38px; }
+}
+
+/* Mobile menu sheet */
+.menu-sheet {
+  position: fixed; inset: 0; z-index: 80;
+  background: rgba(20,33,61,.45);
+  backdrop-filter: blur(6px);
+  display: none; align-items: flex-end;
+}
+.menu-sheet[open] { display: flex; animation: fadeIn .2s ease; }
+.menu-sheet-card {
+  width: 100%; background: var(--bg); border-radius: 24px 24px 0 0;
+  padding: 24px 24px calc(28px + env(safe-area-inset-bottom));
+  display: grid; gap: 4px;
+}
+.menu-sheet-card .row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px;
+}
+.menu-sheet-card a {
+  display: block; padding: 16px 14px; border-radius: 12px;
+  font-size: 17px; font-weight: 500; color: var(--ink);
+}
+.menu-sheet-card a:hover { background: var(--surface); }
+.menu-sheet-card .btn { margin-top: 14px; justify-content: center; }
+.menu-sheet-card .close {
+  width: 38px; height: 38px; border-radius: 10px;
+  border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center;
+  background: var(--surface);
+}
+
+/* ===== Hero ===== */
+.hero { padding: clamp(46px, 7vw, 92px) 0 clamp(56px, 8vw, 112px); position: relative; overflow: hidden; }
+.hero::before {
+  content: ""; position: absolute; inset: -10% -10% auto auto;
+  width: 60%; height: 70%;
+  background: radial-gradient(closest-side, rgba(201,162,75,.14), transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ""; position: absolute; left: -10%; bottom: -20%;
+  width: 50%; height: 60%;
+  background: radial-gradient(closest-side, rgba(20,33,61,.08), transparent 70%);
+  pointer-events: none;
+}
+.hero .wrap {
+  display: grid; grid-template-columns: 1.35fr 1fr;
+  gap: clamp(24px, 4vw, 48px); align-items: center; position: relative;
+}
+.hero-text { min-width: 0; }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } }
+.hero h1 { font-size: clamp(31px, 3.65vw, 44px); line-height: 1.08; letter-spacing: -0.026em; }
+.hero h1 em { font-style: italic; font-weight: 400; color: var(--navy-2); }
+@media (min-width: 1081px) {
+  .hero h1 .h1-main,
+  .hero h1 .h1-stress {
+    white-space: nowrap;
+  }
+}
+.hero h1 .h1-stress {
+  background-image: linear-gradient(
+    to bottom,
+    transparent calc(100% - 0.30em),
+    rgba(201,162,75,.55) calc(100% - 0.30em),
+    rgba(201,162,75,.55) calc(100% - 0.08em),
+    transparent calc(100% - 0.08em)
+  );
+  padding: 0 1px;
+}
+@media (max-width: 720px) {
+  .hero { padding-top: 42px; }
+  .hero h1 { font-size: clamp(32px, 9vw, 42px); }
+  .hero h1 .h1-main,
+  .hero h1 .h1-stress { white-space: normal; }
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 6px 12px 6px 8px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 999px;
+  box-shadow: var(--sh-sm); margin-bottom: 22px;
+  font-size: 13px; color: var(--ink-soft);
+}
+.hero-eyebrow .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #4FB888; box-shadow: 0 0 0 4px var(--green-tint);
+}
+.hero-sub { margin-top: 20px; max-width: 56ch; }
+
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.badge {
+  padding: 7px 12px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: 13.5px; color: var(--ink-soft); font-weight: 500;
+  display: inline-flex; align-items: center; gap: 7px; box-shadow: var(--sh-sm);
+}
+.badge.lvl { background: var(--navy-tint); border-color: transparent; color: var(--navy-2); }
+.badge .swatch { width: 7px; height: 7px; border-radius: 50%; }
+
+/* Author card (V3 hero) */
+.author-card {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: #FFFCF6;
+  border: 1px solid rgba(184,152,90,.30);
+  border-radius: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  max-width: 56ch;
+}
+.author-card img {
+  width: 96px; height: 96px; border-radius: 50%;
+  object-fit: cover; flex-shrink: 0;
+  border: 1px solid rgba(184,152,90,.20);
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.author-card-text { display: flex; flex-direction: column; gap: 3px; }
+.author-card-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600; font-size: 16px; color: var(--ink);
+}
+.author-card-role {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400; font-size: 14px; color: var(--ink-soft);
+}
+.author-card-credits {
+  list-style: none; margin: 8px 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.author-card-credits li {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; color: var(--ink-soft);
+  line-height: 1.35;
+}
+.author-card-credits li::before {
+  content: ""; width: 12px; height: 12px; flex: none;
+  border-radius: 50%;
+  background: var(--gold-tint);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B68D34' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='4 12 10 18 20 6'/></svg>");
+  background-repeat: no-repeat; background-size: 8px 8px;
+  background-position: center;
+}
+@media (max-width: 600px) {
+  .author-card { padding: 14px 16px; gap: 14px; }
+  .author-card img { width: 72px; height: 72px; }
+  .author-card-name { font-size: 15px; }
+  .author-card-role { font-size: 13px; }
+  .author-card-credits li { font-size: 12.5px; }
+}
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.hero-rate {
+  margin-top: 14px;
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+.hero-rate .rate-strong { color: var(--navy); }
+
+/* Hero stage (V3 — preparation lifecycle) */
+.hero-stage {
+  position: relative;
+  height: clamp(460px, 56vw, 580px);
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  width: min(100%, 560px);
+  justify-self: end;
+}
+.hero-stage::before {
+  content: ""; position: absolute; inset: 6% 8% 6% 0;
+  background:
+    radial-gradient(closest-side, rgba(255,255,255,.55), transparent 75%),
+    linear-gradient(180deg, transparent 0%, rgba(20,33,61,.03) 100%);
+  border-radius: 32px;
+  pointer-events: none;
+}
+
+/* Central support card */
+.support-card {
+  position: absolute;
+  left: 0; top: 4%; bottom: 4%;
+  right: clamp(150px, 32%, 200px);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-xl);
+  padding: 18px 20px;
+  display: flex; flex-direction: column;
+  gap: 12px;
+  transform:
+    rotateX(var(--hero-rx, 0deg))
+    rotateY(var(--hero-ry, 0deg))
+    rotate(-1deg)
+    translateZ(24px);
+  transform-style: preserve-3d;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease;
+  will-change: transform;
+}
+.support-card:hover { box-shadow: 0 36px 70px -18px rgba(20,33,61,.32), 0 10px 20px rgba(20,33,61,.08); }
+.sc-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+}
+.sc-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gold-2);
+}
+.sc-meta { font-size: 12px; color: var(--muted); font-family: var(--ff-mono); }
+.sc-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 500; line-height: 1.25; letter-spacing: -0.01em;
+  margin: 0; color: var(--ink);
+}
+.sc-canvas {
+  flex: 1; min-height: 0;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  padding: 10px 12px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.sc-canvas svg { width: 100%; height: 100%; max-height: 200px; }
+.sc-steps {
+  display: flex; gap: 4px; align-items: center; flex-wrap: wrap;
+}
+.sc-step {
+  font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  color: var(--muted); padding: 6px 11px; border-radius: 999px;
+  background: transparent; border: 1px solid transparent;
+  font-family: inherit; cursor: pointer;
+  transition: color .2s, background .2s, border-color .2s;
+  /* Touch target minimum */
+  min-height: 36px; display: inline-flex; align-items: center;
+}
+.sc-step:hover { color: var(--ink); }
+.sc-step:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.sc-step.active {
+  color: var(--ink); background: var(--gold-tint);
+  border-color: rgba(201,162,75,.4);
+}
+
+/* SVG layers — fade transition between states */
+.hl-layer { transition: opacity .55s ease; }
+.hl-layer[data-hidden="true"] { opacity: 0; pointer-events: none; }
+/* Default hidden layers before JS runs (state 0 = Comprendre) */
+.hl-layer[data-layer="zones"],
+.hl-layer[data-layer="max"],
+.hl-layer[data-layer="pulse"] { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .hl-layer { transition: none; }
+}
+.sc-keypoint {
+  background: var(--bg-2);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-md);
+  padding: 10px 12px;
+  font-size: 13px; color: var(--ink-soft); line-height: 1.45;
+}
+.sc-keypoint-label {
+  display: inline-block;
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gold-2);
+  margin-right: 8px;
+}
+
+/* Satellite cards */
+.sat {
+  position: absolute; right: 0;
+  width: clamp(140px, 16vw, 175px);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-md);
+  padding: 13px 14px 12px;
+  display: flex; flex-direction: column; gap: 8px;
+  transform-style: preserve-3d;
+  transition: box-shadow .25s ease, transform .25s ease;
+  will-change: transform;
+}
+.sat:hover { box-shadow: var(--sh-lg); }
+.sat-head { display: flex; align-items: center; gap: 9px; }
+.sat-ico {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+}
+.sat-ico svg { width: 14px; height: 14px; }
+.sat-title {
+  font-family: var(--ff-serif);
+  font-size: 14px; font-weight: 600;
+  color: var(--ink); line-height: 1.2;
+}
+.sat-list {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.sat-list li {
+  font-size: 12.5px; line-height: 1.35; color: var(--ink-soft);
+  display: flex; align-items: flex-start; gap: 6px;
+}
+.sat-list li::before {
+  content: ""; width: 11px; height: 11px; flex: none; margin-top: 3px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2361B89F' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='4 12 10 18 20 6'/></svg>");
+  background-repeat: no-repeat; background-size: contain;
+}
+.sat-summary { display: none; font-size: 12.5px; color: var(--ink-soft); line-height: 1.4; }
+
+.sat-avant {
+  top: 0;
+  transform:
+    rotateX(var(--hero-rx-small, 0deg))
+    rotateY(var(--hero-ry-small, 0deg))
+    rotate(2deg)
+    translateZ(46px);
+}
+.sat-avant .sat-ico { background: var(--gold-tint); color: var(--gold-2); }
+.sat-pendant {
+  top: calc(50% - 75px);
+  transform:
+    rotateX(var(--hero-rx-small, 0deg))
+    rotateY(var(--hero-ry-small, 0deg))
+    rotate(-1.5deg)
+    translateZ(72px);
+}
+.sat-pendant .sat-ico { background: var(--navy-tint); color: var(--navy); }
+.sat-apres {
+  bottom: 0;
+  transform:
+    rotateX(var(--hero-rx-small, 0deg))
+    rotateY(var(--hero-ry-small, 0deg))
+    rotate(1.5deg)
+    translateZ(54px);
+}
+.sat-apres .sat-ico { background: var(--green-tint); color: #1f6b54; }
+
+@media (prefers-reduced-motion: reduce) {
+  .support-card, .sat { transform: none !important; }
+}
+
+@media (max-width: 860px) {
+  .hero-stage {
+    height: auto; display: flex; flex-direction: column; gap: 12px;
+    width: 100%; max-width: 480px;
+    justify-self: center; margin: 4px auto 0;
+  }
+  .support-card {
+    position: relative; left: auto; right: auto; top: auto; bottom: auto;
+    transform: none; min-height: 340px;
+  }
+  .sat {
+    position: relative; right: auto; top: auto; bottom: auto;
+    width: 100%; transform: none;
+  }
+  .sat-list { display: none; }
+  .sat-summary { display: block; }
+  .sat-title { font-size: 15px; }
+}
+
+@media (max-width: 600px) {
+  .support-card { padding: 14px 16px; min-height: 320px; }
+  .sc-title { font-size: 15px; }
+  .sc-keypoint { font-size: 12.5px; }
+}
+
+/* ===== Section shell ===== */
+section { position: relative; }
+.section { padding: clamp(48px, 5.6vw, 76px) 0; }
+.section.alt { background: var(--bg-2); }
+.section.alt + .section.alt { padding-top: clamp(8px, 2vw, 24px); }
+.section.alt + .section:not(.alt) { padding-top: clamp(40px, 4.8vw, 64px); }
+.section-head { max-width: 720px; margin-bottom: clamp(24px, 3.2vw, 38px); }
+.section-head .eyebrow { margin-bottom: 14px; display: inline-block; }
+.section-head p { margin-top: 16px; }
+.qual-head { max-width: none; }
+.qual-head h2 { font-size: clamp(28px, 3vw, 38px); white-space: nowrap; }
+@media (max-width: 1080px) { .qual-head h2 { white-space: normal; } }
+
+/* ===== Qualification builder ===== */
+.qual {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-xl); padding: clamp(24px, 4vw, 40px);
+  box-shadow: var(--sh-lg); display: grid; gap: 24px; position: relative;
+}
+.qual-row { display: grid; gap: 12px; }
+.qual-row .label {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13.5px; font-weight: 700; color: var(--ink);
+}
+.qual-row .label .step {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--gold-tint); color: var(--gold-2);
+  font-family: var(--ff-mono); font-size: 12px; font-weight: 700;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 10px 14px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--bg);
+  font-size: 14px; font-weight: 500; color: var(--ink-soft);
+  transition: all .15s ease;
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px;
+}
+.chip:hover { border-color: var(--ink-soft); color: var(--ink); }
+.chip[aria-pressed="true"] {
+  background: var(--gold-tint); color: var(--ink); border-color: rgba(201,162,75,.65);
+  box-shadow: var(--sh-sm);
+}
+.chip[aria-pressed="true"] .dot { background: var(--gold-2); }
+.chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
+
+@media (max-width: 600px) {
+  /* Flex 2-col : si nombre impair, la dernière pill se centre naturellement (justify-content) */
+  .chips {
+    display: flex; flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .chip {
+    flex: 1 1 calc(50% - 4px);
+    max-width: calc(50% - 4px);
+    justify-content: center;
+    padding: 9px 12px;
+    font-size: 13.5px;
+    min-height: 40px;
+    gap: 6px;
+  }
+}
+@media (max-width: 420px) {
+  .chip {
+    font-size: 12.5px;
+    padding: 8px 10px;
+    min-height: 38px;
+  }
+}
+
+.qual-input {
+  width: 100%; padding: 12px 14px;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--r-md); font-size: 14.5px; color: var(--ink);
+  outline: none; transition: border-color .15s;
+}
+.qual-input:focus { border-color: var(--navy); background: var(--surface); }
+
+.qual-preview {
+  --preview-space: 18px;
+  background: var(--bg); border: 1px dashed var(--border);
+  border-radius: var(--r-md); padding: 18px var(--preview-space);
+  font-size: 14.5px; color: var(--ink-soft); line-height: 1.55;
+  display: flex; gap: var(--preview-space); align-items: center;
+}
+.qual-preview .ico {
+  flex: none; width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 10px; background: var(--whatsapp); color: #fff;
+}
+.qual-preview .ico svg { width: 22px; height: 22px; transform: none; }
+.qual-action { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.qual-action .helper { font-size: 13px; color: var(--muted); }
+
+/* ===== Profil cards ===== */
+.profils {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+.profil {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 20px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 14px;
+  align-items: start;
+  transition: transform .2s, border-color .2s, box-shadow .25s;
+}
+.profil:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: var(--sh-md); }
+.profil .icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--gold-tint); color: var(--gold-2);
+  grid-row: 1; grid-column: 1;
+}
+.profil h3 {
+  grid-row: 1; grid-column: 2;
+  align-self: center;
+}
+.profil p {
+  font-size: 14.5px; color: var(--ink-soft); line-height: 1.5;
+  grid-column: 1 / -1;
+}
+
+/* ===== Démos cards ===== */
+.demo-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 18px;
+}
+.demo {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg); overflow: hidden;
+  display: flex; flex-direction: column; box-shadow: var(--sh-sm);
+  transition: transform .2s ease, box-shadow .25s ease;
+}
+.demo:hover { transform: translateY(-3px); box-shadow: var(--sh-lg); }
+.demo-chrome {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px; background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+}
+.demo-chrome .dots { display: inline-flex; gap: 5px; }
+.demo-chrome .dots i { width: 9px; height: 9px; border-radius: 50%; background: #d8cdb8; }
+.demo-chrome .dots i:nth-child(1) { background: #E76F51; }
+.demo-chrome .dots i:nth-child(2) { background: var(--gold); }
+.demo-chrome .dots i:nth-child(3) { background: #61B89F; }
+.demo-chrome .addr {
+  flex: 1; font-family: var(--ff-mono); font-size: 11.5px; color: var(--muted);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 10px;
+  text-align: center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+.demo-body { padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.demo-thumb {
+  height: 130px; border-radius: var(--r-md);
+  position: relative; overflow: hidden; margin-bottom: 4px;
+  display: flex; align-items: center; justify-content: center;
+}
+.demo-thumb.chem { background: linear-gradient(135deg, #EEF0FB 0%, #DDE2F4 100%); }
+.demo-thumb.physics { background: linear-gradient(135deg, #EAF0F8 0%, #D8E2F1 100%); }
+.demo-thumb.math { background: linear-gradient(135deg, #FBF1D8 0%, #F3E1B5 100%); }
+.demo-thumb.acc  { background: linear-gradient(135deg, #E6F0EA 0%, #CFE3D6 100%); }
+.demo h3 { font-family: var(--ff-serif); font-weight: 500; }
+.demo p { font-size: 14.5px; color: var(--muted); }
+.demo-cta {
+  margin-top: auto; display: flex; align-items: center; justify-content: space-between;
+  padding-top: 8px;
+}
+.demo-cta button {
+  font-size: 14px; font-weight: 600; color: var(--navy);
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 14px; border-radius: 8px; margin: -10px -14px -10px 0;
+  min-height: 44px;
+}
+.demo-cta button:hover { background: var(--navy-tint); }
+.demo-cta button svg { transition: transform .2s; }
+.demo-cta button:hover svg { transform: translateX(2px); }
+.demo-meta { font-size: 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.demo-thumb svg { width: 100%; height: 100%; padding: 14px; }
+
+/* ===== Method timeline ===== */
+.method { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: flex-start; }
+@media (max-width: 880px) { .method { grid-template-columns: 1fr; } }
+.method-quote {
+  font-family: var(--ff-serif); font-size: clamp(20px, 2.1vw, 24px);
+  line-height: 1.4; font-style: italic; color: var(--ink);
+  border-left: 3px solid var(--gold); padding-left: 22px; margin-top: 8px;
+}
+.timeline { list-style: none; margin: 0; padding: 0; position: relative; counter-reset: step; }
+.timeline::before {
+  content: ""; position: absolute; left: 19px; top: 12px; bottom: 12px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold), var(--navy));
+  opacity: .35; border-radius: 2px;
+}
+.timeline li { position: relative; padding: 12px 0 12px 56px; counter-increment: step; }
+.timeline li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute; left: 0; top: 12px;
+  width: 40px; height: 40px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--ff-mono); font-size: 13px; color: var(--ink);
+  box-shadow: var(--sh-sm);
+}
+.timeline li h3 {
+  font-size: 18px; font-weight: 600;
+  font-family: var(--ff-sans); margin-bottom: 4px;
+}
+.timeline li p { font-size: 14.5px; color: var(--muted); }
+.timeline li:hover::before { border-color: var(--gold); color: var(--gold-2); }
+
+/* ===== Subjects ===== */
+.subject-section {
+  display: grid;
+  gap: 28px;
+}
+.subject-kicker {
+  max-width: 74ch;
+  display: grid;
+  gap: 14px;
+}
+.subject-quote {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: clamp(17px, 1.55vw, 20px);
+  color: var(--ink-soft);
+}
+.subject-quote cite {
+  font-style: normal;
+  color: var(--muted);
+}
+.subject-subtitle {
+  max-width: 70ch;
+}
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 520px));
+  justify-content: center;
+  gap: 28px;
+  align-items: start;
+}
+.subject-grid--all .subject-card { transform: none !important; }
+.subject-grid .subject-card:only-child { transform: none !important; }
+@media (min-width: 1081px) {
+  .subject-card:first-child {
+    transform: rotate(-1.5deg);
+    transform-origin: top left;
+  }
+  .subject-card:last-child {
+    transform: translateY(72px) rotate(1.5deg);
+    transform-origin: top right;
+  }
+}
+@media (max-width: 1080px) {
+  .subject-grid { grid-template-columns: 1fr; }
+}
+.subject-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  padding: 26px;
+  box-shadow: var(--sh-sm);
+  display: grid;
+  gap: 16px;
+  transition: border-color .2s, box-shadow .25s;
+}
+.subject-card:hover {
+  border-color: rgba(201,162,75,.55);
+  box-shadow: var(--sh-md);
+}
+.subject-head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+}
+.subject-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.subject-badge svg {
+  width: 21px;
+  height: 21px;
+}
+.subject-badge.math-symbol {
+  font-family: var(--ff-serif);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+}
+.subject-card[data-subject="Physique"] .subject-badge svg {
+  width: 22px;
+  height: 22px;
+}
+.subject-card[data-subject="Maths"] .subject-badge { background: var(--navy-tint); color: var(--navy); }
+.subject-card[data-subject="Physique"] .subject-badge { background: var(--gold-tint); color: var(--gold-2); }
+.subject-card[data-subject="Chimie"] .subject-badge { background: var(--rose-tint); color: #A64B36; }
+.subject-card[data-subject="Comptabilité"] .subject-badge { background: var(--green-tint); color: #1f6b54; }
+.subject-card[data-subject="Collège"] .subject-badge { background: var(--gold-tint); color: var(--gold-2); }
+.subject-name {
+  font-family: var(--ff-serif);
+  font-size: 23px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.subject-hook {
+  font-family: var(--ff-serif);
+  font-size: clamp(28px, 2.35vw, 34px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.subject-visual {
+  min-height: 242px;
+  border-radius: 20px;
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(180deg, rgba(255,252,246,.92) 0%, rgba(247,241,230,.88) 100%);
+  padding: 18px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.subject-visual svg {
+  width: 100%;
+  height: 100%;
+}
+.subject-resolution {
+  font-size: 15px;
+  line-height: 1.56;
+  color: var(--ink);
+}
+.subject-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 8px 12px;
+  margin: -8px -12px -8px 0;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 600;
+}
+.subject-toggle:hover {
+  color: var(--navy);
+  background: var(--navy-tint);
+}
+.subject-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+.subject-grid--compact {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  justify-content: stretch;
+  gap: 18px;
+  align-items: stretch;
+}
+.subject-grid--compact .subject-card {
+  min-width: 0;
+  padding: 18px;
+  border-radius: var(--r-lg);
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  transform: none !important;
+}
+.subject-grid--compact .subject-head { gap: 10px; }
+.subject-grid--compact .subject-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+}
+.subject-grid--compact .subject-badge.math-symbol { font-size: 22px; }
+.subject-grid--compact .subject-name { font-size: 20px; }
+.subject-grid--compact .subject-hook {
+  font-size: clamp(21px, 1.75vw, 25px);
+  line-height: 1.08;
+}
+.subject-grid--compact .subject-visual {
+  min-height: 150px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 14px;
+}
+.subject-grid--compact .subject-resolution {
+  font-size: 14px;
+  line-height: 1.48;
+}
+.subject-grid--compact .subject-toggle { margin-top: auto; }
+@media (max-width: 1080px) and (min-width: 701px) {
+  .subject-grid--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .demo-grid,
+  .subject-grid--compact {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 82vw);
+    justify-content: start;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
+    padding-bottom: 10px;
+  }
+  .demo-grid .demo,
+  .subject-grid--compact .subject-card {
+    padding: 16px;
+    scroll-snap-align: start;
+  }
+  .demo-grid .demo { padding: 0; }
+  .subject-grid--compact .subject-hook { font-size: 22px; }
+  .subject-grid--compact .subject-visual {
+    min-height: 146px;
+    height: 146px;
+  }
+}
+.subject-detail {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 14px;
+  display: none;
+}
+.subject-card[data-open="true"] .subject-detail { display: grid; }
+.subject-detail-title {
+  font-family: var(--ff-serif);
+  font-size: 20px;
+  line-height: 1.18;
+  color: var(--ink);
+}
+.subject-detail-body {
+  display: grid;
+  gap: 12px;
+}
+.subject-detail-body p,
+.subject-detail-body li {
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+.subject-detail-body ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.subject-detail-body strong { color: var(--ink); }
+.subject-math {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.subject-formulas {
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 6px;
+}
+.subject-formulas code {
+  font-family: var(--ff-mono);
+  font-size: 13px;
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+.visual-tree,
+.visual-flow,
+.visual-ledger {
+  width: 100%;
+  height: 100%;
+}
+.visual-tree text,
+.visual-flow text,
+.visual-ledger text,
+.visual-mirror text {
+  font-family: var(--ff-sans);
+}
+.visual-mirror,
+.visual-tree {
+  width: 100%;
+  height: 100%;
+}
+.visual-tree {
+  overflow: visible;
+}
+.visual-flow .visual-pill,
+.visual-ledger .visual-pill,
+.visual-mirror .visual-pill {
+  fill: rgba(255,255,255,.92);
+  stroke: rgba(201,162,75,.35);
+}
+.visual-tree text {
+  font-family: var(--ff-mono);
+  font-weight: 400;
+}
+.visual-tree .tree-structure {
+  fill: #B9BEC9;
+}
+.visual-tree .tree-label {
+  fill: var(--ink);
+}
+.visual-tree .tree-final {
+  fill: var(--gold-2);
+  font-weight: 500;
+}
+.visual-tree .tree-final-accent {
+  fill: #B88427;
+  font-weight: 600;
+}
+.visual-tree .tree-separator {
+  stroke: rgba(20,33,61,.14);
+  stroke-width: 1;
+}
+.visual-tree .branch,
+.visual-flow .branch,
+.visual-ledger .branch,
+.visual-mirror .branch {
+  stroke: rgba(20,33,61,.26);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  fill: none;
+}
+.visual-flow .arrow,
+.visual-ledger .arrow,
+.visual-mirror .arrow {
+  stroke: rgba(20,33,61,.4);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  fill: none;
+  marker-end: url(#subjectArrow);
+}
+.visual-caption {
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+.visual-value {
+  font-size: 13.5px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+.visual-soft {
+  font-size: 12px;
+  fill: var(--ink-soft);
+}
+.visual-mirror .math-axis-label {
+  fill: var(--muted);
+  font-size: 12.5px;
+}
+.visual-mirror .math-diag-label {
+  fill: #B88427;
+  font-size: 13px;
+  font-style: italic;
+}
+.visual-mirror .axis {
+  stroke: #6F7385;
+  stroke-width: 1.3;
+}
+.visual-mirror .diag {
+  stroke: #C9A24B;
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+.visual-mirror .curve-exp {
+  stroke: #14213D;
+  stroke-width: 2.8;
+  fill: none;
+}
+.visual-mirror .curve-ln {
+  stroke: #3E8D82;
+  stroke-width: 2.8;
+  fill: none;
+}
+.subject-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 5vw;
+  background: rgba(20,33,61,.48);
+  backdrop-filter: blur(8px);
+}
+.subject-modal[open] { display: flex; }
+.subject-modal-shell {
+  width: min(980px, 100%);
+  max-height: min(86vh, 920px);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  box-shadow: var(--sh-xl);
+  display: flex;
+  flex-direction: column;
+}
+.subject-modal-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 30px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(20,33,61,.22) transparent;
+}
+.subject-modal-scroll::-webkit-scrollbar { width: 6px; }
+.subject-modal-scroll::-webkit-scrollbar-track { background: transparent; border-radius: 999px; }
+.subject-modal-scroll::-webkit-scrollbar-thumb { background: rgba(20,33,61,.22); border-radius: 999px; }
+.subject-modal-scroll::-webkit-scrollbar-thumb:hover { background: rgba(20,33,61,.34); }
+.subject-modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex: none;
+  padding: 10px 14px;
+  background: #F4EEE5;
+  border-bottom: 1px solid var(--border);
+}
+.subject-modal-top .dots { display: inline-flex; gap: 5px; }
+.subject-modal-top .dots i { width: 11px; height: 11px; border-radius: 50%; background: #d8cdb8; flex: none; }
+.subject-modal-top .dots i:nth-child(1) { background: #E76F51; cursor: pointer; }
+.subject-modal-top .dots i:nth-child(2) { background: var(--gold); }
+.subject-modal-top .dots i:nth-child(3) { background: #61B89F; }
+.subject-modal-kicker {
+  flex: 1;
+  font-family: var(--ff-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.subject-modal-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.06;
+  color: var(--ink);
+  padding: 18px 28px 0;
+  margin: 0;
+}
+/* Shared modern close button — used by both demo and méthodo modals */
+.modal-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0;
+  flex: none;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.modal-close-btn:hover {
+  background: #FBEBE7;
+  color: #E76F51;
+  border-color: #F0D5CB;
+}
+.modal-close-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.subject-modal-body,
+.subject-detail-body {
+  padding: 18px 28px 0;
+}
+.subject-modal-body {
+  display: grid;
+  gap: 20px;
+}
+.reasoning-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.reasoning-card {
+  background: linear-gradient(180deg, rgba(255,251,244,.96) 0%, rgba(248,242,231,.94) 100%);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 14px 14px 12px;
+  display: grid;
+  gap: 10px;
+}
+.reasoning-card svg {
+  width: 100%;
+  height: 158px;
+  display: block;
+}
+.reasoning-label {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--ink);
+  font-weight: 600;
+}
+.reasoning-prose {
+  display: grid;
+  gap: 16px;
+}
+.reasoning-lead {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--ink);
+}
+.reasoning-prose p {
+  font-size: 15px;
+  line-height: 1.72;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.reasoning-step {
+  display: grid;
+  gap: 8px;
+}
+.reasoning-step h4 {
+  margin: 0;
+  font-family: var(--ff-serif);
+  font-size: 21px;
+  line-height: 1.16;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.reasoning-step h4::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex: none;
+}
+.reasoning-note {
+  background: linear-gradient(180deg, rgba(246,236,208,.78) 0%, rgba(250,242,225,.95) 100%);
+  border: 1px solid rgba(201,162,75,.28);
+  border-radius: 18px;
+  padding: 16px 18px;
+}
+.reasoning-note p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.68;
+  color: var(--ink);
+}
+.exercise-box {
+  background: linear-gradient(180deg, rgba(255,251,244,.96) 0%, rgba(248,242,231,.94) 100%);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 16px 18px;
+  display: grid;
+  gap: 14px;
+}
+.exercise-kicker {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+}
+.exercise-box p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.68;
+  color: var(--ink);
+}
+.exercise-diagram {
+  width: min(588px, 100%);
+  height: 176px;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255,252,246,.82);
+  padding: 10px 12px;
+}
+.exercise-diagram svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.reasoning-intro {
+  font-family: var(--ff-serif);
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.35;
+  font-style: italic;
+  color: var(--ink);
+}
+.formula-box {
+  background: rgba(255,252,246,.9);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 6px;
+}
+.formula-box code,
+.assembly-block code,
+.assembly-flow code {
+  font-family: var(--ff-mono);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+.assembly-block {
+  display: grid;
+  gap: 12px;
+}
+.reasoning-step--assembly {
+  position: relative;
+}
+.assembly-caption {
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.physics-assembly-stage {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  isolation: isolate;
+}
+.assembly-flow {
+  background: rgba(255,252,246,.9);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 12px;
+  position: relative;
+}
+.piece {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(201,162,75,.38);
+  background: linear-gradient(180deg, rgba(246,236,208,.92) 0%, rgba(255,245,221,.98) 100%);
+  box-shadow: 0 6px 14px rgba(20,33,61,.08);
+  color: #B88427;
+  font-weight: 600;
+}
+.piece-hole {
+  color: var(--muted);
+}
+.assembly-arrow {
+  color: #B9BEC9;
+  font-family: var(--ff-mono);
+  letter-spacing: 0;
+}
+.assembly-launch-wrap {
+  display: flex;
+  justify-content: center;
+}
+.assembly-launch {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: 1px solid rgba(201,162,75,.34);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(246,236,208,.96) 0%, rgba(255,245,221,.98) 100%);
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 18px rgba(20,33,61,.08);
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+.assembly-launch:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 22px rgba(20,33,61,.12);
+}
+.assembly-launch[hidden] {
+  display: none;
+}
+.assembly-flyer {
+  position: fixed;
+  z-index: 130;
+  pointer-events: none;
+  transition:
+    transform .75s cubic-bezier(0.4, 0, 0.2, 1),
+    left .75s cubic-bezier(0.4, 0, 0.2, 1),
+    top .75s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity .2s ease;
+}
+.assembly-hidden {
+  opacity: 0;
+}
+.assembly-inline-hidden {
+  visibility: hidden;
+}
+.assembly-snap {
+  animation: assembly-snap .15s ease;
+}
+.assembly-check {
+  display: inline-flex;
+  margin-left: 8px;
+  color: var(--gold-2);
+  transform: scale(0);
+  transform-origin: center;
+  opacity: 0;
+}
+.assembly-check.is-visible {
+  animation: assembly-check-in .28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.subject-modal-body.assembly-focus-active > .exercise-box,
+.subject-modal-body.assembly-focus-active > .reasoning-prose > .reasoning-intro,
+.subject-modal-body.assembly-focus-active > .reasoning-prose > .reasoning-step:not(.reasoning-step--assembly),
+.subject-modal-body.assembly-focus-active > .reasoning-prose > .reasoning-note {
+  opacity: .4;
+}
+.subject-modal-body .exercise-box,
+.subject-modal-body .reasoning-intro,
+.subject-modal-body .reasoning-step,
+.subject-modal-body .reasoning-note {
+  transition: opacity .24s ease;
+}
+@keyframes assembly-snap {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+@keyframes assembly-check-in {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Physics assembly v2 — gems & holes (P1: structure statique muette) ===== */
+.assembly-block-v2 {
+  display: grid;
+  gap: 18px;
+  margin-top: 14px;
+}
+.assembly-pool {
+  background: rgba(255,252,246,.6);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 14px 16px;
+}
+.assembly-pool-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.assembly-pool-gems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  align-items: center;
+}
+.assembly-formulas-v2 {
+  display: grid;
+  gap: 10px;
+}
+.assembly-formula {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ff-mono);
+  font-size: 15px;
+  color: var(--ink);
+  padding: 10px 14px;
+  background: rgba(255,252,246,.6);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+}
+.formula-result { font-weight: 700; color: var(--ink); margin-right: 4px; }
+.formula-op { color: var(--muted); padding: 0 2px; }
+.gem, .trou {
+  display: inline-block;
+  height: 40px;
+  vertical-align: middle;
+  line-height: 0;
+}
+.gem[data-shape="pentagon"], .trou[data-shape="pentagon"],
+.gem[data-shape="rounded"],  .trou[data-shape="rounded"],
+.gem[data-shape="circle"],   .trou[data-shape="circle"] { height: 46px; }
+.gem[data-shape="decagon"],  .trou[data-shape="decagon"] { height: 52px; }
+.gem svg, .trou svg { display: block; height: 100%; width: auto; }
+
+/* ── Gems & formules : compactés sur mobile (Fold + petits écrans) ── */
+@media (max-width: 600px) {
+  .assembly-formula {
+    font-size: 13px;
+    padding: 8px 10px;
+    gap: 4px;
+    line-height: 1.4;
+  }
+  .assembly-pool { padding: 10px 12px; }
+  .assembly-pool-gems { gap: 8px 8px; }
+  .gem, .trou { height: 30px; }
+  .gem[data-shape="pentagon"], .trou[data-shape="pentagon"],
+  .gem[data-shape="rounded"],  .trou[data-shape="rounded"],
+  .gem[data-shape="circle"],   .trou[data-shape="circle"] { height: 34px; }
+  .gem[data-shape="decagon"],  .trou[data-shape="decagon"] { height: 38px; }
+}
+@media (max-width: 420px) {
+  .assembly-formula { font-size: 12px; padding: 7px 9px; }
+  .gem, .trou { height: 26px; }
+  .gem[data-shape="pentagon"], .trou[data-shape="pentagon"],
+  .gem[data-shape="rounded"],  .trou[data-shape="rounded"],
+  .gem[data-shape="circle"],   .trou[data-shape="circle"] { height: 30px; }
+  .gem[data-shape="decagon"],  .trou[data-shape="decagon"] { height: 34px; }
+}
+.assembly-launch-wrap-v2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+}
+.assembly-launch-v2 {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border: 1px solid rgba(201,162,75,.34);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(246,236,208,.96) 0%, rgba(255,245,221,.98) 100%);
+  color: var(--navy);
+  font-family: var(--ff-sans);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 18px rgba(20,33,61,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.assembly-launch-v2:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 22px rgba(20,33,61,.12);
+}
+.assembly-launch-v2:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.assembly-launch-v2.is-fading {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+/* Hidden derived gems (a, F, W initially invisible) */
+.gem[data-gem-state="hidden"] {
+  opacity: 0;
+  transform: scale(.6);
+  pointer-events: none;
+  transition: opacity .35s ease, transform .35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gem[data-gem-state="hidden"][data-revealed="true"] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Snap effect on arrival (added briefly when a trou is filled) */
+.gem.gem-snap {
+  animation: gem-snap-anim .25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes gem-snap-anim {
+  0%   { transform: scale(.7); }
+  55%  { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+/* Formula emit — "= [gem]" appended at the end of a filled formula */
+.formula-emit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 4px;
+  opacity: 0;
+  transform: scale(.7);
+  transform-origin: left center;
+  transition: opacity .35s ease, transform .35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.formula-emit[data-emit-state="visible"] {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+.formula-equals {
+  font-family: var(--ff-mono);
+  font-weight: 700;
+  color: var(--muted);
+  padding: 0 2px;
+}
+
+/* Final gem (W) — gold halo with continuous breathing shimmer */
+.gem.gem-final-glow {
+  animation: gem-shine-pulse 2.2s ease-in-out infinite;
+}
+@keyframes gem-shine-pulse {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 8px rgba(245, 214, 126, .65))
+      drop-shadow(0 0 18px rgba(232, 187, 95, .50))
+      drop-shadow(0 4px 10px rgba(20, 33, 61, .10));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 16px rgba(245, 214, 126, .95))
+      drop-shadow(0 0 34px rgba(232, 187, 95, .75))
+      drop-shadow(0 4px 10px rgba(20, 33, 61, .10));
+  }
+}
+
+/* Check that appears next to W */
+.assembly-check-v2 {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  color: var(--gold-2);
+  font-size: 18px;
+  font-weight: 700;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform .28s cubic-bezier(0.4, 0, 0.2, 1), opacity .28s ease;
+}
+.assembly-check-v2.is-visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Flyer — clone of a gem in flight from Données to trou */
+.assembly-flyer-v2 {
+  position: fixed;
+  pointer-events: none;
+  z-index: 200;
+  margin: 0;
+  transition:
+    left .55s cubic-bezier(0.4, 0, 0.2, 1),
+    top .55s cubic-bezier(0.4, 0, 0.2, 1),
+    width .55s cubic-bezier(0.4, 0, 0.2, 1),
+    height .55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gem[data-gem-state="hidden"],
+  .gem.gem-snap,
+  .gem.gem-final-pulse,
+  .assembly-check-v2,
+  .assembly-flyer-v2 {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.answer-line {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  font-weight: 600;
+}
+.answer-line strong {
+  color: var(--gold-2);
+}
+.modal-graph-axis {
+  stroke: rgba(20,33,61,.34);
+  stroke-width: 1.15;
+}
+.modal-graph-diag {
+  stroke: #C9A24B;
+  stroke-width: 1.75;
+  stroke-dasharray: 4 4;
+}
+.modal-graph-primary {
+  stroke: #14213D;
+  stroke-width: 2.45;
+  fill: none;
+}
+.modal-graph-secondary {
+  stroke: #3E8D82;
+  stroke-width: 2.45;
+  fill: none;
+}
+.modal-graph-guide {
+  stroke: #C9CED8;
+  stroke-width: 1.1;
+  stroke-dasharray: 3 3;
+}
+.modal-graph-text {
+  fill: var(--muted);
+  font-size: 11.5px;
+  font-family: var(--ff-sans);
+}
+@media (max-width: 1080px) {
+  .subject-card:first-child,
+  .subject-card:last-child { transform: none; }
+  .reasoning-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .subject-card { padding: 22px; }
+  .subject-hook { font-size: clamp(26px, 8vw, 31px); }
+  .subject-visual { min-height: 212px; }
+  .subject-modal {
+    padding: 0;
+    align-items: end;
+  }
+  .subject-modal-shell {
+    width: 100%;
+    max-height: min(88vh, 920px);
+    border-radius: 26px 26px 0 0;
+  }
+  .subject-modal-scroll {
+    padding-bottom: 24px;
+  }
+  .subject-modal-top {
+    padding: 10px 12px;
+  }
+  .subject-modal-title {
+    padding: 16px 20px 0;
+  }
+  .subject-modal-body,
+  .subject-detail-body {
+    padding: 16px 20px 0;
+  }
+  .reasoning-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .reasoning-card svg { height: 136px; }
+  .exercise-diagram { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .subject-card,
+  .subject-toggle svg { transition: none; }
+}
+
+/* ===== Tarif ===== */
+.tarif-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  gap: 18px;
+  align-items: stretch;
+}
+.price-card,
+.tarif-mini {
+  background: #FFFCF6;
+  border: 1px solid var(--border);
+  box-shadow: var(--sh-sm);
+}
+.price-card {
+  border-radius: var(--r-xl);
+  padding: clamp(26px, 4vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.price-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 2px solid rgba(201,162,75,.95);
+}
+.price-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+}
+.price-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  color: var(--ink);
+}
+.price-value {
+  font-family: var(--ff-serif);
+  font-size: clamp(68px, 6.4vw, 76px);
+  line-height: .9;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+.price-unit {
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.price-included {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: -8px;
+}
+.price-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.price-detail {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+}
+.price-card .btn {
+  width: 50%;
+  max-width: 380px;
+  min-width: 280px;
+  justify-content: center;
+}
+.price-card p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 58ch;
+}
+.price-proof {
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 16px 0;
+}
+.price-note {
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.tarif-side {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.tarif-mini {
+  border-radius: var(--r-md);
+  padding: 18px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 12px;
+  align-items: start;
+}
+.tarif-mini .mini-ico {
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: var(--navy-tint);
+  color: var(--navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  grid-row: 1; grid-column: 1;
+}
+.tarif-mini h3 {
+  grid-row: 1; grid-column: 2;
+  align-self: center;
+}
+.tarif-mini p {
+  grid-column: 1 / -1;
+}
+.tarif-mini .mini-ico svg {
+  width: 17px;
+  height: 17px;
+}
+.tarif-mini:nth-child(2) .mini-ico,
+.tarif-mini:nth-child(5) .mini-ico { background: var(--gold-tint); color: var(--gold-2); }
+.tarif-mini:nth-child(3) .mini-ico,
+.tarif-mini:nth-child(6) .mini-ico { background: var(--green-tint); color: #1f6b54; }
+.tarif-mini h3 {
+  font-family: var(--ff-sans);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.tarif-mini p {
+  font-size: 14px;
+  line-height: 1.48;
+  color: var(--ink-soft);
+}
+@media (max-width: 980px) {
+  .tarif-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .tarif-side { grid-template-columns: 1fr; }
+  .price-card { border-radius: var(--r-lg); }
+  .price-value { font-size: 58px; }
+  .price-card .btn { width: 100%; max-width: none; min-width: 0; }
+}
+
+/* ===== Final contact ===== */
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1.15fr;
+  box-shadow: var(--sh-lg);
+}
+@media (max-width: 880px) { .contact-card { grid-template-columns: 1fr; } }
+
+.contact-portrait {
+  background: var(--navy);
+  padding: 36px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+  color: rgba(255,255,255,.85);
+  min-height: 380px;
+}
+.contact-portrait::before {
+  content: ""; position: absolute; right: -20%; top: -20%;
+  width: 70%; height: 70%;
+  background: radial-gradient(closest-side, rgba(201,162,75,.22), transparent 70%);
+}
+.contact-portrait img.photo {
+  width: 108px; height: 108px; border-radius: 50%;
+  object-fit: cover; object-position: 50% 30%;
+  border: 2px solid rgba(255,255,255,.18);
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  position: relative; z-index: 1;
+}
+.contact-portrait .name {
+  font-family: var(--ff-serif); font-size: 26px;
+  color: #fff; font-weight: 500; letter-spacing: -0.01em;
+  margin-top: 18px; line-height: 1.15; position: relative; z-index: 1;
+}
+.contact-portrait .role { font-size: 14px; color: rgba(255,255,255,.65); margin-top: 6px; position: relative; z-index: 1; }
+.contact-portrait .credits { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.9); margin-top: 12px; line-height: 1.55; position: relative; z-index: 1; }
+.contact-portrait .bio { font-size: 13.5px; color: rgba(255,255,255,.72); line-height: 1.65; margin-top: 14px; position: relative; z-index: 1; }
+.contact-portrait .linkedin {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85);
+  margin-top: 12px; position: relative; z-index: 1;
+  text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,.3);
+}
+.contact-portrait .linkedin:hover { color: #fff; text-decoration-color: var(--gold); }
+.contact-portrait .pull-quote {
+  font-family: var(--ff-serif); font-style: italic; font-size: 16px;
+  line-height: 1.75; color: rgba(255,255,255,.92);
+  margin-top: 40px; position: relative; z-index: 1;
+}
+.contact-portrait .pull-quote .pq {
+  color: var(--gold);
+  font-size: 50px;
+  line-height: 0;
+  font-style: normal;
+  vertical-align: -16px;
+}
+.contact-portrait .pull-quote .pq-open { margin-right: 6px; }
+.contact-portrait .pull-quote .pq-close { margin-left: 6px; }
+.contact-portrait .proofs {
+  display: grid; gap: 8px;
+  margin-top: 22px;
+  position: relative; z-index: 1;
+}
+.contact-portrait .proofs span {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 13.5px; font-weight: 600;
+  color: rgba(255,255,255,.86);
+}
+.contact-portrait .proofs span::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--gold);
+}
+.contact-portrait .sig {
+  margin-top: auto; padding-top: 28px;
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+}
+.contact-portrait .sig img { filter: brightness(0) invert(1); opacity: .90; width: auto; }
+.contact-portrait .sig .sig-logo { height: 82px; }
+.contact-portrait .sig .sig-sign { height: 56px; opacity: .82; margin-left: 4px; }
+
+.contact-form { padding: 36px; display: grid; gap: 18px; }
+.contact-form h3 {
+  font-family: var(--ff-serif); font-weight: 500; font-size: 26px;
+  margin-bottom: 2px;
+}
+.contact-form .lead-s { color: var(--ink-soft); font-size: 15px; }
+.fields { display: grid; gap: 12px; }
+.fields .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 520px) { .fields .row2 { grid-template-columns: 1fr; } }
+.fld { display: grid; gap: 6px; }
+.fld label { font-size: 12.5px; font-weight: 600; color: var(--ink-soft); letter-spacing: .02em; }
+.fld input, .fld select, .fld textarea {
+  width: 100%; min-width: 0;
+  padding: 11px 13px;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; font-size: 14.5px; color: var(--ink);
+  outline: none; transition: border-color .15s;
+  font-family: inherit;
+}
+.fld textarea { min-height: 90px; resize: vertical; }
+.fld input:focus, .fld select:focus, .fld textarea:focus { border-color: var(--navy); background: var(--surface); }
+.form-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.form-helper { font-size: 12px; color: var(--muted); }
+
+.fld label .opt { color: var(--muted); font-weight: 400; font-size: 0.9em; margin-left: 4px; }
+
+/* ===== FAQ ===== */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 780px;
+  margin: clamp(20px, 3vw, 32px) auto 0;
+}
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.faq-item[open] {
+  box-shadow: var(--sh-md);
+  border-color: rgba(201,162,75,.32);
+}
+.faq-item summary {
+  cursor: pointer;
+  padding: 18px 22px;
+  font-family: var(--ff-serif);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  transition: color .15s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-family: var(--ff-sans);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--gold-2);
+  line-height: 1;
+  flex: none;
+  transition: transform .25s ease;
+}
+.faq-item[open] summary::after { content: "−"; }
+.faq-item summary:hover { color: var(--navy-2); }
+.faq-item summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+  border-radius: 14px;
+}
+.faq-item .faq-body {
+  padding: 0 22px 18px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.faq-item .faq-body p { margin: 0; }
+.faq-item .faq-body p + p { margin-top: 8px; }
+
+.faq-cta {
+  margin-top: 44px;
+  text-align: center;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+.faq-cta-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(20px, 2.4vw, 24px);
+  font-weight: 500;
+  color: var(--ink);
+}
+.faq-cta-sub { font-size: 14.5px; color: var(--muted); margin-bottom: 6px; }
+.faq-cta-alt {
+  margin-top: 12px; font-size: 13.5px; color: var(--muted);
+  text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-color: rgba(111,115,133,.4);
+}
+@media (max-width: 600px) {
+  .faq-item summary { padding: 14px 16px; font-size: 16px; gap: 12px; }
+  .faq-item .faq-body { padding: 0 16px 14px; font-size: 14.5px; }
+}
+
+/* ===== Footer ===== */
+.foot {
+  padding: 36px 0 calc(36px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border); font-size: 13px; color: var(--muted);
+  background: var(--bg-2);
+}
+.foot .wrap {
+  display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center;
+}
+.foot img { height: 78px; width: auto; }
+.foot strong { font-weight: 700; }
+.foot ul { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 14px; }
+@media (max-width: 600px) {
+  .foot .wrap { grid-template-columns: 1fr; }
+}
+
+/* ===== Floating WA ===== */
+.fab {
+  position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom));
+  z-index: 60; background: var(--whatsapp); color: #062817;
+  width: 56px; height: 56px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 28px -8px rgba(37,211,102,.55), 0 6px 14px rgba(0,0,0,.12);
+}
+.fab::before {
+  content: ""; position: absolute; inset: -6px; border-radius: 50%;
+  border: 2px solid var(--whatsapp); opacity: .4;
+  animation: pulse 2.2s ease-out 3;
+}
+@keyframes pulse { 0% {transform:scale(.85);opacity:.6;} 100% {transform:scale(1.35);opacity:0;} }
+@media (min-width: 881px) { .fab { display: none; } }
+
+/* ===== Modal ===== */
+.modal {
+  position: absolute; top: 0; left: 0; width: 100%;
+  height: 100vh; height: 100dvh; z-index: 100;
+  display: none; align-items: center; justify-content: center;
+  padding: 4vw; background: rgba(20,33,61,.62);
+}
+.modal[open] { display: flex; animation: fadeIn .2s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-shell {
+  background: var(--surface); width: 100%; max-width: 1100px;
+  height: min(86vh, 900px); border-radius: var(--r-lg); overflow: hidden;
+  display: flex; flex-direction: column; box-shadow: var(--sh-xl);
+}
+.modal-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--bg-2);
+}
+.modal-head .dots { display: inline-flex; gap: 5px; }
+.modal-head .dots i { width: 11px; height: 11px; border-radius: 50%; background: #d8cdb8; }
+.modal-head .dots i:nth-child(1) { background: #E76F51; cursor: pointer; }
+.modal-head .dots i:nth-child(2) { background: var(--gold); }
+.modal-head .dots i:nth-child(3) { background: #61B89F; }
+.modal-head .title { font-family: var(--ff-mono); font-size: 12.5px; color: var(--muted); flex: 1; text-align: center; }
+.modal-head .close { padding: 10px 14px; border-radius: 8px; font-size: 13px; color: var(--ink-soft); min-height: 44px; display: inline-flex; align-items: center; }
+.modal-head .close:hover { background: rgba(0,0,0,.05); color: var(--ink); }
+.modal-scroll { flex: 1; overflow: auto; -webkit-overflow-scrolling: touch; }
+.modal iframe { width: 100%; height: 100%; border: 0; background: var(--bg); display: block; }
+
+/* ===== Reveal ===== */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* ── Neutralise les :hover collants sur appareils tactiles ── */
+@media (hover: none) {
+  .chip:hover { border-color: var(--border); color: var(--ink-soft); background: var(--bg); }
+  .demo:hover { transform: none; box-shadow: var(--sh-sm); }
+  .sc-step:hover { color: var(--muted); background: transparent; }
+  .demo-cta button:hover { background: none; }
+  .demo-cta button:hover svg { transform: none; }
+}
+
+@media (max-width: 520px) {
+  .hero-cta .btn { width: 100%; justify-content: center; }
+  .qual-action { flex-direction: column; align-items: stretch; }
+  .qual-action .btn { justify-content: center; }
+}
+
+/* ── Micro-breakpoint : Fold fermé (280 px) et très petits écrans (< 420 px) ── */
+@media (max-width: 420px) {
+  .contact-portrait { padding: 24px; min-height: auto; }
+  .contact-form { padding: 24px 20px; }
+  /* Logo footer moins imposant */
+  .foot img { height: 52px; }
+  /* Bouton WhatsApp du qual builder : autoriser le wrap pour ne pas déborder */
+  .qual-action .btn {
+    padding: 12px 16px;
+    font-size: 14px;
+    white-space: normal;
+    line-height: 1.25;
+    text-align: left;
+    min-height: 48px;
+    gap: 8px;
+  }
+  /* Tarif CTA pareil pour la cohérence */
+  .price-card .btn { white-space: normal; line-height: 1.25; padding: 14px 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header" id="header">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Le Déclic — accueil">
+      <img src="assets/logo-signature-no-text.png" alt="Le Déclic — par Hamza">
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#methode">Méthode</a>
+      <a href="#demos">Démos</a>
+      <a href="#tarif">Tarif</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-cta">
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile sheet -->
+<div class="menu-sheet" id="menuSheet" aria-hidden="true">
+  <div class="menu-sheet-card" role="dialog" aria-label="Menu">
+    <div class="row">
+      <img src="assets/logo-signature-no-text.png" alt="Le Déclic — par Hamza" style="height:40px;">
+      <button class="close" id="menuClose" aria-label="Fermer le menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+      </button>
+    </div>
+    <a href="#methode">Méthode</a>
+    <a href="#demos">Démos</a>
+    <a href="#tarif">Tarif</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-primary" data-wa data-wa-default href="#" rel="noopener" target="_blank" style="justify-content:center;">
+      <svg class="ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.3.6 4.5 1.74 6.45L3 29l6.74-1.77A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3Zm7.6 18.36c-.32.9-1.88 1.74-2.6 1.84-.66.1-1.5.13-2.4-.15a22 22 0 0 1-2.18-.8c-3.83-1.66-6.34-5.55-6.53-5.8-.19-.26-1.56-2.08-1.56-3.96 0-1.88.99-2.81 1.34-3.19.35-.38.77-.48 1.03-.48s.51 0 .74.01c.24.01.55-.09.86.65.32.78 1.08 2.7 1.18 2.9.1.2.16.42.03.68-.13.26-.19.42-.38.65-.19.23-.4.51-.57.69-.19.19-.39.4-.16.78.22.39.99 1.63 2.12 2.64 1.46 1.3 2.69 1.7 3.08 1.9.39.19.61.16.84-.09.23-.26.96-1.12 1.22-1.5.26-.39.51-.32.86-.2.35.13 2.25 1.06 2.63 1.25.39.19.65.29.74.45.1.16.1.94-.22 1.84Z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- ============== HERO ============== -->
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Cours particuliers — visio partout · présentiel à Paris et proche petite couronne</span>
+      </div>
+
+      <h1>
+        <span class="h1-main">Un cours préparé avant la séance</span><br>
+        <span class="h1-stress"><em>&amp;</em> un support que l'élève garde.</span>
+      </h1>
+
+      <p class="hero-sub lead">
+        Avant chaque séance, j'écoute le besoin précis : le chapitre, le blocage, ce qui a été essayé.
+        Je prépare un support fait pour cet élève-là, pas un cours générique.
+        Pendant la séance, on avance pas à pas ; après, il repart avec une méthode claire pour réviser seul.
+      </p>
+
+      <div class="author-card">
+        <img src="assets/hamza-hero.png" alt="Photo de Hamza" loading="lazy">
+        <div class="author-card-text">
+          <span class="author-card-name">Hamza</span>
+          <span class="author-card-role">ESSEC Grande École · Finance &amp; Analytics</span>
+          <ul class="author-card-credits">
+            <li>Major de promotion en classes préparatoires</li>
+            <li>Bac S — mention Très Bien</li>
+            <li>4 ans d'expérience en soutien scolaire</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="badges" aria-label="Matières et niveaux" style="margin-top:22px;">
+        <span class="badge"><span class="swatch" style="background:var(--navy)"></span>Maths</span>
+        <span class="badge"><span class="swatch" style="background:var(--gold)"></span>Physique</span>
+        <span class="badge"><span class="swatch" style="background:#E76F51"></span>Chimie</span>
+        <span class="badge"><span class="swatch" style="background:#61B89F"></span>Comptabilité</span>
+        <span class="badge lvl">Collège</span>
+        <span class="badge lvl">Lycée</span>
+        <span class="badge lvl">Bac</span>
+        <span class="badge lvl">Post-bac</span>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" data-wa data-wa-default href="#" rel="noopener" target="_blank">
+          <svg class="ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.3.6 4.5 1.74 6.45L3 29l6.74-1.77A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3Zm7.6 18.36c-.32.9-1.88 1.74-2.6 1.84-.66.1-1.5.13-2.4-.15a22 22 0 0 1-2.18-.8c-3.83-1.66-6.34-5.55-6.53-5.8-.19-.26-1.56-2.08-1.56-3.96 0-1.88.99-2.81 1.34-3.19.35-.38.77-.48 1.03-.48s.51 0 .74.01c.24.01.55-.09.86.65.32.78 1.08 2.7 1.18 2.9.1.2.16.42.03.68-.13.26-.19.42-.38.65-.19.23-.4.51-.57.69-.19.19-.39.4-.16.78.22.39.99 1.63 2.12 2.64 1.46 1.3 2.69 1.7 3.08 1.9.39.19.61.16.84-.09.23-.26.96-1.12 1.22-1.5.26-.39.51-.32.86-.2.35.13 2.25 1.06 2.63 1.25.39.19.65.29.74.45.1.16.1.94-.22 1.84Z"/></svg>
+          Me contacter sur WhatsApp
+        </a>
+        <a href="#demos" style="display:inline-block;margin-top:10px;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(111,115,133,.4);">Ou voir d'abord une démo de cours →</a>
+      </div>
+      <p class="hero-rate"><span class="rate-strong">35€/h</span> · préparation du support incluse</p>
+    </div>
+
+    <!-- Hero stage: central support card + Avant/Pendant/Après satellites -->
+    <div class="hero-stage" aria-label="Aperçu d'un support de cours">
+
+      <!-- Central support card — interactive (multi-state with continuous point animation) -->
+      <div class="support-card" id="supportCard">
+        <div class="sc-head">
+          <span class="sc-label">Support de cours</span>
+          <span class="sc-meta">Première · Maths</span>
+        </div>
+        <h4 class="sc-title">Lecture graphique — variations d'une fonction</h4>
+
+        <div class="sc-canvas">
+          <svg viewBox="0 0 320 175" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <defs>
+              <linearGradient id="gold-zone" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#C9A24B" stop-opacity="0.4"/>
+                <stop offset="1" stop-color="#C9A24B" stop-opacity="0.10"/>
+              </linearGradient>
+              <linearGradient id="navy-zone" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#14213D" stop-opacity="0.28"/>
+                <stop offset="1" stop-color="#14213D" stop-opacity="0.07"/>
+              </linearGradient>
+              <marker id="arrowhead-axis" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M 0 0 L 8 4 L 0 8 z" fill="#6F7385"/>
+              </marker>
+              <marker id="arrowhead-gold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#8E6A1F"/>
+              </marker>
+              <marker id="arrowhead-navy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#1F2D52"/>
+              </marker>
+            </defs>
+
+            <!-- Layer: zones (states 1,2,3) — fond + vraies flèches SVG + labels -->
+            <g class="hl-layer" data-layer="zones">
+              <rect x="20" y="20" width="155" height="120" fill="url(#gold-zone)"/>
+              <rect x="175" y="20" width="125" height="120" fill="url(#navy-zone)"/>
+              <!-- Grosses flèches directionnelles dans chaque zone -->
+              <path d="M 50 122 L 115 75" stroke="#8E6A1F" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowhead-gold)" opacity="0.55"/>
+              <path d="M 205 75 L 270 122" stroke="#1F2D52" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowhead-navy)" opacity="0.55"/>
+              <!-- Labels sobres en haut de chaque zone -->
+              <text x="48" y="34" font-family="JetBrains Mono, monospace" font-size="11" fill="#8E6A1F" font-weight="700">f' &gt; 0</text>
+              <text x="234" y="34" font-family="JetBrains Mono, monospace" font-size="11" fill="#1F2D52" font-weight="700">f' &lt; 0</text>
+            </g>
+
+            <!-- Layer: base — gridlines + axes + curve (always shown) -->
+            <g class="hl-layer" data-layer="base">
+              <!-- Subtle gridlines -->
+              <g stroke="#E7DECC" stroke-width="0.6" opacity="0.55">
+                <line x1="80" y1="20" x2="80" y2="140"/>
+                <line x1="140" y1="20" x2="140" y2="140"/>
+                <line x1="220" y1="20" x2="220" y2="140"/>
+                <line x1="280" y1="20" x2="280" y2="140"/>
+                <line x1="20" y1="50" x2="300" y2="50"/>
+                <line x1="20" y1="80" x2="300" y2="80"/>
+                <line x1="20" y1="110" x2="300" y2="110"/>
+              </g>
+              <!-- Tick marks -->
+              <g stroke="#6F7385" stroke-width="1.1">
+                <line x1="80" y1="138" x2="80" y2="143"/>
+                <line x1="140" y1="138" x2="140" y2="143"/>
+                <line x1="220" y1="138" x2="220" y2="143"/>
+                <line x1="280" y1="138" x2="280" y2="143"/>
+                <line x1="17" y1="50" x2="22" y2="50"/>
+                <line x1="17" y1="80" x2="22" y2="80"/>
+                <line x1="17" y1="110" x2="22" y2="110"/>
+              </g>
+              <!-- Axes with arrowheads -->
+              <line x1="20" y1="140" x2="306" y2="140" stroke="#6F7385" stroke-width="1.3" marker-end="url(#arrowhead-axis)"/>
+              <line x1="20" y1="140" x2="20" y2="14" stroke="#6F7385" stroke-width="1.3" marker-end="url(#arrowhead-axis)"/>
+              <!-- Axis labels -->
+              <text x="310" y="144" font-family="Fraunces, serif" font-size="13" font-style="italic" fill="#14213D">x</text>
+              <text x="10" y="14" font-family="Fraunces, serif" font-size="13" font-style="italic" fill="#14213D">y</text>
+              <text x="9" y="152" font-family="Plus Jakarta Sans, sans-serif" font-size="10" fill="#6F7385">O</text>
+              <!-- Curve f -->
+              <path d="M 22 128 C 70 128 130 38 175 36 S 270 110 300 118"
+                    stroke="#14213D" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Curve label "f" -->
+              <text x="246" y="68" font-family="Fraunces, serif" font-size="16" font-style="italic" font-weight="500" fill="#14213D">f</text>
+            </g>
+
+            <!-- Layer: max — vertical drop + peak circle + badge (states 2,3) -->
+            <g class="hl-layer" data-layer="max">
+              <line x1="175" y1="40" x2="175" y2="140" stroke="#B68D34" stroke-width="1.3" stroke-dasharray="2 3" opacity=".7"/>
+              <circle cx="175" cy="36" r="6" fill="#14213D" stroke="#FFFFFF" stroke-width="2.5"/>
+              <g transform="translate(196, 52)">
+                <rect x="0" y="0" width="84" height="22" rx="11" fill="#FFFFFF" stroke="#C9A24B" stroke-width="1.4"/>
+                <text x="42" y="15" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="700" fill="#14213D">✓ Maximum</text>
+              </g>
+            </g>
+
+            <!-- Layer: pulse — emphasis ring on the max (state 3 only) -->
+            <g class="hl-layer" data-layer="pulse">
+              <circle cx="175" cy="36" r="10" fill="none" stroke="#C9A24B" stroke-width="2.5" opacity="0.85">
+                <animate attributeName="r" values="10;20;10" dur="2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.85;0.05;0.85" dur="2s" repeatCount="indefinite"/>
+              </circle>
+            </g>
+
+            <!-- Layer: moving point + tangent + floating f'(x) label -->
+            <g class="hl-layer" data-layer="point">
+              <line id="hlTangent" x1="-28" y1="128" x2="72" y2="128" stroke="#C9A24B" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 4" opacity="0.95"/>
+              <g id="hlPointLabel" transform="translate(22 128)">
+                <rect x="-22" y="-26" width="44" height="16" rx="8" fill="#FFFFFF" stroke="#C9A24B" stroke-width="1.4"/>
+                <text x="0" y="-15" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#14213D">f'(x)</text>
+              </g>
+              <circle id="hlPoint" cx="22" cy="128" r="6" fill="#14213D" stroke="#FFFFFF" stroke-width="2.5"/>
+            </g>
+
+            <!-- Layer: scrubber — slider track + ticks + live x label + thumb -->
+            <g class="hl-layer" data-layer="scrubber">
+              <line x1="20" y1="160" x2="300" y2="160" stroke="#E7DECC" stroke-width="1.5" stroke-linecap="round"/>
+              <g stroke="#B68D34" stroke-width="1" opacity="0.5">
+                <line x1="80" y1="157" x2="80" y2="163"/>
+                <line x1="140" y1="157" x2="140" y2="163"/>
+                <line x1="220" y1="157" x2="220" y2="163"/>
+                <line x1="280" y1="157" x2="280" y2="163"/>
+              </g>
+              <text x="306" y="164" font-family="Fraunces, serif" font-size="12" font-style="italic" fill="#14213D">x</text>
+              <circle id="hlThumb" cx="22" cy="160" r="5" fill="#C9A24B" stroke="#FFFFFF" stroke-width="1.5"/>
+              <text id="hlThumbLabel" x="22" y="152" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#8E6A1F">x = 0.0</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="sc-steps" role="tablist" aria-label="Étapes du support">
+          <button type="button" class="sc-step" role="tab" aria-selected="true" data-state="0">Comprendre</button>
+          <button type="button" class="sc-step" role="tab" aria-selected="false" data-state="1">Repérer</button>
+          <button type="button" class="sc-step" role="tab" aria-selected="false" data-state="2">Méthode</button>
+          <button type="button" class="sc-step" role="tab" aria-selected="false" data-state="3">À retenir</button>
+        </div>
+
+        <div class="sc-keypoint">
+          <span class="sc-keypoint-label" id="hlKeypointLabel">Question</span>
+          <span id="hlKeypointText">Comment varie cette fonction ? On suit la pente en chaque point.</span>
+        </div>
+      </div>
+
+      <!-- Satellite 1: Avant la séance -->
+      <article class="sat sat-avant">
+        <div class="sat-head">
+          <span class="sat-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="16" rx="2"/>
+              <path d="M3 10h18M8 3v4M16 3v4"/>
+            </svg>
+          </span>
+          <h4 class="sat-title">Avant la séance</h4>
+        </div>
+        <ul class="sat-list">
+          <li>Chapitre ciblé</li>
+          <li>Blocage repéré</li>
+          <li>Objectif du cours</li>
+        </ul>
+        <p class="sat-summary">Chapitre, blocage et objectif identifiés en amont.</p>
+      </article>
+
+      <!-- Satellite 2: Pendant le cours -->
+      <article class="sat sat-pendant">
+        <div class="sat-head">
+          <span class="sat-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </span>
+          <h4 class="sat-title">Pendant le cours</h4>
+        </div>
+        <ul class="sat-list">
+          <li>Explication pas à pas</li>
+          <li>Exercice guidé</li>
+          <li>Correction ensemble</li>
+        </ul>
+        <p class="sat-summary">Explication, exercice et correction guidés ensemble.</p>
+      </article>
+
+      <!-- Satellite 3: Après le cours -->
+      <article class="sat sat-apres">
+        <div class="sat-head">
+          <span class="sat-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+          </span>
+          <h4 class="sat-title">Après le cours</h4>
+        </div>
+        <ul class="sat-list">
+          <li>Support conservé</li>
+          <li>Correction annotée</li>
+          <li>Exercices à refaire</li>
+        </ul>
+        <p class="sat-summary">Support, correction et exercices conservés pour réviser.</p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== PROFILS ============== -->
+<section class="section alt" id="profils-eleve">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <span class="eyebrow">Pour quel profil d'élève ?</span>
+      <h2>Si vous reconnaissez l'un de ces blocages, on peut travailler ensemble.</h2>
+    </header>
+    <div class="profils reveal">
+      <article class="profil">
+        <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+        <h3>Il comprend le cours,<br>mais bloque en exercice.</h3>
+        <p>On reconstruit la passerelle entre la théorie et l'application — le manque de méthode, pas le manque de compréhension.</p>
+      </article>
+      <article class="profil">
+        <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></span>
+        <h3>Il a accumulé des lacunes.</h3>
+        <p>On identifie les briques manquantes et on les remet en place dans le bon ordre, sans repartir de zéro inutilement.</p>
+      </article>
+      <article class="profil">
+        <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 2 6"/><path d="m18 2 4 4"/><circle cx="12" cy="13" r="7"/><path d="M12 9v4l3 2"/><path d="m9 20-1 2"/><path d="m15 20 1 2"/></svg></span>
+        <h3>Il panique avant les contrôles.</h3>
+        <p>On travaille la gestion du temps, les erreurs récurrentes, et on entraîne la confiance — pas seulement les connaissances.</p>
+      </article>
+      <article class="profil">
+        <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1m17.66-7.66l-4.24 4.24M9.58 14.42l-4.24 4.24m13.32 0l-4.24-4.24M9.58 9.58L5.34 5.34"/></svg></span>
+        <h3>Il veut structurer sa méthode avant le bac.</h3>
+        <p>On met en place un plan de révision concret et on entraîne les réflexes de l'épreuve, type par type.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== METHOD ============== -->
+<section class="section" id="methode">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <span class="eyebrow">Méthode</span>
+      <h2>Une méthode pensée pour créer le déclic.</h2>
+    </header>
+
+    <div class="method reveal">
+      <div>
+        <p class="lead method-quote">
+          “Le but n'est pas de juger le niveau de départ, mais de comprendre où ça bloque
+          et de reconstruire proprement.”
+        </p>
+      </div>
+      <ol class="timeline">
+        <li><h3>Diagnostic</h3><p>On identifie précisément où ça bloque : la notion, la méthode, ou l'application.</p></li>
+        <li><h3>Explication claire</h3><p>On reprend la notion sans détour, avec les bons exemples et les bons mots.</p></li>
+        <li><h3>Visualisation</h3><p>Schémas, supports interactifs et analogies pour ancrer la compréhension.</p></li>
+        <li><h3>Exercices guidés</h3><p>On pratique ensemble, avec les pièges classiques signalés en temps réel.</p></li>
+        <li><h3>Autonomie</h3><p>L'élève sait refaire seul — et expliquer la méthode à voix haute.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============== DEMOS ============== -->
+<section class="section alt" id="demos">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <span class="eyebrow">Supports interactifs</span>
+      <h2>Des supports de cours que l'élève peut vraiment utiliser.</h2>
+      <p class="lead">Les notions essentielles deviennent des mini-modules à manipuler :
+      explication progressive, schémas, erreurs fréquentes et exercices guidés.
+      C'est le type de support préparé pour chaque séance, adapté au chapitre et au niveau de votre enfant — et qu'il garde ensuite pour réviser seul.</p>
+    </header>
+
+    <div class="demo-grid reveal">
+
+      <article class="demo">
+        <div class="demo-chrome">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="addr">courses/chimie-beer-lambert.html</span>
+        </div>
+        <div class="demo-body">
+          <div class="demo-thumb chem">
+            <svg viewBox="0 0 220 110" aria-hidden="true">
+              <g stroke="var(--navy)" stroke-width="2" fill="none" stroke-linecap="round">
+                <line x1="30" y1="70" x2="70" y2="40"/><line x1="70" y1="40" x2="110" y2="70"/>
+                <line x1="110" y1="70" x2="150" y2="40"/><line x1="150" y1="40" x2="190" y2="70"/>
+                <circle cx="30" cy="70" r="6" fill="white"/><circle cx="70" cy="40" r="6" fill="white"/>
+                <circle cx="110" cy="70" r="6" fill="white"/><circle cx="150" cy="40" r="6" fill="white"/>
+                <circle cx="190" cy="70" r="6" fill="white"/>
+              </g>
+              <text x="178" y="50" font-family="JetBrains Mono, monospace" font-size="14" fill="var(--gold-2)">OH</text>
+            </svg>
+          </div>
+          <h3>Loi de Beer-Lambert</h3>
+          <p>Faire varier la concentration, lire la couleur et comprendre pourquoi l'absorbance suit une relation linéaire.</p>
+          <div class="demo-cta">
+            <span class="demo-meta">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ≈ 45 s
+            </span>
+            <button data-demo="courses/chimie-beer-lambert.html">Ouvrir la démo
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo">
+        <div class="demo-chrome">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="addr">courses/physique-plan-incline.html</span>
+        </div>
+        <div class="demo-body">
+          <div class="demo-thumb physics">
+            <svg viewBox="0 0 220 110" aria-hidden="true">
+              <rect x="34" y="48" width="52" height="28" rx="6" fill="white" stroke="var(--navy)" stroke-width="2"/>
+              <line x1="92" y1="62" x2="174" y2="62" stroke="var(--gold-2)" stroke-width="3" stroke-linecap="round"/>
+              <path d="M174 62l-12-7v14l12-7Z" fill="var(--gold-2)"/>
+              <text x="104" y="50" font-family="JetBrains Mono, monospace" font-size="13" fill="var(--ink)">F = m × a</text>
+              <text x="102" y="83" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="var(--muted)">force et accélération</text>
+            </svg>
+          </div>
+          <h3>Forces sur plan incliné</h3>
+          <p>Décomposer le poids, comparer les forces et voir ce qui fait vraiment glisser ou tenir le bloc.</p>
+          <div class="demo-cta">
+            <span class="demo-meta">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ≈ 45 s
+            </span>
+            <button data-demo="courses/physique-plan-incline.html">Ouvrir la démo
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo">
+        <div class="demo-chrome">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="addr">courses/maths-centre-symetrie.html</span>
+        </div>
+        <div class="demo-body">
+          <div class="demo-thumb math">
+            <svg viewBox="0 0 220 110" aria-hidden="true">
+              <line x1="20" y1="95" x2="200" y2="95" stroke="var(--ink-soft)" stroke-width="1.2"/>
+              <line x1="20" y1="95" x2="20" y2="15" stroke="var(--ink-soft)" stroke-width="1.2"/>
+              <path d="M22 92 Q 60 92 105 55 T 200 18" stroke="var(--gold-2)" stroke-width="2.5" fill="none"/>
+              <circle cx="105" cy="55" r="4" fill="var(--navy)"/>
+              <line x1="60" y1="78" x2="150" y2="32" stroke="var(--navy)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            </svg>
+          </div>
+          <h3>Centre de symétrie</h3>
+          <p>Faire bouger une courbe, repérer son centre et comprendre ce que la symétrie raconte sur la fonction.</p>
+          <div class="demo-cta">
+            <span class="demo-meta">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ≈ 30 s
+            </span>
+            <button data-demo="courses/maths-centre-symetrie.html">Ouvrir la démo
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo">
+        <div class="demo-chrome">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="addr">courses/compta-seuil-rentabilite.html</span>
+        </div>
+        <div class="demo-body">
+          <div class="demo-thumb acc">
+            <svg viewBox="0 0 220 110" aria-hidden="true">
+              <rect x="22" y="22" width="80" height="66" rx="6" fill="white" stroke="#61B89F" stroke-width="1.5"/>
+              <rect x="118" y="22" width="80" height="66" rx="6" fill="white" stroke="#61B89F" stroke-width="1.5"/>
+              <line x1="22" y1="38" x2="102" y2="38" stroke="#61B89F" stroke-width="1"/>
+              <line x1="118" y1="38" x2="198" y2="38" stroke="#61B89F" stroke-width="1"/>
+              <text x="36" y="33" font-family="JetBrains Mono,monospace" font-size="9" fill="#1f6b54" font-weight="600">ACTIF</text>
+              <text x="132" y="33" font-family="JetBrains Mono,monospace" font-size="9" fill="#1f6b54" font-weight="600">PASSIF</text>
+              <line x1="30" y1="50" x2="80" y2="50" stroke="var(--ink-soft)" stroke-width="2"/>
+              <line x1="30" y1="60" x2="65" y2="60" stroke="var(--ink-soft)" stroke-width="2" opacity=".5"/>
+              <line x1="30" y1="70" x2="90" y2="70" stroke="var(--ink-soft)" stroke-width="2" opacity=".4"/>
+              <line x1="126" y1="50" x2="186" y2="50" stroke="var(--ink-soft)" stroke-width="2"/>
+              <line x1="126" y1="60" x2="160" y2="60" stroke="var(--ink-soft)" stroke-width="2" opacity=".5"/>
+              <line x1="126" y1="70" x2="175" y2="70" stroke="var(--ink-soft)" stroke-width="2" opacity=".4"/>
+            </svg>
+          </div>
+          <h3>Seuil de rentabilité</h3>
+          <p>Faire varier prix, coûts et volume pour voir à partir de quand l'activité couvre vraiment ses charges.</p>
+          <div class="demo-cta">
+            <span class="demo-meta">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ≈ 45 s
+            </span>
+            <button data-demo="courses/compta-seuil-rentabilite.html">Ouvrir la démo
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== MÉTHODE EN ACTION ============== -->
+<section class="section alt" id="matieres">
+  <div class="wrap">
+    <div class="subject-section">
+      <header class="subject-kicker">
+        <span class="eyebrow">La méthode en action</span>
+        <h2>Un exercice opaque devient évident.</h2>
+        <p class="lead subject-subtitle">On ne récite pas des formules : on décompose l'exercice en petites pièces que l'élève possède déjà, puis on les assemble.
+        Essayez la démo — c'est ce type de raisonnement qu'on construit ensemble en séance.</p>
+      </header>
+      <div class="subject-grid subject-grid--all subject-grid--compact" aria-label="La méthode en action">
+        <div id="subjectGrid" style="display:contents"></div>
+        <article class="subject-card" data-subject="Comptabilité" data-open="false">
+          <div class="subject-head">
+            <span class="subject-badge math-symbol" aria-hidden="true">€</span>
+            <div class="subject-name">Comptabilité</div>
+          </div>
+          <div class="subject-hook">Reconstruire le seuil plutôt que le réciter.</div>
+          <div class="subject-visual">
+            <svg viewBox="0 0 360 246" aria-hidden="true">
+              <rect x="34" y="42" width="292" height="132" rx="18" fill="#fff" stroke="#D7DDD5" stroke-width="2"/>
+              <rect x="58" y="76" width="166" height="24" rx="12" fill="#E7DECC"/>
+              <rect x="58" y="76" width="100" height="24" rx="12" fill="#C9A24B"/>
+              <line x1="246" y1="58" x2="246" y2="158" stroke="#14213D" stroke-width="3" stroke-dasharray="7 6"/>
+              <text x="58" y="137" font-family="JetBrains Mono,monospace" font-size="17" fill="#1f6b54">CA − CV → CF</text>
+              <text x="256" y="91" font-family="JetBrains Mono,monospace" font-size="14" fill="#14213D">seuil</text>
+              <text x="180" y="213" text-anchor="middle" font-family="Fraunces,serif" font-size="21" fill="#6F7385">chaque vente couvre une part des fixes</text>
+            </svg>
+          </div>
+          <p class="subject-resolution">Les données deviennent une marge unitaire, puis cette marge fait apparaître le seuil et les relations qui en découlent.</p>
+          <span class="demo-meta">≈ 90 s</span>
+          <button class="subject-toggle" type="button" data-demo="courses/methode-compta-v2.html">Voir la méthode →</button>
+        </article>
+
+        <article class="subject-card" data-subject="Maths" data-open="false">
+          <div class="subject-head">
+            <span class="subject-badge math-symbol" aria-hidden="true">∂</span>
+            <div class="subject-name">Maths</div>
+          </div>
+          <div class="subject-hook">D’où vient la dérivée d’une puissance ?</div>
+          <div class="subject-visual">
+            <svg viewBox="0 0 360 246" aria-hidden="true">
+              <rect x="48" y="60" width="112" height="112" fill="#D9E1F2" stroke="#14213D" stroke-width="2"/>
+              <rect x="160" y="60" width="42" height="112" fill="#76B99D" stroke="#1F6B54" stroke-width="2"/>
+              <rect x="48" y="28" width="112" height="32" fill="#D98F7C" stroke="#A75C49" stroke-width="2"/>
+              <rect x="160" y="28" width="42" height="32" fill="#E8BE5C" stroke="#A67E2A" stroke-width="2"/>
+              <text x="238" y="91" font-family="JetBrains Mono,monospace" font-size="19" fill="#14213D">2x + h</text>
+              <path d="M232 106h84" stroke="#C9A24B" stroke-width="2"/>
+              <text x="245" y="139" font-family="JetBrains Mono,monospace" font-size="20" fill="#1F6B54">→ 2x</text>
+              <text x="180" y="216" text-anchor="middle" font-family="Fraunces,serif" font-size="21" fill="#6F7385">les morceaux expliquent le coefficient</text>
+            </svg>
+          </div>
+          <p class="subject-resolution">Le carré, le cube puis les facteurs gardent chaque morceau jusqu’à ce que division et limite produisent la règle générale.</p>
+          <span class="demo-meta">≈ 2 min</span>
+          <button class="subject-toggle" type="button" data-demo="courses/methode-maths-v2.html">Voir la méthode →</button>
+        </article>
+
+        <article class="subject-card" data-subject="Chimie" data-open="false">
+          <div class="subject-head">
+            <span class="subject-badge math-symbol" aria-hidden="true">⇌</span>
+            <div class="subject-name">Chimie</div>
+          </div>
+          <div class="subject-hook">À l’équilibre, rien ne s’est arrêté.</div>
+          <div class="subject-visual">
+            <svg viewBox="0 0 360 246" aria-hidden="true">
+              <circle cx="62" cy="82" r="24" fill="#C9A24B"/><circle cx="62" cy="160" r="24" fill="#14213D"/>
+              <text x="62" y="89" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="22" fill="#14213D" font-weight="700">A</text>
+              <text x="62" y="167" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="22" fill="#fff" font-weight="700">B</text>
+              <path d="M104 91h112" stroke="#C9A24B" stroke-width="4"/><polygon points="216,91 199,82 199,100" fill="#C9A24B"/>
+              <path d="M216 151H104" stroke="#14213D" stroke-width="4"/><polygon points="104,151 121,142 121,160" fill="#14213D"/>
+              <text x="239" y="128" font-family="JetBrains Mono,monospace" font-size="18" fill="#1F6B54">v₁ = v₂</text>
+              <text x="180" y="218" text-anchor="middle" font-family="Fraunces,serif" font-size="21" fill="#6F7385">deux sens actifs, une composition stable</text>
+            </svg>
+          </div>
+          <p class="subject-resolution">Les vitesses se rapprochent, deviennent égales puis retrouvent le même rapport après une perturbation.</p>
+          <span class="demo-meta">≈ 90 s</span>
+          <button class="subject-toggle" type="button" data-demo="courses/methode-chimie-v2.html">Voir la méthode →</button>
+        </article>
+      </div>
+
+      <section class="subject-section" id="college" aria-labelledby="college-title">
+      <header class="subject-kicker">
+        <span class="eyebrow">Pour les collégiens</span>
+        <h2 id="college-title">Voir une règle se construire.</h2>
+        <p class="lead subject-subtitle">Les mêmes pièces restent sous les yeux : on les déplace, on les regroupe, et la règle apparaît.</p>
+      </header>
+      <div class="subject-grid subject-grid--compact" aria-label="Méthode pour les collégiens">
+        <article class="subject-card" data-subject="Collège" data-open="false">
+          <div class="subject-head">
+            <span class="subject-badge math-symbol" aria-hidden="true">△</span>
+            <div class="subject-name">Collège</div>
+          </div>
+          <div class="subject-hook">Les mêmes pièces, une nouvelle règle.</div>
+          <div class="subject-visual">
+            <svg viewBox="0 0 360 246" aria-hidden="true">
+              <rect x="78" y="26" width="184" height="184" rx="8" fill="#fff" stroke="#14213D" stroke-width="2"/>
+              <path d="M78 26h112L78 138z" fill="#E8BE5C" stroke="#A67E2A" stroke-width="2"/>
+              <path d="M262 26v112L150 26z" fill="#D98F7C" stroke="#A75C49" stroke-width="2"/>
+              <path d="M262 210H150l112-112z" fill="#76B99D" stroke="#1F6B54" stroke-width="2"/>
+              <path d="M78 210V98l112 112z" fill="#D9E1F2" stroke="#14213D" stroke-width="2"/>
+              <rect x="134" y="82" width="72" height="72" transform="rotate(45 170 118)" fill="#fff" stroke="#14213D" stroke-width="2"/>
+              <text x="170" y="125" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="24" fill="#14213D">c²</text>
+            </svg>
+          </div>
+          <p class="subject-resolution">Quatre triangles changent de place, puis des parts se regroupent : Pythagore et la division par une fraction deviennent visibles.</p>
+          <span class="demo-meta">≈ 90 s</span>
+          <button class="subject-toggle" type="button" data-demo="courses/methode-college-v2.html">Voir la méthode →</button>
+        </article>
+      </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============== QUALIFICATION ============== -->
+<section class="section" id="message-rapide">
+  <div class="wrap">
+    <header class="section-head qual-head reveal">
+      <span class="eyebrow">Prise de contact</span>
+      <h2>Dites-moi où vous en êtes en 30 secondes.</h2>
+      <p class="lead">Votre message WhatsApp est prêt en 30 secondes — vous le relisez, vous l'envoyez.</p>
+    </header>
+
+    <div class="qual reveal" id="qualBlock">
+      <div class="qual-row">
+        <div class="label"><span class="step">1</span>Matière</div>
+        <div class="chips" role="radiogroup" aria-label="Matière" data-key="subject">
+          <button type="button" class="chip" role="radio" aria-pressed="false" data-value="Maths"><span class="dot" style="background:var(--navy)"></span>Maths</button>
+          <button type="button" class="chip" role="radio" aria-pressed="false" data-value="Physique"><span class="dot" style="background:var(--gold)"></span>Physique</button>
+          <button type="button" class="chip" role="radio" aria-pressed="false" data-value="Chimie"><span class="dot" style="background:#E76F51"></span>Chimie</button>
+          <button type="button" class="chip" role="radio" aria-pressed="false" data-value="Comptabilité"><span class="dot" style="background:#61B89F"></span>Comptabilité</button>
+        </div>
+      </div>
+
+      <div class="qual-row">
+        <div class="label"><span class="step">2</span>Niveau</div>
+        <div class="chips" role="radiogroup" aria-label="Niveau" data-key="level">
+          <button type="button" class="chip" role="radio" aria-pressed="false" data-value="Collège">Collège</button>
+          <button type="button" class="chip" role="radio" aria-pressed="false" data-value="Seconde">Seconde</button>
+          <button type="button" class="chip" role="radio" aria-pressed="false" data-value="Première">Première</button>
+          <button type="button" class="chip" role="radio" aria-pressed="false" data-value="Terminale">Terminale</button>
+          <button type="button" class="chip" role="radio" aria-pressed="false" data-value="Post-bac">Post-bac</button>
+          <button type="button" class="chip" role="radio" aria-pressed="false" data-value="Autre">Autre</button>
+        </div>
+      </div>
+
+      <div class="qual-row">
+        <label class="label" for="lieu"><span class="step">3</span>Où — présentiel ou visio ? <span style="font-weight:400;color:var(--muted);">(optionnel)</span></label>
+        <input class="qual-input" id="lieu" type="text" placeholder="ex. Paris 15e, Vincennes… ou visio">
+      </div>
+
+      <div class="qual-row">
+        <label class="label" for="slots"><span class="step">4</span>Quand ça vous arrange</label>
+        <input class="qual-input" id="slots" type="text" placeholder="ex. soirs en semaine, mercredi après-midi, week-end">
+      </div>
+
+      <div class="qual-row">
+        <label class="label" for="blocage"><span class="step">5</span>Ce qui bloque</label>
+        <input class="qual-input" id="blocage" type="text" placeholder="ex. les dérivées, les exercices de mécanique, perte de confiance avant les contrôles">
+      </div>
+
+      <div class="qual-preview">
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.3.6 4.5 1.74 6.45L3 29l6.74-1.77A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3Z"/></svg>
+        </div>
+        <div>
+          <div style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">Aperçu du message</div>
+          <span id="qualMsg">Choisissez la matière et le niveau — votre message apparaît ici.</span>
+        </div>
+      </div>
+
+      <div class="qual-action">
+        <button class="btn btn-primary" id="qualSend" style="opacity:.55;cursor:not-allowed;pointer-events:none;">
+          <svg class="ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.3.6 4.5 1.74 6.45L3 29l6.74-1.77A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3Zm7.6 18.36c-.32.9-1.88 1.74-2.6 1.84-.66.1-1.5.13-2.4-.15a22 22 0 0 1-2.18-.8c-3.83-1.66-6.34-5.55-6.53-5.8-.19-.26-1.56-2.08-1.56-3.96 0-1.88.99-2.81 1.34-3.19.35-.38.77-.48 1.03-.48s.51 0 .74.01c.24.01.55-.09.86.65.32.78 1.08 2.7 1.18 2.9.1.2.16.42.03.68-.13.26-.19.42-.38.65-.19.23-.4.51-.57.69-.19.19-.39.4-.16.78.22.39.99 1.63 2.12 2.64 1.46 1.3 2.69 1.7 3.08 1.9.39.19.61.16.84-.09.23-.26.96-1.12 1.22-1.5.26-.39.51-.32.86-.2.35.13 2.25 1.06 2.63 1.25.39.19.65.29.74.45.1.16.1.94-.22 1.84Z"/></svg>
+          Préparer mon message WhatsApp
+        </button>
+        <span class="helper">Aucune donnée envoyée — le lien s'ouvre directement dans WhatsApp.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TARIF ============== -->
+<section class="section" id="tarif">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <span class="eyebrow">Tarif &amp; fonctionnement</span>
+      <h2>Un tarif simple, avec la préparation incluse.</h2>
+      <p class="lead">Le tarif inclut la séance, la préparation du support en amont et la trace que l'élève garde après le cours.</p>
+    </header>
+    <div class="tarif-layout reveal">
+      <article class="price-card">
+        <div class="price-label">Tarif simple</div>
+        <div>
+          <div class="price-line">
+            <span class="price-value">35€</span>
+            <span class="price-unit">/h</span>
+          </div>
+          <div class="price-stack">
+            <div class="price-included">Préparation du support incluse.</div>
+            <div class="price-detail">Séance + préparation + support conservé.</div>
+          </div>
+        </div>
+        <p>Avant la séance, je prépare un support adapté au chapitre, au niveau et au blocage identifié. Pendant le cours, on le travaille ensemble.</p>
+        <p class="price-proof">Après la séance, l'élève garde le support travaillé ensemble : notions clés, méthode, corrections et points à revoir.</p>
+        <div class="price-note">Sans engagement. Séance ponctuelle ou accompagnement régulier selon le besoin.</div>
+        <a class="btn btn-dark" href="#contact">Demander un premier échange</a>
+      </article>
+
+      <div class="tarif-side" aria-label="Fonctionnement">
+        <article class="tarif-mini">
+          <span class="mini-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </span>
+          <h3>Diagnostic avant séance</h3>
+          <p>Vous m'envoyez la matière, le niveau, le chapitre et ce qui bloque. Je prépare la séance à partir de ces éléments.</p>
+        </article>
+        <article class="tarif-mini">
+          <span class="mini-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h10.5L20 6.5V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-1.5z"/><path d="M16 3v4h4"/><path d="M8 11h8M8 15h6"/></svg>
+          </span>
+          <h3>Support préparé</h3>
+          <p>Le cours ne démarre pas à partir d'une page blanche : le support préparé sert de fil conducteur pendant la séance.</p>
+        </article>
+        <article class="tarif-mini">
+          <span class="mini-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2V6a2 2 0 0 1 2-2z"/><path d="M8 9h8M8 13h6"/></svg>
+          </span>
+          <h3>Support conservé</h3>
+          <p>L'élève garde le support travaillé ensemble : notions clés, méthode, corrections et points à revoir.</p>
+        </article>
+        <article class="tarif-mini">
+          <span class="mini-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>
+          </span>
+          <h3>Formats</h3>
+          <p>Visio partout. Présentiel à Paris et proche petite couronne, selon l'adresse. Séances d'1h ou 2h.</p>
+        </article>
+        <article class="tarif-mini">
+          <span class="mini-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+          </span>
+          <h3>Agenda souple</h3>
+          <p>Soirées en semaine, mercredi après-midi, samedi. Séance ponctuelle, accompagnement régulier ou préparation avant contrôle.</p>
+        </article>
+        <article class="tarif-mini">
+          <span class="mini-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 9h8M8 13h5"/></svg>
+          </span>
+          <h3>Réponse sous 24h</h3>
+          <p>Avec une première lecture du besoin et des créneaux possibles.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="section alt" id="faq">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>Les questions que les parents posent souvent.</h2>
+    </header>
+    <div class="faq-list reveal">
+
+      <details class="faq-item">
+        <summary>Comment se passe une première séance ?</summary>
+        <div class="faq-body">
+          <p>On échange d'abord par message ou téléphone pour cerner le besoin précis : chapitre en cours, blocage repéré, objectif (contrôle, bac, reprise de bases…). Je prépare ensuite un support adapté avant la séance.</p>
+          <p>Pendant la séance (1h en général), on travaille directement sur ce support. À la fin, l'élève le garde, avec la correction annotée et les exercices à refaire chez lui.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Qu'est-ce qui change par rapport à une agence&nbsp;?</summary>
+        <div class="faq-body">
+          <p>Vous savez exactement qui enseignera à votre enfant : je prépare moi-même chaque séance, sur son chapitre et son blocage précis, et il garde le support ensuite.</p>
+          <p>La communication est directe avec moi, sans intermédiaire. Et il n'y a ni forfait à acheter ni engagement : vous testez une séance, et vous arrêtez simplement si ça ne convient pas.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Quels niveaux et quelles matières&nbsp;?</summary>
+        <div class="faq-body">
+          <p>Maths et physique-chimie, du collège à la Terminale — spécialités comprises. Comptabilité, finance et économie-gestion au post-bac, ainsi que la prépa économique et commerciale, le BTS, la licence ou le bachelor, selon le programme.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Y a-t-il un engagement minimum ou un forfait à acheter&nbsp;?</summary>
+        <div class="faq-body">
+          <p>Aucun engagement, aucun forfait. Les séances se prennent à la demande : ponctuellement (avant un contrôle par exemple), ou de manière régulière selon ce qui aide vraiment l'élève.</p>
+          <p>Vous pouvez tester une séance et décider ensuite. Si ça n'accroche pas, vous arrêtez sans avoir à justifier quoi que ce soit.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Et si on doit annuler ou reporter une séance&nbsp;?</summary>
+        <div class="faq-body">
+          <p>Un report ou une annulation est possible <strong>jusqu'à 24h avant</strong> la séance, sans frais — j'aurai juste prévenu de mon côté. Au-delà, la séance reste due car le support a déjà été préparé spécifiquement, mais on regarde toujours au cas par cas selon le motif.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Faut-il acheter un livre, un cahier d'exercices ou un logiciel&nbsp;?</summary>
+        <div class="faq-body">
+          <p>Non, jamais. Tout le matériel pédagogique est préparé et fourni à chaque séance. L'élève a juste besoin de son cahier de cours habituel et d'un stylo. En visio, un ordinateur ou une tablette suffisent — pas de logiciel particulier à installer.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Et entre deux séances&nbsp;?</summary>
+        <div class="faq-body">
+          <p>Pour une question courte entre deux séances, l'élève peut aussi m'écrire sur WhatsApp.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Comment se passe le paiement&nbsp;?</summary>
+        <div class="faq-body">
+          <p>Le paiement se fait à la séance, par virement bancaire ou en espèces selon votre préférence.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>À partir de quand peut-on commencer&nbsp;?</summary>
+        <div class="faq-body">
+          <p>En général, dans la semaine qui suit votre prise de contact. Si vous avez un contrôle ou un examen imminent, je m'arrange pour caser la première séance avant — il suffit de me le préciser dans le message.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Et si l'élève n'accroche pas après une ou deux séances&nbsp;?</summary>
+        <div class="faq-body">
+          <p>Vous arrêtez, simplement. Pas de forfait à terminer, pas de justification à donner. L'objectif est que l'élève progresse — si la pédagogie ne fonctionne pas pour lui ou elle, mieux vaut le voir tôt et chercher autre chose.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Où enseignez-vous en présentiel&nbsp;?</summary>
+        <div class="faq-body">
+          <p>À Paris et en proche petite couronne, selon l'adresse — on confirme la zone ensemble par message. La visio, elle, fonctionne partout.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Visio ou présentiel — qu'est-ce qui marche le mieux&nbsp;?</summary>
+        <div class="faq-body">
+          <p>Les deux fonctionnent bien grâce au support préparé en amont : l'élève et moi travaillons sur le même document, qu'on soit côte à côte ou à distance. La visio est plus souple pour les emplois du temps chargés ; le présentiel reste préférable pour les très jeunes élèves ou quand il y a un besoin d'accompagnement plus rapproché.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="faq-cta reveal">
+      <p class="faq-cta-title">Prêt·e à tester une première séance&nbsp;?</p>
+      <p class="faq-cta-sub">Écrivez-moi — réponse sous 24h, sans engagement.</p>
+      <a class="btn btn-primary" data-wa data-wa-default href="#" rel="noopener" target="_blank">
+        <svg class="ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.3.6 4.5 1.74 6.45L3 29l6.74-1.77A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3Zm7.6 18.36c-.32.9-1.88 1.74-2.6 1.84-.66.1-1.5.13-2.4-.15a22 22 0 0 1-2.18-.8c-3.83-1.66-6.34-5.55-6.53-5.8-.19-.26-1.56-2.08-1.56-3.96 0-1.88.99-2.81 1.34-3.19.35-.38.77-.48 1.03-.48s.51 0 .74.01c.24.01.55-.09.86.65.32.78 1.08 2.7 1.18 2.9.1.2.16.42.03.68-.13.26-.19.42-.38.65-.19.23-.4.51-.57.69-.19.19-.39.4-.16.78.22.39.99 1.63 2.12 2.64 1.46 1.3 2.69 1.7 3.08 1.9.39.19.61.16.84-.09.23-.26.96-1.12 1.22-1.5.26-.39.51-.32.86-.2.35.13 2.25 1.06 2.63 1.25.39.19.65.29.74.45.1.16.1.94-.22 1.84Z"/></svg>
+        Écrire sur WhatsApp
+      </a>
+      <a class="faq-cta-alt" href="#contact">ou laisser un message écrit →</a>
+    </div>
+  </div>
+</section>
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-card reveal">
+
+      <aside class="contact-portrait">
+        <img src="assets/hamza.jpg" alt="Hamza" class="photo" loading="lazy">
+        <div>
+          <div class="name">Hamza</div>
+          <div class="role">ESSEC Grande École · Finance &amp; Analytics</div>
+          <div class="credits">Major de promotion en classes préparatoires · Bac S mention Très Bien</div>
+          <p class="bio">Après une classe préparatoire économique et commerciale, j'ai intégré l'ESSEC — et j'ai passé ces années à aider camarades et amis quand une notion leur semblait opaque. J'aime trouver la représentation qui rend l'évidence visible. C'est ce que je fais, plus méthodiquement, à travers Le Déclic.</p>
+          <a class="linkedin" href="https://www.linkedin.com/in/hbenchaouch/" target="_blank" rel="noopener">Profil LinkedIn →</a>
+        </div>
+        <div class="pull-quote">
+          <span class="pq pq-open">&#x201C;</span>On part du blocage réel, pas d'un cours générique.<span class="pq pq-close">&#x201D;</span>
+        </div>
+        <div class="proofs" aria-label="Informations pratiques">
+          <span>Réponse sous 24h</span>
+          <span>Visio ou présentiel</span>
+          <span>Supports adaptés au besoin</span>
+        </div>
+        <div class="sig">
+          <img src="assets/logo-signature-no-text.png" alt="Le Déclic — par Hamza" class="sig-logo">
+          <img src="assets/signature.png" alt="Signature Hamza" class="sig-sign">
+        </div>
+      </aside>
+
+      <div class="contact-form">
+        <div id="formIntro">
+          <p style="font-size:13px;color:var(--muted);margin:0 0 10px;">Pour une question plus large, un doute, une envie d'échanger avant de décider — écrivez, je réponds sous 24h.</p>
+          <h3>Parlons du besoin.</h3>
+        </div>
+
+        <form class="fields" id="contactForm" onsubmit="return submitForm(event)">
+          <div class="fld">
+            <label for="cf-subject-type">Sujet</label>
+            <select id="cf-subject-type" name="subject_type" required>
+              <option value="">Choisir…</option>
+              <option>Premier échange / découverte</option>
+              <option>Question sur la méthode</option>
+              <option>Question sur les modalités ou le tarif</option>
+              <option>Demande d'appel téléphonique</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="row2">
+            <div class="fld">
+              <label for="cf-name">Prénom <span class="opt">(optionnel)</span></label>
+              <input id="cf-name" name="name" type="text" autocomplete="given-name">
+            </div>
+            <div class="fld">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="fld">
+            <label for="cf-phone">Téléphone <span class="opt">(optionnel — utile pour un appel)</span></label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+
+          <div class="fld">
+            <label for="cf-msg">Message</label>
+            <textarea id="cf-msg" name="message" required placeholder="Posez votre question ou décrivez brièvement la situation."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-dark">
+              Envoyer
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+            <span class="form-helper" id="formStatus">Réponse sous 24h.</span>
+          </div>
+          <p class="form-privacy" style="font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.55;">Vos données servent uniquement à vous répondre, jamais partagées. Plus d'infos : <a href="mentions-legales.html" style="color: inherit; text-decoration: underline; text-decoration-color: rgba(20,33,61,.25);">Mentions légales →</a></p>
+        </form>
+
+        <!-- Carte de confirmation (cachée jusqu'à envoi réussi) -->
+        <div id="formSuccess" style="
+          display: none; flex-direction: column; align-items: center; justify-content: center;
+          text-align: center; gap: 16px; padding: 40px 24px; height: 100%;
+          animation: fadeUp .4s ease both;
+        ">
+          <div style="
+            width: 56px; height: 56px; border-radius: 50%;
+            background: var(--gold-tint); display: flex; align-items: center; justify-content: center;
+          ">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold-2)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <div>
+            <p style="font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 8px;">Message envoyé !</p>
+            <p style="font-size: 14px; color: var(--muted); line-height: 1.6;">
+              Je vous répondrai à<br>
+              <strong id="confirmedEmail" style="font-size: 15px; color: var(--ink); word-break: break-all;"></strong><br>
+              sous 24h.
+            </p>
+            <p style="font-size: 13px; color: var(--muted); margin-top: 6px;">Si l'adresse ci-dessus est incorrecte, vous pouvez renvoyer le formulaire.</p>
+          </div>
+          <button onclick="resetContactForm()" style="
+            margin-top: 4px; background: none; border: 1px solid var(--border);
+            border-radius: 8px; padding: 8px 18px; font-size: 13px; color: var(--muted);
+            cursor: pointer; transition: border-color .15s, color .15s;
+          " onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--ink)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
+            Envoyer un autre message
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <img src="assets/logo-signature-no-text.png" alt="Le Déclic — par Hamza">
+      <div style="margin-top:10px;">
+        <strong style="color: var(--ink); font-weight: 600;">Le Déclic</strong> — cours particuliers en maths, physique-chimie et comptabilité.
+      </div>
+      <ul>
+        <li>35€/h</li>
+        <li>Préparation du support incluse</li>
+        <li>Visio ou présentiel</li>
+      </ul>
+    </div>
+    <div style="font-size: 12px; align-self: end;">
+      <a href="mentions-legales.html" style="color: inherit; text-decoration: none; border-bottom: 1px dotted currentColor; padding-bottom: 1px;">Mentions légales &amp; confidentialité</a>
+      &nbsp;·&nbsp; © <span id="yr"></span> Le Déclic
+    </div>
+  </div>
+</footer>
+</main>
+
+<!-- Floating mobile WhatsApp -->
+<a class="fab" data-wa data-wa-default href="#" rel="noopener" target="_blank" aria-label="Contacter sur WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.3.6 4.5 1.74 6.45L3 29l6.74-1.77A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3Zm7.6 18.36c-.32.9-1.88 1.74-2.6 1.84-.66.1-1.5.13-2.4-.15a22 22 0 0 1-2.18-.8c-3.83-1.66-6.34-5.55-6.53-5.8-.19-.26-1.56-2.08-1.56-3.96 0-1.88.99-2.81 1.34-3.19.35-.38.77-.48 1.03-.48s.51 0 .74.01c.24.01.55-.09.86.65.32.78 1.08 2.7 1.18 2.9.1.2.16.42.03.68-.13.26-.19.42-.38.65-.19.23-.4.51-.57.69-.19.19-.39.4-.16.78.22.39.99 1.63 2.12 2.64 1.46 1.3 2.69 1.7 3.08 1.9.39.19.61.16.84-.09.23-.26.96-1.12 1.22-1.5.26-.39.51-.32.86-.2.35.13 2.25 1.06 2.63 1.25.39.19.65.29.74.45.1.16.1.94-.22 1.84Z"/></svg>
+</a>
+
+<!-- Demo modal -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog">
+  <div class="modal-shell" role="document">
+    <div class="modal-head">
+      <span class="dots"><i id="modalClose1" title="Fermer"></i><i></i><i></i></span>
+      <span class="title" id="modalTitle">courses/…</span>
+      <button class="modal-close-btn" id="modalClose2" aria-label="Fermer la démo">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-scroll">
+      <iframe id="modalFrame" title="Démonstration de cours"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="subject-modal" id="subjectModal" aria-hidden="true" role="dialog" aria-labelledby="subjectModalTitle">
+  <div class="subject-modal-shell" role="document">
+    <div class="subject-modal-top">
+      <span class="dots"><i id="subjectModalClose1" title="Fermer"></i><i></i><i></i></span>
+      <span class="subject-modal-kicker" id="subjectModalKicker">reasoning/…</span>
+      <button class="modal-close-btn" id="subjectModalClose" aria-label="Fermer le raisonnement">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="subject-modal-scroll">
+      <div class="subject-modal-title" id="subjectModalTitle">Raisonnement</div>
+      <div class="subject-detail-body" id="subjectModalBody"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — replace before launch
+   ============================================================ */
+const CONFIG = {
+  whatsappNumber: "33769913946",       // ⚠️ vrai numéro (format international, sans +)
+  defaultMsg: "Bonjour Hamza, je viens de voir votre site — on cherche un soutien scolaire et j'aimerais en discuter. Vous êtes disponible pour un premier échange ?",
+  formEndpoint: "https://formspree.io/f/mgodgdej"
+};
+
+function waUrl(text) {
+  return `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
+}
+document.querySelectorAll('[data-wa-default]').forEach(el => {
+  el.setAttribute('href', waUrl(CONFIG.defaultMsg));
+});
+
+/* Year */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Sticky header */
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
+
+/* FAB — correctif iOS Safari : barre URL dynamique */
+(function () {
+  const fab = document.querySelector('.fab');
+  if (!fab || !('visualViewport' in window)) return;
+  const vv = window.visualViewport;
+  const update = () => {
+    // Décalage entre le bas du viewport visuel et celui du layout
+    const barH = Math.max(0, window.innerHeight - (vv.offsetTop + vv.height));
+    fab.style.bottom = (barH + 18) + 'px';
+  };
+  vv.addEventListener('resize', update, { passive: true });
+  vv.addEventListener('scroll', update, { passive: true });
+})();
+
+/* Burger menu */
+const burger = document.getElementById('burger');
+const sheet  = document.getElementById('menuSheet');
+const sheetClose = document.getElementById('menuClose');
+function openSheet() { sheet.setAttribute('open',''); sheet.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; burger.setAttribute('aria-expanded','true'); }
+function closeSheet(){ sheet.removeAttribute('open'); sheet.setAttribute('aria-hidden','true'); document.body.style.overflow=''; burger.setAttribute('aria-expanded','false'); }
+burger.addEventListener('click', openSheet);
+sheetClose.addEventListener('click', closeSheet);
+sheet.addEventListener('click', e => { if (e.target === sheet) closeSheet(); });
+sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet));
+
+/* ============================================================
+   HERO STAGE — interactive support card (multi-state + animated point)
+   ============================================================ */
+(function initHeroStage() {
+  const card = document.getElementById('supportCard');
+  if (!card) return;
+
+  // Content states — data-driven, edit here without touching DOM
+  const STATES = [
+    {
+      keypointLabel: "Question",
+      keypointText: "Comment varie cette fonction ? On suit la pente en chaque point.",
+      show: ["base", "point", "scrubber"]
+    },
+    {
+      keypointLabel: "Lecture",
+      keypointText: "Quand <strong>f'&nbsp;&gt;&nbsp;0</strong>, ça monte. Quand <strong>f'&nbsp;&lt;&nbsp;0</strong>, ça descend.",
+      show: ["base", "zones", "point", "scrubber"]
+    },
+    {
+      keypointLabel: "Méthode",
+      keypointText: "Au sommet, la tangente est horizontale : <strong>f'(x) = 0</strong>.",
+      show: ["base", "zones", "max", "point", "scrubber"]
+    },
+    {
+      keypointLabel: "À retenir",
+      keypointText: "Le maximum est là où f' change de signe : <strong>+ puis −</strong>.",
+      show: ["base", "zones", "max", "pulse", "point", "scrubber"]
+    }
+  ];
+
+  const STATE_DURATION  = 3800;   // ms entre deux changements d'état (autoplay)
+  const POINT_LOOP      = 6500;   // ms pour un tour complet du point sur la courbe
+
+  // Two cubic Beziers — same coords as the SVG `path d="M22 128 C70 128 130 38 175 36 S270 110 300 118"`
+  const C1 = { p0:[22,128], p1:[70,128],  p2:[130,38],  p3:[175,36]  };
+  const C2 = { p0:[175,36], p1:[220,34],  p2:[270,110], p3:[300,118] };
+
+  function bezierAt(tFull) {
+    const onSecond = tFull >= 1;
+    const t = onSecond ? tFull - 1 : tFull;
+    const c = onSecond ? C2 : C1;
+    const u = 1 - t;
+    return [
+      u*u*u*c.p0[0] + 3*u*u*t*c.p1[0] + 3*u*t*t*c.p2[0] + t*t*t*c.p3[0],
+      u*u*u*c.p0[1] + 3*u*u*t*c.p1[1] + 3*u*t*t*c.p2[1] + t*t*t*c.p3[1]
+    ];
+  }
+  function bezierDeriv(tFull) {
+    const onSecond = tFull >= 1;
+    const t = onSecond ? tFull - 1 : tFull;
+    const c = onSecond ? C2 : C1;
+    const u = 1 - t;
+    return [
+      3*u*u*(c.p1[0]-c.p0[0]) + 6*u*t*(c.p2[0]-c.p1[0]) + 3*t*t*(c.p3[0]-c.p2[0]),
+      3*u*u*(c.p1[1]-c.p0[1]) + 6*u*t*(c.p2[1]-c.p1[1]) + 3*t*t*(c.p3[1]-c.p2[1])
+    ];
+  }
+
+  const hlPoint      = card.querySelector('#hlPoint');
+  const hlTangent    = card.querySelector('#hlTangent');
+  const hlPointLabel = card.querySelector('#hlPointLabel');
+  const hlThumb      = card.querySelector('#hlThumb');
+  const hlThumbLabel = card.querySelector('#hlThumbLabel');
+  const layers       = card.querySelectorAll('.hl-layer');
+  const steps        = card.querySelectorAll('.sc-step');
+  const kpLabel    = document.getElementById('hlKeypointLabel');
+  const kpText     = document.getElementById('hlKeypointText');
+  const reduced    = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let currentState  = 0;
+  let userClicked   = false;
+  let autoplayId    = null;
+  let rafId         = null;
+  let animStart     = 0;
+  let pausedElapsed = 0;
+
+  function applyState(n) {
+    currentState = n;
+    const s = STATES[n];
+    layers.forEach(el => {
+      const show = s.show.includes(el.dataset.layer);
+      el.setAttribute('data-hidden', show ? 'false' : 'true');
+    });
+    steps.forEach((btn, i) => {
+      btn.classList.toggle('active', i === n);
+      btn.setAttribute('aria-selected', i === n ? 'true' : 'false');
+    });
+    if (kpLabel) kpLabel.textContent = s.keypointLabel;
+    if (kpText)  kpText.innerHTML = s.keypointText;
+
+    // "À retenir" (final state): freeze the point at the peak instead of hiding it.
+    // We also reset the animation phase to the peak (t=1 → elapsed = half-loop)
+    // so the resume on the next state continues smoothly downwards, no teleport.
+    if (!reduced) {
+      const isFinal = n === STATES.length - 1;
+      if (isFinal) {
+        stopPointAnim();
+        pausedElapsed = 0.5 * POINT_LOOP;
+        placePoint(1);
+      } else if (!rafId) {
+        startPointAnim();
+      }
+    }
+  }
+
+  function placePoint(tFull) {
+    const [x, y]   = bezierAt(tFull);
+    const [dx, dy] = bezierDeriv(tFull);
+    const mag = Math.hypot(dx, dy) || 1;
+    const ux = dx / mag, uy = dy / mag;
+    const len = 50; // tangent half-length — long & dashed so the user sees it from across the room
+    hlPoint.setAttribute('cx', x.toFixed(2));
+    hlPoint.setAttribute('cy', y.toFixed(2));
+    hlTangent.setAttribute('x1', (x - len * ux).toFixed(2));
+    hlTangent.setAttribute('y1', (y - len * uy).toFixed(2));
+    hlTangent.setAttribute('x2', (x + len * ux).toFixed(2));
+    hlTangent.setAttribute('y2', (y + len * uy).toFixed(2));
+    hlThumb.setAttribute('cx', x.toFixed(2));
+    // Floating f'(x) label follows the point (always above; brief clipping at the peak is acceptable)
+    if (hlPointLabel) {
+      hlPointLabel.setAttribute('transform', `translate(${x.toFixed(2)} ${y.toFixed(2)})`);
+    }
+    // Live x-value above the scrubber thumb — viewBox x∈[20, 300] maps to abstract x∈[0, 5]
+    if (hlThumbLabel) {
+      const xVal = ((x - 20) / 56).toFixed(1);
+      hlThumbLabel.setAttribute('x', x.toFixed(2));
+      hlThumbLabel.textContent = `x = ${xVal}`;
+    }
+  }
+
+  function tick(ts) {
+    const elapsed = (ts - animStart) % POINT_LOOP;
+    pausedElapsed = elapsed;
+    // ease in-out (sin-based) to give the point a soft slow-down at extremes
+    const linearT = elapsed / POINT_LOOP;
+    const easedT = 0.5 - 0.5 * Math.cos(linearT * Math.PI * 2);
+    // map eased to 0..2 by simple linear (we keep the easing subtle here to avoid backtracking)
+    const tFull = linearT * 2;
+    placePoint(tFull);
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function startPointAnim() {
+    if (reduced || rafId) return;
+    animStart = performance.now() - pausedElapsed;
+    rafId = requestAnimationFrame(tick);
+  }
+  function stopPointAnim() {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
+  function startAutoplay() {
+    if (reduced || userClicked) return;
+    stopAutoplay();
+    autoplayId = setInterval(() => {
+      applyState((currentState + 1) % STATES.length);
+    }, STATE_DURATION);
+  }
+  function stopAutoplay() {
+    if (autoplayId) clearInterval(autoplayId);
+    autoplayId = null;
+  }
+
+  // Step button clicks
+  steps.forEach(btn => {
+    btn.addEventListener('click', () => {
+      userClicked = true;
+      stopAutoplay();
+      applyState(parseInt(btn.dataset.state, 10));
+    });
+  });
+
+  // Hover: pause the state cycling so the visitor can read the current state.
+  // The point keeps gliding — it's the "alive" signal of the support, never freezes.
+  card.addEventListener('mouseenter', () => {
+    stopAutoplay();
+  });
+  card.addEventListener('mouseleave', () => {
+    if (!userClicked) startAutoplay();
+  });
+
+  // Boot
+  if (reduced) {
+    // Reduced motion: show the most informative static state, no autoplay, no rAF
+    placePoint(1); // point at the maximum
+    applyState(2); // Méthode — visually complete without the "À retenir" final
+  } else {
+    applyState(0);
+    startPointAnim();
+    startAutoplay();
+  }
+})();
+
+/* Hero semi-3D hover tilt */
+(function initHeroTilt() {
+  const stage = document.querySelector('.hero-stage');
+  if (!stage) return;
+
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const compact = matchMedia('(max-width: 1080px)');
+  if (reduced.matches || compact.matches) return;
+
+  let targetRx = 0;
+  let targetRy = 0;
+  let currentRx = 0;
+  let currentRy = 0;
+  let rafId = null;
+
+  function applyTilt() {
+    currentRx += (targetRx - currentRx) * 0.16;
+    currentRy += (targetRy - currentRy) * 0.16;
+
+    stage.style.setProperty('--hero-rx', `${currentRx.toFixed(2)}deg`);
+    stage.style.setProperty('--hero-ry', `${currentRy.toFixed(2)}deg`);
+    stage.style.setProperty('--hero-rx-small', `${(currentRx * 0.55).toFixed(2)}deg`);
+    stage.style.setProperty('--hero-ry-small', `${(currentRy * 0.55).toFixed(2)}deg`);
+
+    if (Math.abs(targetRx - currentRx) > 0.01 || Math.abs(targetRy - currentRy) > 0.01) {
+      rafId = requestAnimationFrame(applyTilt);
+    } else {
+      rafId = null;
+    }
+  }
+
+  function requestTilt() {
+    if (!rafId) rafId = requestAnimationFrame(applyTilt);
+  }
+
+  stage.addEventListener('mousemove', (event) => {
+    const rect = stage.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    targetRy = x * -7;
+    targetRx = y * 5;
+    requestTilt();
+  });
+
+  stage.addEventListener('mouseleave', () => {
+    targetRx = 0;
+    targetRy = 0;
+    requestTilt();
+  });
+})();
+
+/* ===== Assembly v2 — module-scope helpers (used both at build-time and at animation runtime) ===== */
+const ASSEMBLY_SHAPES = {
+  hexagon:       { vb: '0 0 120 40', el: 'polygon', attrs: 'points="16,2 104,2 118,20 104,38 16,38 2,20"',                                                                              tx: 60, ty: 25, fs: 14 },
+  pentagon:      { vb: '0 0 90 50',  el: 'polygon', attrs: 'points="45,2 88,22 72,48 18,48 2,22"',                                                                                       tx: 45, ty: 33, fs: 14 },
+  octagon:       { vb: '0 0 110 40', el: 'polygon', attrs: 'points="14,2 96,2 108,12 108,28 96,38 14,38 2,28 2,12"',                                                                     tx: 55, ty: 25, fs: 14 },
+  parallelogram: { vb: '0 0 120 40', el: 'polygon', attrs: 'points="20,2 118,2 100,38 2,38"',                                                                                            tx: 60, ty: 25, fs: 14 },
+  rounded:       { vb: '0 0 70 50',  el: 'rect',    attrs: 'x="2" y="2" width="66" height="46" rx="14"',                                                                                 tx: 35, ty: 30, fs: 14 },
+  circle:        { vb: '0 0 80 50',  el: 'ellipse', attrs: 'cx="40" cy="25" rx="36" ry="22"',                                                                                            tx: 40, ty: 30, fs: 14 },
+  decagon:       { vb: '0 0 140 60', el: 'polygon', attrs: 'points="88.36,4.32 51.64,4.32 21.95,14.12 10.6,30 21.95,45.88 51.64,55.68 88.36,55.68 118.05,45.88 129.4,30 118.05,14.12"',  tx: 70, ty: 38, fs: 16 }
+};
+const ASSEMBLY_GEM_SPEC = {
+  v_i: { shape: 'hexagon',       color: 'navy',     gemText: ['v', 'i', ' = 0 m/s'], trouLabel: ['v', 'i', ''] },
+  v_f: { shape: 'hexagon',       color: 'sky',      gemText: ['v', 'f', ' = 6 m/s'], trouLabel: ['v', 'f', ''] },
+  dt:  { shape: 'pentagon',      color: 'green',    gemText: 'Δt = 3 s',             trouLabel: 'Δt' },
+  m:   { shape: 'circle',        color: 'rose',     gemText: 'm = 2 kg',             trouLabel: 'm' },
+  d:   { shape: 'rounded',       color: 'lavender', gemText: 'd = 9 m',              trouLabel: 'd' },
+  a:   { shape: 'octagon',       color: 'peach',    gemText: 'a = 2 m/s²',           trouLabel: 'a' },
+  F:   { shape: 'parallelogram', color: 'coral',    gemText: 'F = 4 N',              trouLabel: 'F' },
+  W:   { shape: 'decagon',       color: 'gold',     gemText: 'W = 36 J',
+         fill: '#E8BE5C', stroke: '#A67E2A' }
+};
+function assemblyBuildText(parts) {
+  if (typeof parts === 'string') return parts;
+  const [base, sub, rest] = parts;
+  return `${base}<tspan dy="3" font-size="0.7em">${sub}</tspan>${rest ? `<tspan dy="-3">${rest}</tspan>` : ''}`;
+}
+function assemblyBuildGem(gemId, options = {}) {
+  const spec = ASSEMBLY_GEM_SPEC[gemId];
+  const s = ASSEMBLY_SHAPES[spec.shape];
+  const fill = spec.fill || `var(--${spec.color}-tint)`;
+  const stroke = spec.stroke || `var(--${spec.color}-stroke)`;
+  const text = assemblyBuildText(spec.gemText);
+  const hiddenAttr = options.hidden ? ' data-gem-state="hidden"' : '';
+  const defsBlock = spec.defs ? `<defs>${spec.defs}</defs>` : '';
+  return `<span class="gem" data-shape="${spec.shape}" data-gem-id="${gemId}"${hiddenAttr}><svg viewBox="${s.vb}" preserveAspectRatio="xMidYMid meet">${defsBlock}<${s.el} ${s.attrs} fill="${fill}" stroke="${stroke}" stroke-width="1.5"/><text x="${s.tx}" y="${s.ty}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="${s.fs}" font-weight="700" fill="var(--ink)">${text}</text></svg></span>`;
+}
+function assemblyBuildTrou(gemId) {
+  const spec = ASSEMBLY_GEM_SPEC[gemId];
+  const s = ASSEMBLY_SHAPES[spec.shape];
+  const stroke = spec.stroke || `var(--${spec.color}-stroke)`;
+  const label = assemblyBuildText(spec.trouLabel || '');
+  return `<span class="trou" data-shape="${spec.shape}" data-trou-accepts="${gemId}"><svg viewBox="${s.vb}" preserveAspectRatio="xMidYMid meet"><${s.el} ${s.attrs} fill="rgba(255,252,246,0.4)" stroke="${stroke}" stroke-width="1.5" stroke-dasharray="5 3"/><text x="${s.tx}" y="${s.ty}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="${s.fs}" font-weight="600" fill="var(--muted)" opacity="0.42">${label}</text></svg></span>`;
+}
+
+/* Subjects section — la carte Physique illustre la méthode (chemin principal) ;
+   la carte Maths rejoint la section "Pour aller plus loin". */
+const subjectCardsMain = [
+  {
+    subject: "Physique",
+    hook: "Retrouver une formule sans l'avoir apprise ?",
+    resolution: "Les définitions suffisent. Avec elles, la formule et son unité se reconstruisent d'elles-mêmes.",
+    icon: "physique",
+    visual: "physique",
+    readTime: "≈ 45 s",
+    detailTitle: "Résoudre un exo de Première en n'ayant rien appris",
+    detailBlocks: [
+      { type: "html", html: buildPhysicsReasoningDetail() }
+    ]
+  }
+];
+
+function subjectIcon(type) {
+  const icons = {
+    maths: '<span class="math-symbol">∫</span>',
+    physique: '<span class="math-symbol">Δ</span>'
+  };
+  return icons[type];
+}
+
+function subjectArrowDef() {
+  return `<defs><marker id="subjectArrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 8 4 L 0 8 z" fill="#6F7385"></path></marker></defs>`;
+}
+
+function buildMathMirrorVisual() {
+  const width = 360;
+  const height = 246;
+  const domainMin = -2.25;
+  const domainMax = 7.45;
+  const rangeMin = -2.25;
+  const rangeMax = 7.45;
+  const inner = 184;
+  const offsetX = 86;
+  const offsetY = 22;
+  const scale = inner / (domainMax - domainMin);
+
+  const toX = (value) => offsetX + (value - domainMin) * scale;
+  const toY = (value) => offsetY + inner - (value - rangeMin) * scale;
+
+  const buildPath = (fn, min, max, steps) => {
+    const points = [];
+    for (let i = 0; i <= steps; i += 1) {
+      const x = min + ((max - min) * i) / steps;
+      const y = fn(x);
+      if (!Number.isFinite(y) || y < rangeMin - 0.4 || y > rangeMax + 0.4) continue;
+      points.push(`${points.length === 0 ? "M" : "L"} ${toX(x).toFixed(2)} ${toY(y).toFixed(2)}`);
+    }
+    return points.join(" ");
+  };
+
+  const expPath = buildPath((x) => Math.exp(x), -2, 2, 72);
+  const lnPath = buildPath((x) => Math.log(x), 0.12, 7, 90);
+
+  const ax = 1;
+  const ay = Math.E;
+  const bx = Math.E;
+  const by = 1;
+
+  return `
+    <svg class="visual-mirror" viewBox="0 0 ${width} ${height}" aria-hidden="true">
+      ${subjectArrowDef()}
+      <line x1="${toX(domainMin).toFixed(2)}" y1="${toY(0).toFixed(2)}" x2="${toX(domainMax - 0.1).toFixed(2)}" y2="${toY(0).toFixed(2)}" class="axis" marker-end="url(#subjectArrow)"></line>
+      <line x1="${toX(0).toFixed(2)}" y1="${toY(rangeMin).toFixed(2)}" x2="${toX(0).toFixed(2)}" y2="${toY(rangeMax - 0.1).toFixed(2)}" class="axis" marker-end="url(#subjectArrow)"></line>
+      <line x1="${toX(domainMin).toFixed(2)}" y1="${toY(domainMin).toFixed(2)}" x2="${toX(rangeMax).toFixed(2)}" y2="${toY(rangeMax).toFixed(2)}" class="diag"></line>
+      <path d="${expPath}" class="curve-exp"></path>
+      <path d="${lnPath}" class="curve-ln"></path>
+      <line x1="${toX(ax).toFixed(2)}" y1="${toY(ay).toFixed(2)}" x2="${toX(bx).toFixed(2)}" y2="${toY(by).toFixed(2)}" stroke="#C9CED8" stroke-width="1.5" stroke-dasharray="4 4"></line>
+      <circle cx="${toX(ax).toFixed(2)}" cy="${toY(ay).toFixed(2)}" r="5" fill="#6A5ACD"></circle>
+      <circle cx="${toX(bx).toFixed(2)}" cy="${toY(by).toFixed(2)}" r="5" fill="#3E8D82"></circle>
+      <text x="${(toX(ax) + 8).toFixed(2)}" y="${(toY(ay) - 8).toFixed(2)}" class="visual-soft">(1, e)</text>
+      <text x="${(toX(bx) + 8).toFixed(2)}" y="${(toY(by) - 8).toFixed(2)}" class="visual-soft">(e, 1)</text>
+      <text x="${(toX(6.15)).toFixed(2)}" y="${(toY(6.75)).toFixed(2)}" class="math-diag-label" transform="rotate(-45 ${(toX(6.15)).toFixed(2)} ${(toY(6.75)).toFixed(2)})">y = x</text>
+      <text x="${(toX(domainMax - 0.15)).toFixed(2)}" y="${(toY(0) - 10).toFixed(2)}" text-anchor="end" class="math-axis-label">x</text>
+      <text x="${(toX(0) + 10).toFixed(2)}" y="${(toY(rangeMax - 0.1) + 16).toFixed(2)}" class="math-axis-label">y</text>
+    </svg>`;
+}
+
+function buildPhysicsCascadeVisual() {
+  const blocks = [
+    { y: 18, text: "Travail", tone: "visual-node" },
+    { y: 62, text: "W = F × d", note: "= force × distance", tone: "visual-node" },
+    { y: 108, text: "N × m", tone: "visual-node" },
+    { y: 154, text: "F = m × a", note: "= masse × accélération", tone: "visual-node" },
+    { y: 200, text: "kg × m/s²", note: "= Δvitesse / Δtemps", tone: "visual-node" },
+    { y: 246, text: "J = kg × m²/s²", tone: "visual-final" }
+  ];
+
+  return `
+    <svg class="visual-tree" viewBox="0 0 320 290" aria-hidden="true">
+      ${subjectArrowDef()}
+      ${blocks.map((block, index) => {
+        const h = index === 0 ? 28 : 30;
+        return `
+          <rect class="${block.tone} visual-node" x="64" y="${block.y}" width="192" height="${h}" rx="15"></rect>
+          <text x="160" y="${block.y + 18}" text-anchor="middle" class="visual-value">${block.text}</text>
+          ${block.note ? `<text x="160" y="${block.y + 45}" text-anchor="middle" class="visual-soft">${block.note}</text>` : ""}
+          ${index < blocks.length - 1 ? `<path class="arrow" d="M160 ${block.y + h} V ${block.y + h + 18}"></path>` : ""}
+        `;
+      }).join("")}
+    </svg>`;
+}
+
+function buildPhysicsTreeVisual() {
+  return `
+    <svg class="visual-tree" viewBox="0 0 360 272" aria-hidden="true">
+      <text x="18" y="34" class="tree-label" font-size="18">Travail (J)</text>
+      <path d="M24 44 V 170" class="tree-separator"></path>
+      <path d="M24 58 H 48" class="tree-separator"></path>
+      <text x="58" y="62" class="tree-label" font-size="16">Force (N)</text>
+      <path d="M52 70 V 142" class="tree-separator"></path>
+      <path d="M52 86 H 78" class="tree-separator"></path>
+      <text x="90" y="90" class="tree-label" font-size="16">Masse (kg)</text>
+      <path d="M52 114 H 78" class="tree-separator"></path>
+      <text x="90" y="118" class="tree-label" font-size="16">Accélération (m/s²)</text>
+      <path d="M140 126 V 142" class="tree-separator"></path>
+      <path d="M140 142 H 170" class="tree-separator"></path>
+      <text x="182" y="146" class="tree-label" font-size="15">= Δvitesse / Δtemps</text>
+      <path d="M24 170 H 48" class="tree-separator"></path>
+      <text x="58" y="174" class="tree-label" font-size="16">Distance (m)</text>
+      <line x1="18" y1="192" x2="334" y2="192" class="tree-separator"></line>
+      <text x="18" y="218" class="tree-final" font-size="18" xml:space="preserve">→ J = N × m</text>
+      <text x="18" y="241" class="tree-final-accent" font-size="18" xml:space="preserve">→ J = <tspan dx="-3">(</tspan>kg × m/s²)<tspan dx="3"> × m</tspan></text>
+      <text x="18" y="264" class="tree-final-accent" font-size="18" xml:space="preserve">→ J = kg × m²/s²</text>
+    </svg>`;
+}
+
+function buildReciprocalMiniGraph(type) {
+  const width = 220;
+  const height = 160;
+  let domainMin = -2.4;
+  let domainMax = 7.4;
+  let rangeMin = -2.4;
+  let rangeMax = 7.4;
+  let inner = 112;
+  let offsetX = 42;
+  let offsetY = 18;
+
+  if (type === "cube") {
+    domainMin = -3.6; domainMax = 6.4;
+    rangeMin = -3.6; rangeMax = 6.4;
+    inner = 120; offsetX = 36; offsetY = 14;
+  } else if (type === "sinh") {
+    domainMin = -4.6; domainMax = 4.6;
+    rangeMin = -4.6; rangeMax = 4.6;
+    inner = 120; offsetX = 36; offsetY = 14;
+  }
+
+  const scale = inner / (domainMax - domainMin);
+  const toX = (value) => offsetX + (value - domainMin) * scale;
+  const toY = (value) => offsetY + inner - (value - rangeMin) * scale;
+  const pathFrom = (fn, min, max, steps) => {
+    const points = [];
+    for (let i = 0; i <= steps; i += 1) {
+      const x = min + ((max - min) * i) / steps;
+      const y = fn(x);
+      if (!Number.isFinite(y) || y < rangeMin - 0.5 || y > rangeMax + 0.5) continue;
+      points.push(`${points.length === 0 ? "M" : "L"} ${toX(x).toFixed(2)} ${toY(y).toFixed(2)}`);
+    }
+    return points.join(" ");
+  };
+
+  const base = `
+    ${subjectArrowDef()}
+    <line x1="${toX(domainMin).toFixed(2)}" y1="${toY(0).toFixed(2)}" x2="${toX(domainMax - 0.15).toFixed(2)}" y2="${toY(0).toFixed(2)}" class="modal-graph-axis" marker-end="url(#subjectArrow)"></line>
+    <line x1="${toX(0).toFixed(2)}" y1="${toY(rangeMin).toFixed(2)}" x2="${toX(0).toFixed(2)}" y2="${toY(rangeMax - 0.15).toFixed(2)}" class="modal-graph-axis" marker-end="url(#subjectArrow)"></line>
+    <line x1="${toX(domainMin).toFixed(2)}" y1="${toY(domainMin).toFixed(2)}" x2="${toX(rangeMax).toFixed(2)}" y2="${toY(rangeMax).toFixed(2)}" class="modal-graph-diag"></line>
+  `;
+
+  if (type === "exp") {
+    const expPath = pathFrom((x) => Math.exp(x), -2, 2, 72);
+    const lnPath = pathFrom((x) => Math.log(x), 0.12, 7, 90);
+    const ax = 1, ay = Math.E, bx = Math.E, by = 1;
+    return `
+      <svg viewBox="0 0 ${width} ${height}" aria-hidden="true">
+        ${base}
+        <path d="${expPath}" class="modal-graph-primary"></path>
+        <path d="${lnPath}" class="modal-graph-secondary"></path>
+        <line x1="${toX(ax).toFixed(2)}" y1="${toY(ay).toFixed(2)}" x2="${toX(bx).toFixed(2)}" y2="${toY(by).toFixed(2)}" class="modal-graph-guide"></line>
+        <circle cx="${toX(ax).toFixed(2)}" cy="${toY(ay).toFixed(2)}" r="3.6" fill="#6A5ACD"></circle>
+        <circle cx="${toX(bx).toFixed(2)}" cy="${toY(by).toFixed(2)}" r="3.6" fill="#3E8D82"></circle>
+      </svg>`;
+  }
+
+  if (type === "square") {
+    const squarePath = pathFrom((x) => x * x, 0, 2.55, 72);
+    const rootPath = pathFrom((x) => Math.sqrt(x), 0, 7, 90);
+    return `
+      <svg viewBox="0 0 ${width} ${height}" aria-hidden="true">
+        ${base}
+        <path d="${squarePath}" class="modal-graph-primary"></path>
+        <path d="${rootPath}" class="modal-graph-secondary"></path>
+      </svg>`;
+  }
+
+  if (type === "cube") {
+    const cubePath = pathFrom((x) => Math.pow(x - 1, 3) + 2, -0.5, 2.5, 180);
+    const rootPath = pathFrom((x) => Math.cbrt(x - 2) + 1, -3.6, 6.4, 220);
+    return `
+      <svg viewBox="0 0 ${width} ${height}" aria-hidden="true">
+        ${base}
+        <path d="${cubePath}" class="modal-graph-primary"></path>
+        <path d="${rootPath}" class="modal-graph-secondary"></path>
+      </svg>`;
+  }
+
+  if (type === "sinh") {
+    const sinhPath = pathFrom((x) => Math.sinh(x), -2.2, 2.2, 180);
+    const asinhPath = pathFrom((x) => Math.asinh(x), -4.6, 4.6, 220);
+    return `
+      <svg viewBox="0 0 ${width} ${height}" aria-hidden="true">
+        ${base}
+        <path d="${sinhPath}" class="modal-graph-primary"></path>
+        <path d="${asinhPath}" class="modal-graph-secondary"></path>
+      </svg>`;
+  }
+
+  const tanPath = pathFrom((x) => Math.atan(x), -7, 7, 140);
+  const atanPath = pathFrom((x) => Math.tan(x), -1.25, 1.25, 140);
+  return `
+    <svg viewBox="0 0 ${width} ${height}" aria-hidden="true">
+      ${base}
+      <path d="${atanPath}" class="modal-graph-primary"></path>
+      <path d="${tanPath}" class="modal-graph-secondary"></path>
+    </svg>`;
+}
+
+function buildMathReasoningDetail() {
+  return `
+    <div class="subject-modal-body">
+      <div class="reasoning-grid">
+        <article class="reasoning-card">
+          ${buildReciprocalMiniGraph("exp")}
+          <div class="reasoning-label">Paire 1 : exp et ln</div>
+        </article>
+        <article class="reasoning-card">
+          ${buildReciprocalMiniGraph("square")}
+          <div class="reasoning-label">Paire 2 : x² sur ℝ+ et √x</div>
+        </article>
+        <article class="reasoning-card">
+          ${buildReciprocalMiniGraph("cube")}
+          <div class="reasoning-label">Paire 3 : (x-1)³+2 et ³√(x-2)+1</div>
+        </article>
+        <article class="reasoning-card">
+          ${buildReciprocalMiniGraph("sinh")}
+          <div class="reasoning-label">Paire 4 : sinh et arcsinh</div>
+        </article>
+      </div>
+
+      <div class="reasoning-prose">
+        <p class="reasoning-lead">Vous remarquez quelque chose ?</p>
+        <p>Toutes ces paires de courbes sont <strong>parfaitement symétriques</strong>. Et l'axe de symétrie est toujours le même : <em>la droite y = x</em>.</p>
+        <p>Ce n'est pas une coïncidence visuelle. C'est la conséquence directe de ce que veut dire “fonction réciproque”.</p>
+
+        <section class="reasoning-step reasoning-step--assembly">
+          <h4>La définition</h4>
+          <p>Une fonction réciproque défait ce que la fonction fait. Si la première prend a et donne b, la seconde prend b et redonne a. C'est tout.</p>
+        </section>
+
+        <section class="reasoning-step">
+          <h4>La traduction graphique</h4>
+          <p>Si f(a) = b, alors le point (a, b) est sur la courbe de f. Et puisque f⁻¹(b) = a, le point (b, a) est sur la courbe de f⁻¹.</p>
+          <p>Or échanger les coordonnées d'un point — passer de (a, b) à (b, a) — c'est exactement la définition d'une réflexion par rapport à la droite y = x.</p>
+        </section>
+
+        <section class="reasoning-step">
+          <h4>La conclusion</h4>
+          <p>Donc chaque point de f a son symétrique sur f⁻¹, et inversement. Les deux courbes sont des miroirs l'une de l'autre, et le miroir est la droite y = x. Toujours.</p>
+        </section>
+
+        <div class="reasoning-note">
+          <p>On n'apprend pas seulement que ln défait exp, ou que √ défait le carré. On voit pourquoi leurs graphes se répondent — et pourquoi cette symétrie s'applique à toutes les paires de fonctions réciproques sans exception.</p>
+        </div>
+      </div>
+    </div>`;
+}
+
+function buildPhysicsReasoningDetail() {
+  const dataGems =
+    assemblyBuildGem('v_i') +
+    assemblyBuildGem('v_f') +
+    assemblyBuildGem('dt') +
+    assemblyBuildGem('m') +
+    assemblyBuildGem('d');
+
+  const emitBlock = (gemId) =>
+    `<span class="formula-emit" data-emit-state="hidden">` +
+      `<span class="formula-equals">=</span>` +
+      assemblyBuildGem(gemId) +
+    `</span>`;
+
+  const formulaA =
+    `<span class="formula-result">a =</span>` +
+    `<span class="formula-op">(</span>` +
+    assemblyBuildTrou('v_f') +
+    `<span class="formula-op">−</span>` +
+    assemblyBuildTrou('v_i') +
+    `<span class="formula-op">) /</span>` +
+    assemblyBuildTrou('dt') +
+    emitBlock('a');
+
+  const formulaF =
+    `<span class="formula-result">F =</span>` +
+    assemblyBuildTrou('m') +
+    `<span class="formula-op">×</span>` +
+    assemblyBuildTrou('a') +
+    emitBlock('F');
+
+  const formulaW =
+    `<span class="formula-result">W =</span>` +
+    assemblyBuildTrou('F') +
+    `<span class="formula-op">×</span>` +
+    assemblyBuildTrou('d') +
+    emitBlock('W');
+
+  return `
+    <div class="subject-modal-body">
+      <div class="exercise-box">
+        <div class="exercise-kicker">Énoncé</div>
+        <div class="exercise-diagram" aria-hidden="true">
+          <svg viewBox="0 0 340 132">
+            <line x1="26" y1="72" x2="314" y2="72" stroke="#14213D" stroke-width="1.8" stroke-linecap="round"/>
+            <g opacity="0.18" stroke="#C9A24B" stroke-width="1">
+              <line x1="30" y1="78" x2="20" y2="88"/>
+              <line x1="38" y1="78" x2="28" y2="88"/>
+              <line x1="46" y1="78" x2="36" y2="88"/>
+              <line x1="54" y1="78" x2="44" y2="88"/>
+              <line x1="62" y1="78" x2="52" y2="88"/>
+              <line x1="70" y1="78" x2="60" y2="88"/>
+              <line x1="78" y1="78" x2="68" y2="88"/>
+              <line x1="86" y1="78" x2="76" y2="88"/>
+              <line x1="94" y1="78" x2="84" y2="88"/>
+              <line x1="102" y1="78" x2="92" y2="88"/>
+              <line x1="110" y1="78" x2="100" y2="88"/>
+              <line x1="118" y1="78" x2="108" y2="88"/>
+              <line x1="126" y1="78" x2="116" y2="88"/>
+              <line x1="134" y1="78" x2="124" y2="88"/>
+              <line x1="142" y1="78" x2="132" y2="88"/>
+              <line x1="150" y1="78" x2="140" y2="88"/>
+              <line x1="158" y1="78" x2="148" y2="88"/>
+              <line x1="166" y1="78" x2="156" y2="88"/>
+              <line x1="174" y1="78" x2="164" y2="88"/>
+              <line x1="182" y1="78" x2="172" y2="88"/>
+              <line x1="190" y1="78" x2="180" y2="88"/>
+              <line x1="198" y1="78" x2="188" y2="88"/>
+              <line x1="206" y1="78" x2="196" y2="88"/>
+              <line x1="214" y1="78" x2="204" y2="88"/>
+              <line x1="222" y1="78" x2="212" y2="88"/>
+              <line x1="230" y1="78" x2="220" y2="88"/>
+              <line x1="238" y1="78" x2="228" y2="88"/>
+              <line x1="246" y1="78" x2="236" y2="88"/>
+              <line x1="254" y1="78" x2="244" y2="88"/>
+              <line x1="262" y1="78" x2="252" y2="88"/>
+              <line x1="270" y1="78" x2="260" y2="88"/>
+              <line x1="278" y1="78" x2="268" y2="88"/>
+              <line x1="286" y1="78" x2="276" y2="88"/>
+              <line x1="294" y1="78" x2="284" y2="88"/>
+            </g>
+            <rect x="64" y="44" width="28" height="28" rx="4" fill="#F7F2EA" stroke="#14213D" stroke-width="1.7"/>
+            <text x="78" y="60" text-anchor="middle" class="modal-graph-text" font-size="8.5">2 kg</text>
+            <rect x="256" y="44" width="28" height="28" rx="4" fill="#EAF6EF" stroke="#6CB08D" stroke-width="1.6" stroke-dasharray="4 3"/>
+            <line x1="92" y1="58" x2="190" y2="58" stroke="#C9A24B" stroke-width="2.4"/>
+            <polygon points="190,52 204,58 190,64" fill="#C9A24B"/>
+            <text x="148" y="52" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="18" fill="#C9A24B">F</text>
+            <line x1="140" y1="35" x2="155" y2="35" stroke="#C9A24B" stroke-width="1.4"/>
+            <polygon points="155,32 161,35 155,38" fill="#C9A24B"/>
+            <text x="50" y="28" text-anchor="middle" class="modal-graph-text">v<tspan dy="3" font-size="0.7em">0</tspan><tspan dy="-3"> = 0 m/s</tspan></text>
+            <text x="284" y="28" text-anchor="middle" class="modal-graph-text">v = 6 m/s</text>
+            <polygon points="64,114 74,109 74,119" fill="#C9A24B"/>
+            <line x1="74" y1="114" x2="274" y2="114" stroke="#C9A24B" stroke-width="2"/>
+            <polygon points="284,114 274,109 274,119" fill="#C9A24B"/>
+            <line x1="64" y1="104" x2="64" y2="122" stroke="#8F8A80" stroke-width="1.4"/>
+            <line x1="284" y1="104" x2="284" y2="122" stroke="#8F8A80" stroke-width="1.4"/>
+            <text x="174" y="98" text-anchor="middle" class="modal-graph-text">Δt = 3 s</text>
+            <text x="174" y="129" text-anchor="middle" class="modal-graph-text" fill="#C9A24B">d = 9 m</text>
+          </svg>
+        </div>
+        <p>Un objet de 2 kg accélère de 0 à 6 m/s en 3 secondes, sur une distance de 9 m. Quel travail a été fourni ?</p>
+      </div>
+
+      <div class="reasoning-prose">
+        <p class="reasoning-intro">« Je ne connais aucune formule, juste des définitions. Et ça suffit largement. »</p>
+
+        <section class="reasoning-step">
+          <h4>Le travail, c'est en joules. Mais c'est quoi un joule ?</h4>
+          <p>Un joule est l'unité du travail. C'est une force fois une distance.</p>
+          <div class="formula-box"><code>W = F × d
+J = N × m</code></div>
+          <p>C'est déjà une formule, sans l'avoir apprise.</p>
+          <p>Mais on n'a pas la force dans l'énoncé. Il faut la fabriquer aussi.</p>
+        </section>
+
+        <section class="reasoning-step">
+          <h4>Et c'est quoi un newton ?</h4>
+          <p>Un newton, c'est ce qui donne une accélération à une masse. Donc c'est une masse fois une accélération.</p>
+          <div class="formula-box"><code>F = m × a</code></div>
+          <p>La masse, on l'a : 2 kg. L'accélération, il faut encore descendre d'un cran.</p>
+        </section>
+
+        <section class="reasoning-step">
+          <h4>L'accélération, c'est quoi ?</h4>
+          <p>Une accélération, c'est une variation de vitesse par unité de temps. Si je passe de 3 m/s à 5 m/s en 1 seconde, j'ai gagné 2 m/s par seconde. C'est ça l'unité m/s² : des m/s, par seconde.</p>
+          <div class="formula-box"><code>a = (v<sub>f</sub> − v<sub>i</sub>) / Δt</code></div>
+          <p>On a touché le fond de la cascade. On a une grandeur qu'on peut calculer directement depuis l'énoncé.</p>
+        </section>
+
+        <section class="reasoning-step reasoning-step--assembly">
+          <h4>On remonte — l'assemblage</h4>
+          <div class="assembly-block">
+            <div class="assembly-block-v2">
+              <div class="assembly-pool">
+                <div class="assembly-pool-label">Données</div>
+                <div class="assembly-pool-gems">${dataGems}</div>
+              </div>
+              <div class="assembly-formulas-v2">
+                <div class="assembly-formula" data-formula-emits="a">${formulaA}</div>
+                <div class="assembly-formula" data-formula-emits="F">${formulaF}</div>
+                <div class="assembly-formula" data-formula-emits="W">${formulaW}</div>
+              </div>
+              <div class="assembly-launch-wrap-v2">
+                <button class="assembly-launch-v2" type="button">▸ Lancer l'assemblage</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="reasoning-note">
+          <p>Cet exercice se traite habituellement avec trois formules apprises par cœur. On n'en a appris aucune. On a remonté trois définitions, et les formules sont tombées toutes seules.</p>
+          <p>On n'a pas fait des maths ni de la physique. On a joué au jeu où chaque pièce rentre dans son trou. Tout le travail était dans la descente, pas dans le calcul.</p>
+          <p>C'est ça, comprendre la physique. Pas mémoriser. Reconstruire.</p>
+        </div>
+      </div>
+    </div>`;
+}
+
+function subjectVisual(type) {
+  if (type === "maths") return buildMathMirrorVisual();
+  return buildPhysicsTreeVisual();
+}
+
+function renderDetailBlocks(blocks) {
+  return blocks.map((block) => {
+    if (block.type === "html") {
+      return block.html;
+    }
+    if (block.type === "formula") {
+      return `<div class="subject-formulas">${block.lines.map((line) => `<code>${line}</code>`).join("")}</div>`;
+    }
+    if (block.type === "list") {
+      return `<ul>${block.items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+    }
+    if (block.type === "conclusion") {
+      return `<p><strong>Conclusion :</strong> ${block.html}</p>`;
+    }
+    return `<p>${block.html}</p>`;
+  }).join("");
+}
+
+function subjectModalKickerMarkup(cardData) {
+  if (cardData.subject === "Maths") return "reasoning/fonctions-reciproques.html";
+  if (cardData.subject === "Physique") return "reasoning/unites-et-definitions.html";
+  return `reasoning/${cardData.subject.toLowerCase()}.html`;
+}
+
+function initPhysicsAssemblyV2(root) {
+  if (!root) return;
+  const stage  = root.querySelector('.assembly-block-v2');
+  const launch = root.querySelector('.assembly-launch-v2');
+  if (!stage || !launch || launch.dataset.bound === 'true') return;
+  launch.dataset.bound = 'true';
+
+  const modalBody = root.classList.contains('subject-modal-body') ? root : root.closest('.subject-modal-body');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const raf2  = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+  const PHASES = [
+    { slides: ['v_f', 'v_i', 'dt'], emits: 'a' },
+    { slides: ['m',   'a'         ], emits: 'F' },
+    { slides: ['F',   'd'         ], emits: 'W' }
+  ];
+
+  // Replace a trou DOM node with a freshly-built filled gem (same shape, value text)
+  function fillTrouWith(gemId) {
+    const trouEl = stage.querySelector(`.assembly-formula .trou[data-trou-accepts="${gemId}"]`);
+    if (!trouEl) return null;
+    const tmp = document.createElement('span');
+    tmp.innerHTML = assemblyBuildGem(gemId);
+    const filled = tmp.firstChild;
+    filled.classList.add('gem-snap');
+    trouEl.parentNode.replaceChild(filled, trouEl);
+    return filled;
+  }
+
+  // Find a gem source: raw inputs live in .assembly-pool, derived (a, F) live in .formula-emit
+  function findGemSource(gemId) {
+    return stage.querySelector(`.assembly-pool .gem[data-gem-id="${gemId}"]`)
+        || stage.querySelector(`.formula-emit[data-emit-state="visible"] .gem[data-gem-id="${gemId}"]`);
+  }
+
+  // Slide a clone of a source gem to its trou, then replace the trou with a filled gem
+  async function flyGemToTrou(gemId) {
+    const source = findGemSource(gemId);
+    const target = stage.querySelector(`.assembly-formula .trou[data-trou-accepts="${gemId}"]`);
+    if (!source || !target) return;
+
+    const sourceRect = source.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+
+    const flyer = source.cloneNode(true);
+    flyer.classList.add('assembly-flyer-v2');
+    flyer.removeAttribute('data-gem-id');
+    flyer.style.left   = sourceRect.left + 'px';
+    flyer.style.top    = sourceRect.top  + 'px';
+    flyer.style.width  = sourceRect.width  + 'px';
+    flyer.style.height = sourceRect.height + 'px';
+    document.body.appendChild(flyer);
+
+    await raf2();
+    flyer.style.left   = targetRect.left + 'px';
+    flyer.style.top    = targetRect.top  + 'px';
+    flyer.style.width  = targetRect.width  + 'px';
+    flyer.style.height = targetRect.height + 'px';
+
+    await sleep(550);
+    fillTrouWith(gemId);
+    flyer.remove();
+    await sleep(120);
+  }
+
+  // Reveal the "= [gem]" emit block at the end of a formula
+  async function revealEmit(formulaId, isFinal = false) {
+    const formula = stage.querySelector(`.assembly-formula[data-formula-emits="${formulaId}"]`);
+    if (!formula) return;
+    const emit = formula.querySelector('.formula-emit');
+    if (!emit) return;
+    emit.setAttribute('data-emit-state', 'visible');
+    if (isFinal) {
+      const finalGem = emit.querySelector('.gem');
+      if (finalGem) finalGem.classList.add('gem-final-glow');
+      const check = document.createElement('span');
+      check.className = 'assembly-check-v2';
+      check.textContent = '✓';
+      emit.appendChild(check);
+      await sleep(reduced ? 0 : 380);
+      check.classList.add('is-visible');
+      await sleep(reduced ? 0 : 280);
+    } else {
+      await sleep(reduced ? 0 : 380);
+    }
+  }
+
+  async function runAnimation() {
+    if (reduced) {
+      const allGems = PHASES.flatMap((p) => p.slides);
+      for (const gemId of allGems) fillTrouWith(gemId);
+      for (const phase of PHASES) await revealEmit(phase.emits, phase.emits === 'W');
+      launch.classList.add('is-fading');
+      setTimeout(() => { launch.style.display = 'none'; }, 200);
+      return;
+    }
+
+    if (modalBody) modalBody.classList.add('assembly-focus-active');
+    launch.classList.add('is-fading');
+    await sleep(220);
+    launch.style.display = 'none';
+
+    for (const phase of PHASES) {
+      for (const gemId of phase.slides) {
+        await flyGemToTrou(gemId);
+      }
+      await sleep(180);
+      await revealEmit(phase.emits, phase.emits === 'W');
+      await sleep(220);
+    }
+
+    // Animation done — restore the surrounding modal sections
+    await sleep(400);
+    if (modalBody) modalBody.classList.remove('assembly-focus-active');
+  }
+
+  launch.addEventListener('click', runAnimation, { once: true });
+
+  // Accessibility: focus the launch button when the modal opens so keyboard users
+  // can hit Enter immediately. Defer one frame so the modal is fully painted.
+  if (!reduced) {
+    requestAnimationFrame(() => {
+      try { launch.focus({ preventScroll: true }); } catch (_) { launch.focus(); }
+    });
+  }
+}
+
+(function renderSubjects() {
+  const subjectModal = document.getElementById('subjectModal');
+  const subjectModalClose = document.getElementById('subjectModalClose');
+  const subjectModalTitle = document.getElementById('subjectModalTitle');
+  const subjectModalKicker = document.getElementById('subjectModalKicker');
+  const subjectModalBody = document.getElementById('subjectModalBody');
+
+  function closeSubjectModal() {
+    subjectModal.removeAttribute('open');
+    subjectModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function openSubjectModal(cardData) {
+    subjectModalKicker.innerHTML = subjectModalKickerMarkup(cardData);
+    subjectModalTitle.textContent = cardData.detailTitle;
+    subjectModalBody.innerHTML = renderDetailBlocks(cardData.detailBlocks);
+    subjectModal.setAttribute('open', '');
+    subjectModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (cardData.subject === 'Physique') {
+      initPhysicsAssemblyV2(subjectModalBody);
+    }
+  }
+
+  function renderInto(mount, cards) {
+    mount.innerHTML = cards.map((card, index) => `
+      <article class="subject-card" data-subject="${card.subject}" data-open="false">
+        <div class="subject-head">
+          <span class="subject-badge ${subjectIcon(card.icon).includes('math-symbol') ? 'math-symbol' : ''}" aria-hidden="true">${subjectIcon(card.icon)}</span>
+          <div class="subject-name">${card.subject}</div>
+        </div>
+        <div class="subject-hook">${card.hook}</div>
+        <div class="subject-visual">${subjectVisual(card.visual)}</div>
+        <p class="subject-resolution">${card.resolution}</p>
+        ${card.readTime ? `<span class="demo-meta">${card.readTime}</span>` : ""}
+        <button class="subject-toggle" type="button" aria-expanded="false" aria-controls="subject-detail-${index}">
+          Voir le raisonnement →
+        </button>
+        <div class="subject-detail" id="subject-detail-${index}">
+          <div class="subject-detail-body">
+            <div class="subject-detail-title">${card.detailTitle}</div>
+            ${renderDetailBlocks(card.detailBlocks)}
+          </div>
+        </div>
+      </article>
+    `).join("");
+
+    const cardEls = [...mount.querySelectorAll('.subject-card')];
+    cardEls.forEach((card) => {
+      card.querySelector('.subject-toggle').addEventListener('click', () => {
+        openSubjectModal(cards[cardEls.indexOf(card)]);
+      });
+    });
+  }
+
+  const mount = document.getElementById('subjectGrid');
+  if (mount) renderInto(mount, subjectCardsMain);
+
+  subjectModalClose.addEventListener('click', closeSubjectModal);
+  const subjectModalClose1 = document.getElementById('subjectModalClose1');
+  if (subjectModalClose1) subjectModalClose1.addEventListener('click', closeSubjectModal);
+  subjectModal.addEventListener('click', (event) => {
+    if (event.target === subjectModal) closeSubjectModal();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && subjectModal.hasAttribute('open')) closeSubjectModal();
+  });
+})();
+
+/* Qualification builder */
+const state = { subject: null, level: null, lieu: "", slots: "", blocage: "" };
+const qualMsg = document.getElementById('qualMsg');
+const sendBtn = document.getElementById('qualSend');
+const lieuInput = document.getElementById('lieu');
+const slotsInput  = document.getElementById('slots');
+const blocageInput = document.getElementById('blocage');
+
+document.querySelectorAll('.chips').forEach(group => {
+  const key = group.dataset.key;
+  group.addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip');
+    if (!chip) return;
+    [...group.children].forEach(c => c.setAttribute('aria-pressed','false'));
+    chip.setAttribute('aria-pressed','true');
+    state[key] = chip.dataset.value;
+    updatePreview();
+  });
+});
+slotsInput.addEventListener('input',   () => { state.slots   = slotsInput.value.trim();   updatePreview(); });
+blocageInput.addEventListener('input', () => { state.blocage = blocageInput.value.trim();  updatePreview(); });
+lieuInput.addEventListener('input',    () => { state.lieu    = lieuInput.value.trim();     updatePreview(); });
+
+function buildMessage() {
+  const { subject, level, lieu, slots, blocage } = state;
+  if (!subject && !level) return null;
+
+  let niveauPhrase = "";
+  if (level === "Collège") niveauPhrase = "au collège";
+  else if (level && level !== "Autre") niveauPhrase = `en ${level}`;
+
+  const subjectPart = subject ? `de ${subject.toLowerCase()}` : "de cours";
+  const elevePart   = niveauPhrase ? `pour un élève ${niveauPhrase}` : "";
+
+  let msg = `Bonjour, je cherche un cours ${subjectPart}${elevePart ? " " + elevePart : ""}.`;
+  if (lieu)    msg += `\nLieu : ${lieu}.`;
+  if (slots)   msg += `\nDisponibilités : ${slots}.`;
+  if (blocage) msg += `\nCe qui bloque : ${blocage}.`;
+  msg += `\nOn peut en parler ?`;
+  return msg;
+}
+function updatePreview() {
+  const msg = buildMessage();
+  qualMsg.textContent = msg || "Choisissez la matière et le niveau — votre message apparaît ici.";
+  const ready = !!(state.subject && state.level);
+  // On évite disabled (iOS Safari ignore le premier tap après passage disabled→enabled)
+  sendBtn.style.opacity       = ready ? "1"           : ".55";
+  sendBtn.style.cursor        = ready ? "pointer"     : "not-allowed";
+  sendBtn.style.pointerEvents = ready ? "auto"        : "none";
+}
+sendBtn.addEventListener('click', () => {
+  const msg = buildMessage() || CONFIG.defaultMsg;
+  window.open(waUrl(msg), '_blank', 'noopener');
+});
+
+/* Contact form — branchable Formspree/Tally/Getform */
+function submitForm(e) {
+  e.preventDefault();
+  const status = document.getElementById('formStatus');
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
+
+  if (!CONFIG.formEndpoint) {
+    // Endpoint pas encore branché — message console pour debug,
+    // mais on ne propose PAS WhatsApp ici (c'est volontairement un autre canal que Form #1).
+    status.textContent = "Formulaire pas encore branché — en attendant, écrivez à " + (CONFIG.contactEmail || "Hamza") + ".";
+    status.style.color = "var(--muted)";
+    console.info("Form submission (endpoint not configured):", data);
+    return false;
+  }
+
+  /* Validation email côté client */
+  const emailInput = document.getElementById('cf-email');
+  const emailVal = (data.email || "").trim();
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal);
+  if (!emailOk) {
+    emailInput.setCustomValidity("Adresse invalide — vérifiez le format (ex : prenom@domaine.fr).");
+    emailInput.reportValidity();
+    emailInput.addEventListener('input', () => emailInput.setCustomValidity(""), { once: true });
+    return false;
+  }
+  emailInput.setCustomValidity("");
+
+  status.textContent = "Envoi…";
+  fetch(CONFIG.formEndpoint, {
+    method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
+  }).then(r => {
+    if (r.ok) {
+      form.reset();
+      document.getElementById('confirmedEmail').textContent = emailVal;
+      form.style.display = 'none';
+      document.getElementById('formIntro').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'flex';
+    } else {
+      status.textContent = "Une erreur est survenue. Réessayez ou écrivez directement à b00731410@essec.edu.";
+    }
+  }).catch(() => status.textContent = "Connexion impossible. Réessayez dans quelques instants.");
+  return false;
+}
+
+function resetContactForm() {
+  document.getElementById('contactForm').style.display = '';
+  document.getElementById('formIntro').style.display = '';
+  document.getElementById('formSuccess').style.display = 'none';
+  document.getElementById('formStatus').textContent = "Réponse sous 24h.";
+  document.getElementById('formStatus').style.color = "";
+}
+
+/* Modal */
+const modal = document.getElementById('modal');
+const modalFrame = document.getElementById('modalFrame');
+const modalTitle = document.getElementById('modalTitle');
+let savedScrollY = 0;
+// Bloque le scroll d'arrière-plan SANS position:fixed (qui réintroduirait
+// le bug iframe iOS). On laisse passer les touches dans .modal-scroll (donc l'iframe).
+function lockTouch(e) {
+  if (e.target.closest && e.target.closest('.modal-scroll')) return;
+  e.preventDefault();
+}
+function openModal(src) {
+  modalTitle.textContent = src; modalFrame.src = src;
+  savedScrollY = window.scrollY;
+  modal.style.top = savedScrollY + 'px';   // modale absolute calée sur le viewport courant
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+  document.addEventListener('touchmove', lockTouch, { passive: false });
+  modal.setAttribute('open',''); modal.setAttribute('aria-hidden','false');
+}
+function closeModal() {
+  modal.removeAttribute('open'); modal.setAttribute('aria-hidden','true');
+  modalFrame.src = 'about:blank';
+  document.removeEventListener('touchmove', lockTouch, { passive: false });
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('[data-demo]').forEach(btn => btn.addEventListener('click', () => openModal(btn.dataset.demo)));
+document.getElementById('modalClose2').addEventListener('click', closeModal);
+document.getElementById('modalClose1').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* Reveal on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+updatePreview();
+</script>
+</body>
+</html>

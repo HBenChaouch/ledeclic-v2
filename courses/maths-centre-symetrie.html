@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centre de symétrie — Le Déclic</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #F7F2EA;
+  --bg-2:      #F1EADC;
+  --surface:   #FFFFFF;
+  --ink:       #14213D;
+  --ink-soft:  #2B385A;
+  --muted:     #6F7385;
+  --border:    #E7DECC;
+  --navy:      #14213D;
+  --gold:      #C9A24B;
+  --gold-2:    #B68D34;
+  --gold-tint: #F6EBCF;
+  --green:     #1f6b54;
+  --green-tint:#E2EFE7;
+  --red:       #C0392B;
+  --blue:      #1a4a8a;
+  --purple:    #7b2d8b;
+  --ff-serif:  "Fraunces", Georgia, serif;
+  --ff-sans:   "Plus Jakarta Sans", system-ui, sans-serif;
+  --ff-mono:   "JetBrains Mono", monospace;
+  --r-md: 14px; --r-lg: 20px; --r-xl: 28px;
+  --sh-md: 0 4px 14px rgba(20,33,61,.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--ff-sans); background: var(--bg); color: var(--ink); min-height: 100vh; padding: clamp(24px,4vw,48px) clamp(18px,4vw,40px); -webkit-font-smoothing: antialiased; }
+/* iOS : rend la zone immédiatement "cliquable" (1er touch livré, pas consommé). Tactile uniquement. */
+@media (pointer: coarse) { body { cursor: pointer; } }
+
+.page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-2); }
+.page-header { display: flex; flex-direction: column; gap: 10px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.page-header h1 { font-family: var(--ff-serif); font-size: clamp(24px,3.5vw,36px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+.page-header h1 em { font-style: italic; color: var(--gold-2); }
+.page-header p { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 54ch; }
+
+.block { display: flex; flex-direction: column; gap: 14px; }
+.block-label { display: flex; align-items: center; gap: 12px; }
+.block-num { font-family: var(--ff-serif); font-size: 2.4rem; font-weight: 400; color: var(--border); line-height: 1; }
+.block-title { font-family: var(--ff-serif); font-size: 1.15rem; font-weight: 500; }
+.block p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.block p strong { color: var(--ink); }
+
+.canvas-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-md); }
+.canvas-card canvas { display: block; width: 100%; }
+
+.controls { padding: 14px 20px; border-top: 1px solid var(--border); background: var(--bg-2); display: flex; flex-direction: column; gap: 10px; }
+.slider-row { display: flex; align-items: center; gap: 12px; }
+.slider-row label { font-size: 12px; color: var(--muted); font-family: var(--ff-mono); white-space: nowrap; min-width: 56px; }
+.slider-row input[type=range] { flex: 1; accent-color: var(--navy); cursor: pointer; }
+.slider-val { font-family: var(--ff-mono); font-size: 13px; font-weight: 600; color: var(--navy); min-width: 56px; text-align: right; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 14px; padding: 12px 20px 0; }
+.leg { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
+.leg-dot { width: 10px; height: 10px; border-radius: 50%; }
+.leg-line { width: 22px; height: 2px; border-radius: 2px; }
+
+/* Données strictes — ce qui est donné par l'exercice */
+.given {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--navy);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: 14px 18px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.given strong { color: var(--ink); }
+.given .label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+.given code { font-family: var(--ff-mono); color: var(--navy); background: var(--bg-2); padding: 2px 6px; border-radius: 4px; }
+
+/* Assemblage — gemmes + bouton + résultat */
+.assembly { display: flex; flex-direction: column; gap: 16px; }
+.gems-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.gem {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: all .5s cubic-bezier(.2,.7,.2,1);
+  position: relative;
+  box-shadow: var(--sh-md);
+}
+.gem-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
+}
+.gem-expr {
+  font-family: var(--ff-mono); font-size: 13px;
+  color: var(--ink-soft); line-height: 1.5;
+}
+.gem-result {
+  font-family: var(--ff-mono);
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--navy);
+}
+.gem.gem-a { border-left: 3px solid var(--red); }
+.gem.gem-a .gem-label { color: var(--red); }
+.gem.gem-b { border-left: 3px solid var(--green); }
+.gem.gem-b .gem-label { color: var(--green); }
+.gem.fired {
+  animation: gemPulse .6s ease;
+}
+@keyframes gemPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.025); box-shadow: 0 8px 24px rgba(20,33,61,.14); }
+}
+
+.assemble-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 22px; border-radius: 999px;
+  background: var(--navy); color: white;
+  font-weight: 600; font-size: 14px;
+  border: none; cursor: pointer;
+  align-self: center;
+  transition: all .2s;
+  box-shadow: 0 6px 18px -6px rgba(20,33,61,.4);
+}
+.assemble-btn:hover { background: #1F2D52; transform: translateY(-1px); box-shadow: 0 10px 24px -8px rgba(20,33,61,.5); }
+.assemble-btn:disabled { background: var(--muted); cursor: not-allowed; transform: none; box-shadow: none; opacity: .6; }
+.assemble-btn svg { width: 16px; height: 16px; }
+
+.result-gem {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: 18px 22px;
+  font-family: var(--ff-mono);
+  font-size: 14px;
+  line-height: 1.9;
+  opacity: 0; max-height: 0; overflow: hidden;
+  transition: all .6s cubic-bezier(.2,.7,.2,1);
+  padding-top: 0; padding-bottom: 0;
+}
+.result-gem.shown { opacity: 1; max-height: 400px; padding-top: 18px; padding-bottom: 18px; }
+.result-gem .cm { color: var(--muted); font-size: 11px; }
+.result-gem .gld { color: var(--gold-2); font-weight: 700; }
+.result-gem .grn { color: var(--green); font-weight: 700; }
+.result-gem .conclusion { display: block; margin-top: 10px; font-weight: 700; color: var(--gold-2); font-family: var(--ff-serif); font-style: italic; font-size: 15px; }
+
+.assembly-status {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: var(--r-md);
+  background: var(--bg-2);
+  font-size: 13px; color: var(--muted);
+}
+.assembly-status.armed { background: var(--green-tint); color: var(--green); }
+.assembly-status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); transition: all .3s; }
+.assembly-status.armed .dot { background: var(--green); box-shadow: 0 0 0 4px rgba(31,107,84,.2); }
+</style>
+<style>
+.demo-topbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--muted); }
+.demo-topbar a { color: var(--navy); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.demo-topbar a:hover { color: var(--gold-2); }
+.demo-framing { font-size: 13.5px; color: var(--muted); background: rgba(255,255,255,.6); border: 1px dashed var(--border); border-radius: 12px; padding: 12px 16px; line-height: 1.6; }
+.demo-framing strong { color: var(--ink); }
+.demo-cta-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px 22px; text-align: center; box-shadow: 0 10px 30px rgba(20,33,61,.10); display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.demo-cta-card h2 { font-family: var(--ff-serif); font-size: 20px; font-weight: 500; color: var(--ink); margin: 0; line-height: 1.25; }
+.demo-cta-card p { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 52ch; margin: 0; }
+.demo-wa-btn { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #052e1c; font-weight: 700; font-size: 15px; padding: 13px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 6px 18px -6px rgba(37,211,102,.55); }
+.demo-wa-btn:hover { background: #1FC95C; }
+.demo-back-link { font-size: 13px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.demo-back-link:hover { color: var(--navy); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="demo-topbar">
+    <a href="../index.html">← Retour au site</a>
+    <span>Le Déclic — cours particuliers</span>
+  </div>
+
+  <header class="page-header">
+    <span class="eyebrow">Maths — Première / Terminale</span>
+    <h1>Centre de <em>symétrie</em></h1>
+    <p>Pourquoi I est-il centre de symétrie ? On regarde, puis on démontre — en assemblant deux pièces.</p>
+  </header>
+
+  <div class="demo-framing">
+    <strong>Démo de cours.</strong> C'est le type de support préparé pour chaque séance, adapté au chapitre et au niveau de votre enfant — et qu'il garde ensuite pour réviser seul.
+  </div>
+
+  <!-- BLOC 1 : visualisation -->
+  <div class="block">
+    <div class="block-label">
+      <span class="block-num">1</span>
+      <span class="block-title">L'idée — visuelle</span>
+    </div>
+    <p>Si I est centre de symétrie, alors pour tout <strong>h</strong>, les points <strong>A = (a−h ; f(a−h))</strong> et <strong>B = (a+h ; f(a+h))</strong> sont symétriques par rapport à I. Bouge h et observe : I reste toujours au milieu du segment AB.</p>
+
+    <div class="canvas-card">
+      <canvas id="cv" height="380"></canvas>
+      <div class="legend">
+        <div class="leg"><div class="leg-line" style="background:var(--navy)"></div>Courbe f</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--gold)"></div>I = centre</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--red)"></div>B = (a+h ; f(a+h))</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--green)"></div>A = (a−h ; f(a−h))</div>
+        <div class="leg"><div class="leg-line" style="background:var(--purple)"></div>Segment AB</div>
+      </div>
+      <div class="controls">
+        <div class="slider-row">
+          <label>h =</label>
+          <input type="range" id="slH" min="3" max="40" value="20" step="1">
+          <span class="slider-val" id="svH">2.0</span>
+        </div>
+      </div>
+    </div>
+
+    <p>Géométriquement, deux conditions doivent tenir pour <em>tout</em> h : I au milieu de AB <strong>en abscisse</strong> (vrai par construction), et I au milieu de AB <strong>en ordonnée</strong> (à démontrer). C'est cette deuxième condition qu'on va prouver.</p>
+  </div>
+
+  <!-- BLOC 2 : données strictes -->
+  <div class="block">
+    <div class="block-label">
+      <span class="block-num">2</span>
+      <span class="block-title">Données</span>
+    </div>
+    <div class="given">
+      <span class="label">Ce qu'on a</span>
+      <div>Fonction : <code>f(x) = 2x − 3 + 2/(x+1)</code></div>
+      <div>Point candidat : <code>I(−1 ; −5)</code> &nbsp;→&nbsp; a = −1, b = −5</div>
+      <div style="margin-top: 8px;">
+        <span class="label" style="margin-top:6px;">À démontrer</span>
+        Pour tout h ≠ 0, &nbsp;<code>f(−1+h) + f(−1−h) = 2b = −10</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOC 3 : assemblage -->
+  <div class="block">
+    <div class="block-label">
+      <span class="block-num">3</span>
+      <span class="block-title">Assemblage de la preuve</span>
+    </div>
+    <p>On calcule séparément f(−1+h) et f(−1−h), puis on les <strong>additionne</strong>. Si la somme vaut bien −10 quel que soit h, alors I est centre de symétrie.</p>
+
+    <div class="assembly">
+
+      <div class="gems-row">
+        <div class="gem gem-a" id="gemA">
+          <span class="gem-label">Pièce A — f(−1 + h)</span>
+          <div class="gem-expr">
+            f(−1+h) = 2(−1+h) − 3 + 2/((−1+h)+1)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= −2 + 2h − 3 + 2/h
+          </div>
+          <div class="gem-result">= 2h − 5 + 2/h</div>
+        </div>
+        <div class="gem gem-b" id="gemB">
+          <span class="gem-label">Pièce B — f(−1 − h)</span>
+          <div class="gem-expr">
+            f(−1−h) = 2(−1−h) − 3 + 2/((−1−h)+1)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= −2 − 2h − 3 + 2/(−h)
+          </div>
+          <div class="gem-result">= −2h − 5 − 2/h</div>
+        </div>
+      </div>
+
+      <div class="assembly-status armed" id="assemblyStatus">
+        <span class="dot"></span>
+        <span id="assemblyStatusText">Les deux pièces sont prêtes — assemblez pour additionner.</span>
+      </div>
+
+      <button class="assemble-btn" id="assembleBtn">
+        Assembler A + B
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+
+      <div class="result-gem" id="resultGem">
+        <span class="cm">// Somme des deux pièces :</span><br>
+        &nbsp;&nbsp;f(−1+h) + f(−1−h)<br>
+        &nbsp;&nbsp;= (2h − 5 + 2/h) + (−2h − 5 − 2/h)<br>
+        &nbsp;&nbsp;= <span style="color:var(--red)">2h − 2h</span> &nbsp;<span style="color:var(--muted)">+</span>&nbsp; (−5 − 5) &nbsp;<span style="color:var(--muted)">+</span>&nbsp; <span style="color:var(--green)">2/h − 2/h</span><br>
+        &nbsp;&nbsp;= 0 &nbsp;<span style="color:var(--muted)">+</span>&nbsp; <span class="grn">(−10)</span> &nbsp;<span style="color:var(--muted)">+</span>&nbsp; 0<br>
+        &nbsp;&nbsp;= <span class="gld">−10</span> ✓
+        <span class="conclusion">Donc I(−1 ; −5) est bien centre de symétrie de la courbe.</span>
+      </div>
+    </div>
+  </div>
+
+<div class="demo-cta-card">
+    <h2>Ce type de support est préparé pour chaque séance.</h2>
+    <p>Adapté au chapitre et au niveau de votre enfant, avec la correction et les exercices à refaire — conservés après le cours.</p>
+    <a class="demo-wa-btn" href="https://wa.me/33769913946?text=Bonjour%20Hamza%2C%20je%20viens%20de%20voir%20votre%20site%20et%20une%20d%C3%A9mo%20de%20cours%20%E2%80%94%20on%20cherche%20un%20soutien%20pour%20notre%20enfant.%20On%20peut%20en%20parler%20%3F" target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+    <a class="demo-back-link" href="../index.html">← Retour au site</a>
+  </div>
+
+</div>
+
+<script>
+const canvas = document.getElementById('cv');
+const ctx = canvas.getContext('2d');
+const dpr = () => window.devicePixelRatio || 1;
+
+const C = {
+  bg: '#FFFFFF', border: '#E7DECC', muted: '#6F7385',
+  ink: '#14213D', navy: '#14213D', gold: '#C9A24B', gold2: '#B68D34',
+  red: '#C0392B', green: '#1f6b54', purple: '#7b2d8b',
+};
+
+const Ia = -1, Ib = -5;
+function f(x) { return 2*x - 3 + 2/(x+1); }
+
+let h = 2.0;
+
+function resize() {
+  const W = canvas.parentElement.clientWidth;
+  // Hauteur adaptative : on garde un ratio raisonnable sur mobile
+  const vw = window.innerWidth;
+  const H = vw < 420 ? 260 : vw < 600 ? 300 : vw < 760 ? 340 : 380;
+  const r = dpr();
+  canvas.width = W * r; canvas.height = H * r;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  ctx.setTransform(r, 0, 0, r, 0, 0);
+  draw();
+}
+
+function draw() {
+  const W = canvas.width / dpr();
+  const H = canvas.height / dpr();
+  const xMin = -8, xMax = 6, yMin = -16, yMax = 8;
+  const pad = { t: 20, r: 24, b: 32, l: 48 };
+  const iw = W - pad.l - pad.r;
+  const ih = H - pad.t - pad.b;
+  const px = x => pad.l + (x - xMin) / (xMax - xMin) * iw;
+  const py = y => pad.t + ih - (y - yMin) / (yMax - yMin) * ih;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+
+  // Grid
+  ctx.strokeStyle = C.border; ctx.lineWidth = 0.6;
+  for (let x = Math.ceil(xMin); x <= Math.floor(xMax); x++) {
+    ctx.beginPath(); ctx.moveTo(px(x), pad.t); ctx.lineTo(px(x), pad.t + ih); ctx.stroke();
+  }
+  for (let y = Math.ceil(yMin/2)*2; y <= yMax; y += 2) {
+    ctx.beginPath(); ctx.moveTo(pad.l, py(y)); ctx.lineTo(W - pad.r, py(y)); ctx.stroke();
+  }
+
+  // Axes (epaisseur normale, sur 0)
+  ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2;
+  // axe x (y=0)
+  if (yMin < 0 && yMax > 0) {
+    ctx.beginPath(); ctx.moveTo(pad.l, py(0)); ctx.lineTo(W - pad.r, py(0)); ctx.stroke();
+  }
+  // axe y (x=0)
+  if (xMin < 0 && xMax > 0) {
+    ctx.beginPath(); ctx.moveTo(px(0), pad.t); ctx.lineTo(px(0), pad.t + ih); ctx.stroke();
+  }
+
+  // Asymptote verticale x = -1
+  ctx.strokeStyle = 'rgba(192,57,43,.28)'; ctx.lineWidth = 1.2; ctx.setLineDash([5, 4]);
+  ctx.beginPath(); ctx.moveTo(px(-1), pad.t); ctx.lineTo(px(-1), pad.t + ih); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = 'rgba(192,57,43,.6)'; ctx.font = `italic 11px ${"Fraunces, serif"}`;
+  ctx.textAlign = 'left'; ctx.fillText('x = −1', px(-1) + 4, pad.t + 14);
+
+  // Tick labels axes
+  ctx.fillStyle = C.muted; ctx.font = `10px "JetBrains Mono", monospace`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+  for (let x = Math.ceil(xMin); x <= Math.floor(xMax); x++) {
+    if (x === 0 || x === -1) continue;
+    ctx.fillText(x, px(x), py(0) + 4);
+  }
+  ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  for (let y = Math.ceil(yMin/2)*2; y <= yMax; y += 2) {
+    if (y === 0) continue;
+    ctx.fillText(y, px(0) - 4, py(y));
+  }
+
+  // Courbe (deux branches)
+  ctx.strokeStyle = C.navy; ctx.lineWidth = 2.5;
+  function drawBranch(xa, xb) {
+    ctx.beginPath();
+    let first = true;
+    const steps = 400;
+    for (let i = 0; i <= steps; i++) {
+      const x = xa + (xb - xa) * i / steps;
+      const y = f(x);
+      if (!isFinite(y) || y < yMin - 2 || y > yMax + 2) { first = true; continue; }
+      const X = px(x), Y = py(y);
+      if (first) { ctx.moveTo(X, Y); first = false; }
+      else ctx.lineTo(X, Y);
+    }
+    ctx.stroke();
+  }
+  drawBranch(xMin, -1.04);
+  drawBranch(-0.96, xMax);
+
+  // A et B
+  const Bx = Ia + h, Ax = Ia - h;
+  const By = f(Bx), Ay = f(Ax);
+  const Bvalid = isFinite(By) && Math.abs(Bx + 1) > 0.05;
+  const Avalid = isFinite(Ay) && Math.abs(Ax + 1) > 0.05;
+
+  // Segment AB (passe par I)
+  if (Bvalid && Avalid) {
+    ctx.strokeStyle = C.purple; ctx.lineWidth = 2.2;
+    ctx.beginPath();
+    ctx.moveTo(px(Ax), py(Ay));
+    ctx.lineTo(px(Bx), py(By));
+    ctx.stroke();
+  }
+
+  // Tombants pointillés vers axe x pour A, I, B
+  ctx.lineWidth = 1; ctx.setLineDash([3, 3]); ctx.strokeStyle = 'rgba(20,33,61,.3)';
+  if (Avalid) { ctx.beginPath(); ctx.moveTo(px(Ax), py(Ay)); ctx.lineTo(px(Ax), py(0)); ctx.stroke(); }
+  ctx.beginPath(); ctx.moveTo(px(Ia), py(Ib)); ctx.lineTo(px(Ia), py(0)); ctx.stroke();
+  if (Bvalid) { ctx.beginPath(); ctx.moveTo(px(Bx), py(By)); ctx.lineTo(px(Bx), py(0)); ctx.stroke(); }
+  ctx.setLineDash([]);
+
+  // Labels h sur l'axe (entre a-h..a et a..a+h)
+  if (Avalid && Bvalid) {
+    ctx.fillStyle = C.muted; ctx.font = `11px "JetBrains Mono", monospace`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    const labelY = py(0) + 18;
+    ctx.fillText('h', (px(Ia) + px(Bx)) / 2, labelY);
+    ctx.fillText('h', (px(Ia) + px(Ax)) / 2, labelY);
+    // petits crochets
+    ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2;
+    [Ax, Ia, Bx].forEach(xv => {
+      ctx.beginPath();
+      ctx.moveTo(px(xv), py(0) - 3);
+      ctx.lineTo(px(xv), py(0) + 3);
+      ctx.stroke();
+    });
+  }
+
+  // Trait pointillés horizontaux pour montrer la symétrie verticale
+  if (Avalid && Bvalid) {
+    ctx.strokeStyle = 'rgba(201,162,75,.5)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    // y_A vers y_B passant par y_I = b
+    ctx.beginPath();
+    ctx.moveTo(px(xMin), py(By)); ctx.lineTo(px(Bx), py(By)); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(px(xMin), py(Ay)); ctx.lineTo(px(Ax), py(Ay)); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(px(xMin), py(Ib)); ctx.lineTo(px(Ia), py(Ib)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Labels f(a+h), f(a-h), b sur axe y
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = C.red; ctx.font = `10px "JetBrains Mono", monospace`;
+    ctx.fillText(`f(a+h) ≈ ${By.toFixed(1)}`, pad.l + 4, py(By) - 6);
+    ctx.fillStyle = C.green;
+    ctx.fillText(`f(a−h) ≈ ${Ay.toFixed(1)}`, pad.l + 4, py(Ay) + 9);
+    ctx.fillStyle = C.gold2;
+    ctx.fillText(`b = −5`, pad.l + 4, py(Ib) - 6);
+  }
+
+  // Points I, A, B avec halos
+  function point(x, y, color, label, side) {
+    const X = px(x), Y = py(y);
+    // halo
+    ctx.beginPath(); ctx.arc(X, Y, 9, 0, Math.PI*2);
+    ctx.fillStyle = color + '22'; ctx.fill();
+    // point
+    ctx.beginPath(); ctx.arc(X, Y, 5, 0, Math.PI*2);
+    ctx.fillStyle = color; ctx.fill();
+    ctx.beginPath(); ctx.arc(X, Y, 2, 0, Math.PI*2);
+    ctx.fillStyle = '#fff'; ctx.fill();
+    // label
+    ctx.fillStyle = color; ctx.font = `600 12px "Plus Jakarta Sans", sans-serif`;
+    ctx.textAlign = side === 'left' ? 'right' : 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label, X + (side === 'left' ? -10 : 10), Y);
+  }
+
+  // I
+  point(Ia, Ib, C.gold2, 'I(−1 ; −5)', 'right');
+  if (Bvalid) point(Bx, By, C.red, 'B', Bx > 2 ? 'left' : 'right');
+  if (Avalid) point(Ax, Ay, C.green, 'A', Ax < -4 ? 'right' : 'left');
+}
+
+// Slider
+const slH = document.getElementById('slH');
+const svH = document.getElementById('svH');
+slH.addEventListener('input', () => {
+  h = slH.value / 10;
+  svH.textContent = h.toFixed(1);
+  draw();
+});
+
+// Assembly
+const btn = document.getElementById('assembleBtn');
+const gemA = document.getElementById('gemA');
+const gemB = document.getElementById('gemB');
+const resultGem = document.getElementById('resultGem');
+const statusBox = document.getElementById('assemblyStatus');
+const statusText = document.getElementById('assemblyStatusText');
+
+let assembled = false;
+btn.addEventListener('click', () => {
+  if (assembled) {
+    // reset
+    assembled = false;
+    resultGem.classList.remove('shown');
+    btn.innerHTML = `Assembler A + B <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>`;
+    statusBox.classList.add('armed');
+    statusText.textContent = 'Les deux pièces sont prêtes — assemblez pour additionner.';
+    return;
+  }
+  // Animate gems
+  gemA.classList.add('fired');
+  setTimeout(() => gemB.classList.add('fired'), 150);
+  setTimeout(() => {
+    gemA.classList.remove('fired');
+    gemB.classList.remove('fired');
+    resultGem.classList.add('shown');
+    statusBox.classList.remove('armed');
+    statusText.innerHTML = '<strong style="color:var(--gold-2)">Démonstration achevée</strong> — la somme vaut −10 pour tout h.';
+    btn.innerHTML = `Réinitialiser <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>`;
+  }, 600);
+  assembled = true;
+});
+
+window.addEventListener('resize', resize);
+resize();
+
+</script>
+</body>
+</html>
