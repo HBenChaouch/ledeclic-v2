@@ -4420,12 +4420,21 @@ const modal = document.getElementById('modal');
 const modalFrame = document.getElementById('modalFrame');
 const modalTitle = document.getElementById('modalTitle');
 let savedScrollY = 0;
+let restoringModalScroll = false;
 // Bloque le scroll d'arrière-plan SANS position:fixed (qui réintroduirait
 // le bug iframe iOS). On laisse passer les touches dans .modal-scroll (donc l'iframe).
 function lockTouch(e) {
   if (e.target.closest && e.target.closest('.modal-scroll')) return;
   e.preventDefault();
 }
+function keepModalAnchored() {
+  if (!modal.hasAttribute('open') || restoringModalScroll || window.scrollY === savedScrollY) return;
+  restoringModalScroll = true;
+  window.scrollTo(0, savedScrollY);
+  restoringModalScroll = false;
+}
+window.addEventListener('scroll', keepModalAnchored, { passive: true });
+if (window.visualViewport) window.visualViewport.addEventListener('scroll', keepModalAnchored, { passive: true });
 function openModal(src) {
   modalTitle.textContent = src; modalFrame.src = src;
   savedScrollY = window.scrollY;
